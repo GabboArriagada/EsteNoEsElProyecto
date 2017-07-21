@@ -140,6 +140,9 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (5.0.2)
+      i18n (~> 0.7)
+      railties (~> 5.0)
     rails_admin (1.1.1)
       builder (~> 3.1)
       coffee-rails (~> 4.0)
@@ -249,6 +252,7 @@ DEPENDENCIES
   pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.2)
+  rails-i18n
   rails_admin
   rails_admin-i18n
   rails_admin_import (~> 2.0)

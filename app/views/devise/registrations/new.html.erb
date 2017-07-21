@@ -7,8 +7,13 @@
       <%= devise_error_messages! %>
 
       <div class="field">
-        <%= f.label :name,"Introduzca su nombre completo" %><br />
-        <%= f.text_field :name, autocomplete: "off", class:"from-control", autofocus: true, :placeholder => "Nombre Apellido" %>
+        <%= f.label :name,"Introduzca su nombre" %><br />
+        <%= f.text_field :name, autocomplete: "off", class:"from-control", autofocus: true, :placeholder => "Nombre" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :last_name,"Introduzca su apellido" %><br />
+        <%= f.text_field :name, autocomplete: "off", class:"from-control", autofocus: true, :placeholder => "Apellido" %>
       </div>
 
       <div class="field">

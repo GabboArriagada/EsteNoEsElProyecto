@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721064815) do
+ActiveRecord::Schema.define(version: 20170721210316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(version: 20170721064815) do
     t.index ["curso_id"], name: "index_asignaturas_on_curso_id", using: :btree
   end
 
+  create_table "asignaturas_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "asignatura_id"
+    t.index ["asignatura_id"], name: "index_asignaturas_users_on_asignatura_id", using: :btree
+    t.index ["user_id"], name: "index_asignaturas_users_on_user_id", using: :btree
+  end
+
   create_table "cursos", force: :cascade do |t|
     t.string   "nombre"
     t.integer  "año"
@@ -46,15 +53,6 @@ ActiveRecord::Schema.define(version: 20170721064815) do
     t.datetime "updated_at", null: false
     t.index ["curso_id"], name: "index_cursos_users_on_curso_id", using: :btree
     t.index ["user_id"], name: "index_cursos_users_on_user_id", using: :btree
-  end
-
-  create_table "descargables", force: :cascade do |t|
-    t.string   "titulo"
-    t.integer  "fecha"
-    t.string   "asignatura"
-    t.text     "campo_descriptivo"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -136,6 +134,7 @@ ActiveRecord::Schema.define(version: 20170721064815) do
     t.integer  "telefono"
     t.integer  "fecha_ingreso"
     t.string   "sexo"
+    t.string   "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -147,6 +146,8 @@ ActiveRecord::Schema.define(version: 20170721064815) do
   end
 
   add_foreign_key "asignaturas", "cursos"
+  add_foreign_key "asignaturas_users", "asignaturas"
+  add_foreign_key "asignaturas_users", "users"
   add_foreign_key "cursos_users", "cursos"
   add_foreign_key "cursos_users", "users"
   add_foreign_key "notas", "asignaturas"
