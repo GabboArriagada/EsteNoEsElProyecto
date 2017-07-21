@@ -1,0 +1,20 @@
+/*  notice and alert devise gem in SCSS SASSY CSS*/
+#notice_wrapper {
+  display: none;
+  position: absolute;
+  top: 35px;
+  width: 100%;
+  z-index: 999;
+  .alert { background: rgba(255, 100, 5, 0.80); }
+  .notice{ background:rgba(219, 0, 0, 0.46); }
+  .alert, .notice {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 35px 0;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+}

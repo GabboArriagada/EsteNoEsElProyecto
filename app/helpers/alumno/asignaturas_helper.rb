@@ -1,0 +1,2 @@
+module Alumno::AsignaturasHelper
+end

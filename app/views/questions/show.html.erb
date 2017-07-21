@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @question.content %>
+</p>
+
+<%= link_to 'Editar', edit_question_path(@question) %> |
+<%= link_to 'Atrás', questions_path %>

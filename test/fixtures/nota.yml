@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descripcion: MyText
+  nota: 1
+  porcentaje: 1
+  user: one
+
+two:
+  descripcion: MyText
+  nota: 1
+  porcentaje: 1
+  user: two

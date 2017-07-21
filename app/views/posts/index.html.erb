@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Archivos</h2>
+<p> <%= link_to 'Subir archivo', new_post_path, class:"btn btn-primary btn-sm" %> </p>
+
+<ul class="list-group">
+   <% @posts.each do |post| %>
+   <li class="list-group-item list-group-item-success">
+   <% if post == "." or post == ".." then next end; %>
+   <div class="row">
+
+      <div class="col-md-9 col-md-push-3"><strong> <%= post.title %> </strong> </div>
+      <div class="col-md-3 col-md-pull-9">| <a target="_blank" href="<%= post.image %>">Ver archivo</a> |
+      <td><%= link_to 'Editar', edit_post_path(post) %></td> |
+      <td><%= link_to 'Borrar', post, method: :delete, data: { confirm: 'Are you sure?' } %></td> |
+      </div>
+      </div>
+</li>
+   <% end %>
+</ul>
+<hr />
+
+<br>

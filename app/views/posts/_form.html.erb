@@ -1,0 +1,13 @@
+<%= simple_form_for(@post) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title, :label => "Titulo" %>
+    <%= f.input :description, :label => "Descripción" %>
+    <%= f.input :image, :label => "Documento" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Actualizar' %>
+  </div>
+<% end %>

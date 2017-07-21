@@ -1,0 +1,87 @@
+<div class="row center-xs text-left">
+  <div class="col-xs-8 col-md-6">
+    <div class="box-sizing text-left">
+    <h2>Regístrate</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.label :name,"Introduzca su nombre completo" %><br />
+        <%= f.text_field :name, autocomplete: "off", class:"from-control", autofocus: true, :placeholder => "Nombre Apellido" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :rut,"introduzca su rut" %><br />
+        <%= f.text_field :rut, :id => "rut", :required => "true", :placeholder => "Ej: 12345612-3", autocomplete: "off", class:"from-control", autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email,"Correo electrónico" %><br />
+        <%= f.email_field :email, autofocus: true, class:"from-control", :placeholder => "Example@mail.com" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password,"Contraseña" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class:"from-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation,"Confirma contraseña" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class:"from-control" %>
+      </div>
+
+
+      <div class="actions">
+        <%= f.submit "Crear cuenta", class:"btn be-red white" %>
+      </div>
+    <% end %>
+    <div class="">
+      <%= render "devise/shared/links" %>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$( document ).ready(function() {
+
+  var Fn = {
+  // Valida el rut con su cadena completa "XXXXXXXX-X"
+  validaRut : function (rutCompleto) {
+      rutCompleto = rutCompleto.replace("‐","-");
+      if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+          return false;
+      var tmp     = rutCompleto.split('-');
+      var digv    = tmp[1];
+      var rut     = tmp[0];
+      if ( digv == 'K' ) digv = 'k' ;
+
+      return (Fn.dv(rut) == digv );
+  },
+  dv : function(T){
+      var M=0,S=1;
+      for(;T;T=Math.floor(T/10))
+          S=(S+T%10*(9-M++%6))%11;
+      return S?S-1:'k';
+  }
+}
+
+
+$("#rut").change(function(){
+  if (Fn.validaRut( $("#rut").val() )){
+    $("#rutbueno").html("el rut esta correcto");
+
+  } else {
+      $("#rut").val("");
+      alert("El rut ingresado no es valido");
+  }
+});
+
+
+});
+</script>

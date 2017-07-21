@@ -1,0 +1,46 @@
+<link href="https://blackrockdigital.github.io/startbootstrap-simple-sidebar/css/simple-sidebar.css" rel="stylesheet">
+<body>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+
+                </li>
+                <li>
+                    <a href="#1">Inicio menú</a>
+                </li>
+                <li>
+                    <a href="#2">Notas</a>
+                </li>
+                <li>
+                    <a href=/admin/panel>Calendario</a>
+                </li>
+                <li>
+                    <a href=/questions>Preguntas/Respuestas</a>
+                </li>
+                <li>
+                    <a href=/archivos/listar_archivos>Subir archivos</a>
+                </li>
+                <li>
+                    <a href=/posts>Subir archivos NUEVO</a>
+                </li>
+            </ul>
+        </div>
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+</body>

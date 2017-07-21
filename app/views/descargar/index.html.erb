@@ -1,0 +1,41 @@
+<h1> Descargar </h1>
+
+
+
+<select name="xxx">
+
+<option>Masculino</option>
+
+<option>Femenino</option>
+
+
+
+</select>
+
+<table>
+  <tr>
+    <td>| titulo | </td>
+    <td> asignatura | </td>
+    <td> descripcion | </td>
+    <td> fecha | </td>
+  </tr>
+
+  <%=@descarga.each do |des|%>
+
+  <tr>
+    <td><%= link_to des.titulo, des%></td>
+    <td><%= des.asignatura%></td>
+    <td><%= des.campo_descriptivo%></td>
+    <td><%= des.fecha%></td>
+    <td><%= link_to "Editar", descargar_editar_path(des)%></td>
+    <td><%= link_to "Exterminar", des , method: :delete, confirm: "Seguro que quieres EXTERMINAR la descarga?"%></td>
+</tr>
+
+<% end %>
+<% if @descarga.size==0 %>
+NO SE ENCONTRARON DESCARGAS!
+<% end %>
+
+</table>
+
+<%= link_to 'Nueva descarga', descargar_crear_path %>

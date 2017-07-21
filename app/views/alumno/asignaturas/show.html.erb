@@ -1,0 +1,51 @@
+<div class="page-header clearfix">
+  <h3><%= fa_icon 'book' %> Asignaturas <small>Detalle Asignatura</small></h3>
+</div>
+
+<div class="panel panel-default">
+
+  <div class="tabs">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#cabecera" aria-controls="cabecera" role="tab" data-toggle="tab" id="ficha">Ficha</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="panel-body">
+
+    <div class="tab-content">
+      <!-- Cabecera -->
+      <div role="tabpanel" class="tab-pane active" id="cabecera">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th colspan="4" class="active">Datos base</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="active col-title"><%= fa_icon 'circle', text: 'Nombre' %></td>
+                <td class="col-content"><%=@asignatura.nombre%></td>
+                <td class="active col-title"><%= fa_icon 'calendar', text: 'Año' %></td>
+                <td class="col-content"><%=@asignatura.año%></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="panel-footer">
+    <%= link_to alumno_asignaturas_path, class: 'btn btn-success' do %>
+      <%= fa_icon 'list', text: t(:list) + ' ' + 'Asignaturas' %>
+    <% end %>
+
+
+  </div>
+</div>

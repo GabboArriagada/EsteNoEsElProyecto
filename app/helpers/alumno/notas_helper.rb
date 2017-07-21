@@ -1,0 +1,2 @@
+module Alumno::NotasHelper
+end

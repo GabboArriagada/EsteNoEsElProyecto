@@ -1,0 +1,28 @@
+<h2> Archivos </h2>
+<% if @mensaje %>
+<!-- Mensaje enviado de la anterior página-->
+<div>
+   <strong> <%= @mensaje %> </strong>
+</div>
+<% end %>
+<!-- Enlace a la página de subir archivos -->
+<p> <%= link_to "Subir archivo", :controller => "archivos", :action => "subir_archivos" %> </p>
+<!-- Lista de archivos subidos -->
+<ul>
+   <% @archivos.each do |a| %>
+   <% if a == "." or a == ".." then next end; %>
+   <li>
+      <strong> <%= a %> </strong> |
+      <a target="_blank" href="/archivos/<%= a %>"> Ver archivo </a> |
+      <%= link_to "Borrar archivo", {:controller => "archivos", :action => "borrar_archivos", :archivo_a_borrar => a}, {:method => "post", :confirm => "Seguro?"} %>
+   </li>
+   <% end %>
+</ul>
+<!-- Acá se guarda el nombre del archivo antes de que el formularo sea enviado-->
+<hr />
+<!-- Comentarios guardados por el usuario. -->
+<h2> Últimos Comentarios: </h2>
+<div>
+   <pre><%= @comentarios; %></pre>
+   <%= link_to "Agregar comentarios", :controller => "archivos", :action => "guardar_comentarios" %>
+</div>
