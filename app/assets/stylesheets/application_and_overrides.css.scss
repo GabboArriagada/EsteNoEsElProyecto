@@ -910,6 +910,7 @@ main {
   margin-top: 60px; // accommodate the navbar
   }
 section {
+  padding: 30px;
   @extend .row;
   margin-top: 20px;
   }
@@ -949,4 +950,3 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
-

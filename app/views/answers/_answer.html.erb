@@ -1,5 +1,6 @@
-<p><%= answer.content %>
-  <% if can? :destroy, answer %>
-  <%= link_to "Borrar", question_answer_path(answer.question, answer), method: :delete %>
-  <% end %>
+<p style="border-bottom: 1px solid black; background-color: #B8B8B8;">
+  <li style="font-: large"><td><%= answer.content %></td>
+  <% if can? :destroy, answer %>     |
+  <td><%= link_to "Borrar", question_answer_path(answer.question, answer), method: :delete %></td></li>
 </p>
+  <% end %>

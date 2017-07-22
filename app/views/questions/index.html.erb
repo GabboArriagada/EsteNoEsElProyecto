@@ -1,35 +1,40 @@
-<h1>foro</h1>
+<h4>Preguntas/Respuestas</h4>
 <%= flash[:alert] %>
-<%= link_to 'Nueva pregunta', new_question_path %>
+<%= link_to 'Nueva pregunta', new_question_path, class:"btn btn-primary btn-xl" %>
 <br>
 <br>
+
 
 <% @questions.each do |question| %>
+<div class="col-md-12">
+<div style="border: 2px solid black; background-color: #B8B8B8;">
 
-<div style="border: 1px solid black; background-color: #B8B8B8;">
-  <h3><%= question.content%></h3>
-      <%= time_ago_in_words(question.created_at) %> ago by <%= question.user.email %>
+
+  <div class="col-xs-offset-1"><h3><%= question.content%></h3>
+      -Hace <%= time_ago_in_words(question.created_at) %> atrás, por <%= question.user.name %> <%= question.user.last_name %>-
   <br>
 
       <% if can? :update, question %>
-      <%= link_to 'Editar', edit_question_path(question) %>
+      <%= link_to 'Editar', edit_question_path(question) %> |
       <% end %>
       <% if can? :update, question %>
       <%= link_to 'Borrar', question, method: :delete, data: { confirm: 'Are you sure?'} %>
       <% end %>
-
-
-      <% if question.answers.any? %>
+    </div>
       <h4>Respuestas</h4>
+      <div class="col-xs-offset-1">
+      <% if question.answers.any? %>
+
       <%= render question.answers %>
       <% end %>
 
       <hr>
       <p>Agregar respuesta</p>
       <%= form_for([question, question.answers.build]) do |f| %>
-      <%= f.text_area :content %>
-      <%= submit_tag "Add" %>
+      <%= f.text_area :content, :id => "message_area",required:true %><br>
+      <%=f.submit "Agregar", class: "btn btn-primary btn-xl"%></div><br>
       <% end %>
+      </div>
 
 </div>
 

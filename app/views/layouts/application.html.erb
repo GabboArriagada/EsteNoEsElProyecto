@@ -37,7 +37,6 @@
 
 
 
-
 </body>
 <br>
 <br>
@@ -48,8 +47,10 @@
      <p class="alert"><%= alert %></p>
   <% end %>
 </div>
-
+<section><p>
 <%= yield %>
+</p></section>
+
 <% debug(params) if Rails.env.development? %>
 
 <%= render 'partials/footer' %>

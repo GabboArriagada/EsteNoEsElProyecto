@@ -3,6 +3,17 @@
   margin-right: auto;
   margin-left: auto;
 }
+textarea#message_area {
+  width: 700px;
+  height: 70px;
+}
+.texto{
+  font-size: large;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
 
 .container-fluid {
   padding-right: 2rem;
