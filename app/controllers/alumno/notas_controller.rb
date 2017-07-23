@@ -6,6 +6,7 @@ class Alumno::NotasController < ApplicationController
   # GET /alumno/notas.json
   def index
     @notas = current_user.asignaturas.all
+    @user = current_user
   end
 
   # GET /alumno/notas/1
@@ -13,6 +14,7 @@ class Alumno::NotasController < ApplicationController
   def show
     @asignatura = params[:asignatura]
     @notas = current_user.notas.where(asignatura: @asignatura)
+    @user = current_user
   end
 
   private

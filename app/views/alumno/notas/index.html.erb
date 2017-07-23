@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Nombre Asignatura</th>
-      <th>Nota Final</th>
       <th>Notas Parciales</th>
     </tr>
   </thead>
@@ -15,8 +14,11 @@
     <% @notas.each do |nota| %>
       <tr>
         <td><%= nota.nombre %></td>
-        <td><%=%></td>
-        <td><%= link_to 'Ver', alumno_notas_show_nota_path(asignatura: nota) %></td>
+        <td>
+          <%= link_to alumno_notas_show_nota_path(asignatura: nota) do %>
+            <%= fa_icon 'search', text: 'Ver' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

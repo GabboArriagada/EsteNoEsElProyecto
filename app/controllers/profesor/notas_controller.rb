@@ -6,31 +6,39 @@ class Profesor::NotasController < ApplicationController
   # GET /profesor/notas
   # GET /profesor/notas.json
   def index
-    @notas = Nota.all
+    @cursos = current_user.cursos.all
   end
 
   # GET /profesor/notas/1
   # GET /profesor/notas/1.json
   def show
+    @asignatura = params[:asignatura]
+    @notas = current_user.notas.where(asignatura: @asignatura)
   end
 
   # GET /profesor/notas/new
   def new
     @nota = Nota.new
+    @user = params[:user]
+    @asignatura = params[:asignatura]
+    @alumno = User.find(@user)
   end
 
   # GET /profesor/notas/1/edit
   def edit
+    @user = params[:user]
+    @asignatura = params[:asignatura]
   end
 
   # POST /profesor/notas
   # POST /profesor/notas.json
   def create
     @nota = Nota.new(nota_params)
+    @asignatura = params[:asignatura]
 
     respond_to do |format|
       if @nota.save
-        format.html { redirect_to @nota, notice: 'Nota was successfully created.' }
+        format.html { redirect_to profesor_asignatura_path(@asignatura), notice: 'La nota ha sido ingresada' }
         format.json { render :show, status: :created, location: @nota }
       else
         format.html { render :new }
@@ -71,7 +79,7 @@ class Profesor::NotasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nota_params
-      params.fetch(:nota, {})
+      params.required(:nota).permit(:nota, :porcentaje, :descripcion, :user_id, :asignatura_id)
     end
 
     def authenticate_profesor

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Asignatura <%= @asignatura.nombre %></h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Alumnos</th>
+      <th>Ingresar Nota</th>
+      <th>Ver Notas</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @alumnos.each do |alumno| %>
+      <tr>
+        <td><%= alumno.name %> <%= alumno.last_name %></td>
+        <td>
+          <%= link_to new_profesor_nota_path(user: alumno, asignatura: @asignatura) do %>
+            <%= fa_icon 'hand-pointer-o', text: 'Ingresar' %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to notas_profesor_asignatura_path(user: alumno, asignatura: @asignatura) do %>
+            <%= fa_icon 'search', text: 'Ver' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to profesor_curso_path(@asignatura.curso.id) do %>
+  <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
+<% end %>

@@ -11,4 +11,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def nota_final
+    notaf = 0.0
+    self.asignaturas.each do |asignatura|
+      notaf = asignatura.nota_final
+    end
+    return notaf
+  end
 end

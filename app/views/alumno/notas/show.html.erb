@@ -2,18 +2,32 @@
 
 <h1>Asignatura <%=Asignatura.find(@asignatura).nombre%></h1>
 
+<% unless @notas.empty? %>
 <table class="table table-bordered table-striped">
   <thead>
+    <% porcentaje = 0.0 %>
     <% @notas.each do |nota| %>
-      <th>Nota <%= nota.porcentaje %>%</th>
+      <th>Nota <%= nota.porcentaje %>%</th><% porcentaje += nota.porcentaje.to_f/100 %>
     <% end %>
     <th>Nota Final</th>
   </thead>
 
   <tbody>
+    <% notaf = 0.0 %>
     <% @notas.each do |nota| %>
-      <td><%= nota.nota %></td>
+      <td><%= nota.nota %></td> <% notaf += (nota.nota.to_f)*((nota.porcentaje.to_f)/100) %>
     <% end %>
+    <% if porcentaje.to_i == 1 %>
+    <td><%= notaf.round %></td>
+    <% else %>
     <td></td>
+    <% end %>
   </tbody>
 </table>
+<% else %>
+<h2>No tiene notas.</h2>
+<% end %>
+
+<%= link_to alumno_notas_path do %>
+  <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
+<% end %>

@@ -11,7 +11,7 @@
                 <li>
                     <a href="#1">Inicio menú</a>
                 </li>
-                  <% if current_user.admin? %>
+                  <% if current_user.has_role? :admin %>
                 <li>
                     <a href=/admin>ADMIN PANEL</a>
                 </li>
@@ -20,7 +20,11 @@
                       <a href=/calendario/index>Calendario</a>
                   </li>
                 <li>
-                    <a href="#2">Notas</a>
+                  <% if current_user.has_role? :profesor %>
+                    <%= link_to 'Notas', profesor_notas_path %>
+                  <% elsif current_user.has_role? :alumno %>
+                    <%= link_to 'Notas', alumno_notas_path %>
+                  <% end %>
                 </li>
                 <li>
                     <a href=/questions>Preguntas/Respuestas</a>

@@ -2,10 +2,10 @@
 
 <h1>Asignaturas</h1>
 
-<table>
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th colspan="2">Asignatura</th>
     </tr>
   </thead>
 
@@ -13,13 +13,12 @@
     <% @asignaturas.each do |asignatura| %>
       <tr>
         <td><%= asignatura.nombre %></td>
-        <td><%= link_to 'Show', alumno_asignatura_path(asignatura) %></td>
-        <td><%= link_to 'Edit', edit_alumno_asignatura_path(asignatura) %></td>
-        <td><%= link_to 'Destroy', asignatura, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to alumno_asignatura_path(asignatura) do%>
+            <%= fa_icon 'search', text: 'Ver' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<br>
-
-<%= link_to 'New Asignatura', new_alumno_asignatura_path %>

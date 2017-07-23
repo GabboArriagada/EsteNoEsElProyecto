@@ -1,5 +1,26 @@
-<h1>New Profesor Nota</h1>
+<h1>Igresar Nota</h1>
 
-<%= render 'form', nota: @nota %>
+<%= simple_form_for([:profesor, @nota]) do |f| %>
+  <%= f.error_notification %>
+  <% porcentaje = 0 %>
+  <% if @alumno.notas.exists? %>
+    <% Nota.where(user: @user, asignatura: @asignatura).each do |nota| %>
+      <% porcentaje += nota.porcentaje %>
+    <% end %>
+  <% end %>
+  <div class="form-inputs">
+    <%= f.input :user_id, as: :hidden, input_html: {value: @user} %>
+    <%= f.input :asignatura_id, as: :hidden, input_html: {value: @asignatura} %>
+    <%= f.input :nota, placeholder: 'Ej: 70', input_html: {min: 10, max: 70} %>
+    <%= f.input :porcentaje, placeholder: 'Ej: 40%', input_html: {min: 1, max: (100-porcentaje)} %>
+    <%= f.input :descripcion %>
+  </div>
 
-<%= link_to 'Back', profesor_notas_path %>
+  <div class="form-actions">
+    <%= f.button :submit, 'Ingresar Nota' %>
+  </div>
+<% end %>
+
+<%= link_to profesor_asignatura_path(@asignatura) do %>
+  <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
+<% end %>

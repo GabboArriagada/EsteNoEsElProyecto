@@ -32,6 +32,11 @@ Rails.application.routes.draw do
   namespace :profesor do
     resources :notas
     resources :cursos
+    resources :asignaturas do
+      member do
+        get :notas
+      end
+    end
   end
 
   devise_for :users

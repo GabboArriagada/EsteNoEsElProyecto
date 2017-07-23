@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Notas de <%= Asignatura.find(@asignatura).nombre %> del alumno <%= User.find(@user).name %> <%= User.find(@user).last_name %></h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Notas</th>
+      <th>Porcentaje</th>
+      <th>Editar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% unless @notas.empty? %>
+      <% @notas.each do |nota| %>
+        <tr>
+          <td><%= nota.nota %></td>
+          <td><%= nota.porcentaje%>%</td>
+          <td>
+            <%= link_to edit_profesor_nota_path(nota, asignatura: @asignatura, user: @user) do %>
+              <%= fa_icon 'pencil', text: 'Editar' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="2">No tiene notas.</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to profesor_asignatura_path(@asignatura) do %>
+  <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
+<% end %>

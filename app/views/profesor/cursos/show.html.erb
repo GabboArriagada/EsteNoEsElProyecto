@@ -1,4 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_profesor_curso_path(@curso) %> |
-<%= link_to 'Back', profesor_cursos_path %>
+<h1>Curso <%= @curso.nombre %></h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Asignatuas</th>
+      <th>Ver</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @asignaturas.each do |asignatura| %>
+      <tr>
+        <td><%= asignatura.nombre %></td>
+        <td>
+          <%= link_to profesor_asignatura_path(asignatura) do %>
+            <%= fa_icon 'search', text: 'Ver' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to profesor_notas_path do %>
+  <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
+<% end %>

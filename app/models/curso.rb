@@ -9,4 +9,8 @@ class Curso < ApplicationRecord
   #https://github.com/ryanb/nested_form
   #https://rubyplus.com/articles/3681-Complex-Forms-in-Rails-5
   #https://www.sitepoint.com/better-nested-attributes-in-rails-with-the-cocoon-gem/
+
+  def tittle
+    "#{nombre}"    
+  end
 end
