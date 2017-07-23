@@ -3,13 +3,11 @@
 <%= link_to 'Nueva pregunta', new_question_path, class:"btn btn-primary btn-xl" %>
 <br>
 <br>
-
-
-<% @questions.each do |question| %>
+<% @questions.reverse.each do |question| %>
 <div class="col-md-12">
 <div style="border: 2px solid black; background-color: #B8B8B8;">
 
-
+<br>
   <div class="col-xs-offset-1"><h3><%= question.content%></h3>
       -Hace <%= time_ago_in_words(question.created_at) %> atrás, por <%= question.user.name %> <%= question.user.last_name %>-
   <br>
@@ -36,7 +34,6 @@
 
 </div>
 
-<br>
 <br>
 
 <% end %>
