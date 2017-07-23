@@ -8,7 +8,7 @@
                     <a href="#3"><img src="http://cmdistribucionsrl.com/wp-content/uploads/2016/08/logo-facebook-300x300.png" width="60" height="60" alt=""></a>
                 </li>
                 <% if user_signed_in? %>
-                <li><a class="col-md-9">BIENVENIDO,<%=current_user.name%></a></li>
+                <li><a class="col-md-9">BIENVENIDO,<br><%=current_user.name%>_<%=current_user.last_name%></a></li>
                 <% end %>
                 <li>
                     <a class="col-md-9" href="#">Services</a>

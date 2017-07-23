@@ -20,12 +20,7 @@ Rails.application.routes.draw do
   end
   resources :events
 
-  get 'redes_sociales/facebook'
-
-  get 'redes_sociales/twitter'
-
-  get 'redes_sociales/google_mas'
-
+  get 'calendario/index'
   # seccion alumno
   namespace :alumno do
     resources :notas

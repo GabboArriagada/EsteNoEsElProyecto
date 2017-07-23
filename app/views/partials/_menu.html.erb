@@ -11,11 +11,16 @@
                 <li>
                     <a href="#1">Inicio menú</a>
                 </li>
+                  <% if current_user.admin? %>
+                <li>
+                    <a href=/admin>ADMIN PANEL</a>
+                </li>
+                  <%end%>
+                  <li>
+                      <a href=/calendario/index>Calendario</a>
+                  </li>
                 <li>
                     <a href="#2">Notas</a>
-                </li>
-                <li>
-                    <a href=/admin/panel>Calendario</a>
                 </li>
                 <li>
                     <a href=/questions>Preguntas/Respuestas</a>

@@ -27,12 +27,10 @@
 
       <%= render question.answers %>
       <% end %>
-
       <hr>
-      <p>Agregar respuesta</p>
       <%= form_for([question, question.answers.build]) do |f| %>
       <%= f.text_area :content, :id => "message_area",required:true %><br>
-      <%=f.submit "Agregar", class: "btn btn-primary btn-xl"%></div><br>
+      <%=f.submit "Agregar Respuesta", class: "btn btn-primary btn-xl"%></div><br>
       <% end %>
       </div>
 
