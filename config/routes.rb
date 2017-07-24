@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :asignaturas
   resources :cursos
+  resources :contacts, only: [:new, :create]
   get "archivos/subir_archivos"
   post "archivos/subir_archivos"
   get "archivos/listar_archivos"
@@ -40,11 +41,12 @@ Rails.application.routes.draw do
     resources :posts
   end
 
+
+
   devise_for :users
   root 'welcome#index'
   get 'welcome/index'
   get "inicio", to:"welcome#index"
-  get 'cont/contact'
-  get "contacto", to:"cont#contact"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

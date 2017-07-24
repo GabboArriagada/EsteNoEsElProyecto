@@ -12,6 +12,8 @@ gem 'rails_admin'
 gem 'rolify'
 gem 'awesome_print'
 gem 'rut_validation'
+gem 'mail_form'
+gem 'figaro'
 #gema para formularios anidados
 gem 'cocoon'
 #administra permisos

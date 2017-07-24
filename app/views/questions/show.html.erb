@@ -5,5 +5,20 @@
   <%= @question.content %>
 </p>
 
-<%= link_to 'Editar', edit_question_path(@question) %> |
-<%= link_to 'Atrás', questions_path %>
+<%= link_to edit_question_path(@question) do%>
+<%= fa_icon 'pencil', text: 'Editar' %>
+<% end %> |
+
+<%= link_to questions_path do%>
+<%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

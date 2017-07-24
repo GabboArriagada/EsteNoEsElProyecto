@@ -9,14 +9,18 @@
 
 <br>
   <div class="col-xs-offset-1"><h3><%= question.content%></h3>
-      -Hace <%= time_ago_in_words(question.created_at) %> atrás, por <%= question.user.name %> <%= question.user.last_name %>-
+      -<i class="fa fa-clock-o"> Hace <%= time_ago_in_words(question.created_at)%> atrás, por <%= question.user.name %> <%= question.user.last_name %></i>-
   <br>
 
       <% if can? :update, question %>
-      <%= link_to 'Editar', edit_question_path(question) %> |
+      <%= link_to edit_question_path(question) do%>
+      <%= fa_icon 'pencil', text: 'Editar' %>
+      <% end %>
       <% end %>
       <% if can? :update, question %>
-      <%= link_to 'Borrar', question, method: :delete, data: { confirm: 'Are you sure?'} %>
+      | <%= link_to question, method: :delete, data: { confirm: 'Are you sure?'} do%>
+      <%= fa_icon 'trash', text: 'Borrar' %>
+      <% end %>
       <% end %>
     </div>
       <h4>Respuestas</h4>

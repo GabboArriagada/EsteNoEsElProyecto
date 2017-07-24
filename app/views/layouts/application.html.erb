@@ -11,7 +11,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Proyecto Colegio</a>
+      <a class="navbar-brand">Proyecto Colegio</a>
+      <a class="navbar-brand"><img src="http://www.projetreussite.be/img/Icones-Direction-Blanc.png" width="25" height="25"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -21,11 +22,14 @@
         <li><a href="#menu-toggle" id="menu-toggle">EXP./CONT. PANEL</a></li>
         <%end%>
         <% if user_signed_in? %>
-        <li><%= link_to "CERRAR SESIÓN", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to destroy_user_session_path, method: :delete do%>
+          <%= fa_icon 'power-off', text: 'CERRAR SESIÓN' %>
+        <% end %>
+        </li>
         <%else%>
         <li><a href=/users/sign_in>INGRESAR</a></li>
         <%end%>
-        <li><a href=/cont/contact>CONTACTO</a></li>
+        <li><a href=/contacts/new>CONTACTO</a></li>
       </ul>
     </div>
   </div>
