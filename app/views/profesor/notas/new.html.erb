@@ -11,8 +11,8 @@
   <div class="form-inputs">
     <%= f.input :user_id, as: :hidden, input_html: {value: @user} %>
     <%= f.input :asignatura_id, as: :hidden, input_html: {value: @asignatura} %>
-    <%= f.input :nota, placeholder: 'Ej: 70', input_html: {min: 10, max: 70} %>
-    <%= f.input :porcentaje, placeholder: 'Ej: 40%', input_html: {min: 0, max: (100-porcentaje)} %>
+    <%= f.input :nota, placeholder: 'Ej: 70', input_html: {min: 10, max: 70}, required: true %>
+    <%= f.input :porcentaje, placeholder: 'Ej: 40%', input_html: {min: 0, max: (100-porcentaje)}, required: true %>
     <%= f.input :descripcion %>
   </div>
 
