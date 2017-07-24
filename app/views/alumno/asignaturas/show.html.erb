@@ -9,6 +9,9 @@
       <li role="presentation" class="active">
         <a href="#cabecera" aria-controls="cabecera" role="tab" data-toggle="tab" id="ficha">Ficha</a>
       </li>
+      <li role="presentation">
+        <a href="#archivos" aria-controls="archivos" role="tab" data-toggle="tab" >Archivos</a>
+      </li>
     </ul>
   </div>
 
@@ -31,6 +34,43 @@
                 <td class="active col-title"><%= fa_icon 'calendar', text: 'Año' %></td>
                 <td class="col-content"><%=@asignatura.año%></td>
               </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- Archivos -->
+      <div role="tabpanel" class="tab-pane" id="archivos">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>N°</th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%@asignatura.posts.each_with_index do |post, numero|%>
+                <tr>
+                  <td>
+                    <%= numero+1%>
+                  </td>
+                  <td>
+                    <%= post.title %>
+                  </td>
+                  <td>
+                    <%= post.description%>
+                  </td>
+                  <td>
+                    <%= link_to post.image.url, target: '_blank' do %>
+                      <%= fa_icon 'download', text: 'Descargar' %>
+                    <% end %>
+                  </td>
+                </tr>
+              <%end%>
             </tbody>
           </table>
         </div>

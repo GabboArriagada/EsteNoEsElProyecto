@@ -12,7 +12,7 @@ class Profesor::AsignaturasController < ApplicationController
   # GET /profesor/asignaturas
   # GET /profesor/asignaturas.json
   def index
-    @asignaturas = Asignatura.all
+    @cursos = current_user.cursos.all
   end
 
   # GET /profesor/asignaturas/1

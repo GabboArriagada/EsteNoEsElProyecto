@@ -37,6 +37,7 @@ Rails.application.routes.draw do
         get :notas
       end
     end
+    resources :posts
   end
 
   devise_for :users

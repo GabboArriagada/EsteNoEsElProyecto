@@ -1,34 +1,96 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Asignatura <%= @asignatura.nombre %></h1>
 
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Alumnos</th>
-      <th>Ingresar Nota</th>
-      <th>Ver Notas</th>
-    </tr>
-  </thead>
+<div class="panel panel-default">
 
-  <tbody>
-    <% @alumnos.each do |alumno| %>
-      <tr>
-        <td><%= alumno.name %> <%= alumno.last_name %></td>
-        <td>
-          <%= link_to new_profesor_nota_path(user: alumno, asignatura: @asignatura) do %>
-            <%= fa_icon 'hand-pointer-o', text: 'Ingresar' %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to notas_profesor_asignatura_path(user: alumno, asignatura: @asignatura) do %>
-            <%= fa_icon 'search', text: 'Ver' %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="tabs">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#cabecera" aria-controls="cabecera" role="tab" data-toggle="tab" id="ficha">Alumnos</a>
+      </li>
+      <li role="presentation">
+        <a href="#archivos" aria-controls="archivos" role="tab" data-toggle="tab" >Archivos</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="panel-body">
+
+    <div class="tab-content">
+      <!-- Cabecera -->
+      <div role="tabpanel" class="tab-pane active" id="cabecera">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Alumnos</th>
+                <th>Ingresar Nota</th>
+                <th>Ver Notas</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @alumnos.each do |alumno| %>
+                <tr>
+                  <td><%= alumno.name %> <%= alumno.last_name %></td>
+                  <td>
+                    <%= link_to new_profesor_nota_path(user: alumno, asignatura: @asignatura) do %>
+                      <%= fa_icon 'hand-pointer-o', text: 'Ingresar' %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to notas_profesor_asignatura_path(user: alumno, asignatura: @asignatura) do %>
+                      <%= fa_icon 'search', text: 'Ver' %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- Archivos -->
+      <div role="tabpanel" class="tab-pane" id="archivos">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>N°</th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%@asignatura.posts.each_with_index do |post, numero|%>
+                <tr>
+                  <td>
+                    <%= numero+1%>
+                  </td>
+                  <td>
+                    <%= post.title %>
+                  </td>
+                  <td>
+                    <%= post.description%>
+                  </td>
+                  <td>
+                    <%= link_to profesor_post_path(post), method: :delete,data: { confirm: '¿Estás seguro?' } do %>
+                      <%= fa_icon 'trash', text: 'Eliminar' %>
+                    <% end %>
+                  </td>
+                </tr>
+              <%end%>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      </div>
+    </div>
+
+  </div>
 
 <%= link_to profesor_curso_path(@asignatura.curso.id) do %>
   <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>

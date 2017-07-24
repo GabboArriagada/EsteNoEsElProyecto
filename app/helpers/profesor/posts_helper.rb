@@ -1,0 +1,2 @@
+module Profesor::PostsHelper
+end

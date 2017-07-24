@@ -21,19 +21,20 @@
                   </li>
                 <li>
                   <% if current_user.has_role? :profesor %>
-                    <%= link_to 'Notas', profesor_notas_path %>
+                    <%= link_to 'Ingresar Notas', profesor_notas_path %>
                   <% elsif current_user.has_role? :alumno %>
                     <%= link_to 'Notas', alumno_notas_path %>
                   <% end %>
                 </li>
                 <li>
+                  <% if current_user.has_role? :alumno %>
+                    <%= link_to 'Asignaturas', alumno_asignaturas_path %>
+                  <% elsif current_user.has_role? :profesor %>
+                    <%= link_to 'Subir Archivos', profesor_asignaturas_path %>
+                  <% end %>
+                </li>
+                <li>
                     <a href=/questions>Preguntas/Respuestas</a>
-                </li>
-                <li>
-                    <a href=/archivos/listar_archivos>Subir archivos</a>
-                </li>
-                <li>
-                    <a href=/posts>Subir archivos NUEVO</a>
                 </li>
             </ul>
         </div>

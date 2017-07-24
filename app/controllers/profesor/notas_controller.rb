@@ -34,11 +34,9 @@ class Profesor::NotasController < ApplicationController
   # POST /profesor/notas.json
   def create
     @nota = Nota.new(nota_params)
-    @asignatura = params[:asignatura]
-
     respond_to do |format|
       if @nota.save
-        format.html { redirect_to profesor_asignatura_path(@asignatura), notice: 'La nota ha sido ingresada' }
+        format.html { redirect_to profesor_asignatura_path(@nota.asignatura_id), notice: 'La nota ha sido ingresada' }
         format.json { render :show, status: :created, location: @nota }
       else
         format.html { render :new }
@@ -52,22 +50,12 @@ class Profesor::NotasController < ApplicationController
   def update
     respond_to do |format|
       if @nota.update(nota_params)
-        format.html { redirect_to @nota, notice: 'Nota was successfully updated.' }
+        format.html { redirect_to "/profesor/asignaturas/#{@nota.asignatura_id}/notas?asignatura=#{@nota.asignatura_id}&user=#{@nota.user_id}", notice: 'La nota ha sido cambiada' }
         format.json { render :show, status: :ok, location: @nota }
       else
         format.html { render :edit }
         format.json { render json: @nota.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /profesor/notas/1
-  # DELETE /profesor/notas/1.json
-  def destroy
-    @nota.destroy
-    respond_to do |format|
-      format.html { redirect_to profesor_notas_url, notice: 'Nota was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
