@@ -10,7 +10,10 @@ class Curso < ApplicationRecord
   #https://rubyplus.com/articles/3681-Complex-Forms-in-Rails-5
   #https://www.sitepoint.com/better-nested-attributes-in-rails-with-the-cocoon-gem/
 
+  validates :nombre, presence: true, length: { in: 2..4 }
+  validates :año, presence: true, length: { is: 4 }, numericality: { only_integer: true, greater_than_or_equal_to: 2017}
+
   def tittle
-    "#{nombre}"    
+    "#{nombre}"
   end
 end

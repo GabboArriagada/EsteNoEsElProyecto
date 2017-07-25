@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   rolify
-
+  validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
+    message: "Solo se permite letras" }
+  validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
+      message: "Solo se permite letras" }
   has_many :questions
   has_many :answers
   has_many :notas
