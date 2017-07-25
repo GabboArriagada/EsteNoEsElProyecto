@@ -10,31 +10,36 @@
                 </li>
                 <li>
                     <a href=/inicio>Inicio menú</a>
-                </li>
+                </li><br>
                   <% if current_user.has_role? :admin %>
                 <li>
-                    <a href=/admin>ADMIN PANEL</a>
-                </li>
+                    <a href=/admin>Panel de administrador</a>
+                </li><br>
                   <%end%>
                   <li>
                       <a href=/calendario/index>Calendario</a>
+                  </li><br>
+                  <li>
+                      <a href=/questions>Preguntas/Respuestas</a>
                   </li>
                 <li>
                   <% if current_user.has_role? :profesor %>
-                    <%= link_to 'Ingresar Notas', profesor_notas_path %>
+                    <br><%= link_to 'Ingresar notas', profesor_notas_path %>
                   <% elsif current_user.has_role? :alumno %>
-                    <%= link_to 'Notas', alumno_notas_path %>
+                    <br><%= link_to 'Notas', alumno_notas_path %>
                   <% end %>
                 </li>
                 <li>
                   <% if current_user.has_role? :alumno %>
-                    <%= link_to 'Asignaturas', alumno_asignaturas_path %>
+                    <br><%= link_to 'Asignaturas', alumno_asignaturas_path %>
                   <% elsif current_user.has_role? :profesor %>
-                    <%= link_to 'Subir Archivos', profesor_asignaturas_path %>
+                    <br><%= link_to 'Subir archivos', profesor_asignaturas_path %>
                   <% end %>
                 </li>
+
+                <br><br><br><br><br><br><br><br><br><br><br><br>
                 <li>
-                    <a href=/questions>Preguntas/Respuestas</a>
+                  <%= link_to 'Agregar/Actualizar datos', edit_user_registration_path %>
                 </li>
             </ul>
         </div>

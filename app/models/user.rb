@@ -1,9 +1,6 @@
 class User < ApplicationRecord
   rolify
-  validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
-    message: "Solo se permite letras" }
-  validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
-      message: "Solo se permite letras" }
+
   has_many :questions
   has_many :answers
   has_many :notas
@@ -14,6 +11,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
+  validates :telefono, length: { is: 9 }, numericality: { only_integer: true}
+  validates :direccion, length: { maximum: 100 }
+  validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
+            message: "Solo se permite letras" }
+  validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
+            message: "Solo se permite letras" }
 
   def nota_final
     notaf = 0.0
