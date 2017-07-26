@@ -34,14 +34,19 @@ class Profesor::NotasController < ApplicationController
   # POST /profesor/notas.json
   def create
     @nota = Nota.new(nota_params)
-    respond_to do |format|
-      if @nota.save
-        format.html { redirect_to profesor_asignatura_path(@nota.asignatura_id), notice: 'La nota ha sido ingresada' }
-        format.json { render :show, status: :created, location: @nota }
-      else
-        format.html { render :new }
-        format.json { render json: @nota.errors, status: :unprocessable_entity }
+    if nota_params[:porcentaje].to_i>0
+      respond_to do |format|
+        if @nota.save
+          format.html { redirect_to profesor_asignatura_path(@nota.asignatura_id), notice: 'La nota ha sido ingresada' }
+          format.json { render :show, status: :created, location: @nota }
+        else
+          format.html { render :new }
+          format.json { render json: @nota.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:notice] = "Por favor revisar el porcentaje, este debe ser superior a 0"
+      redirect_to "#{new_profesor_nota_path(@nota)}?asignatura=#{@nota.asignatura_id}&user=#{@nota.user_id}"
     end
   end
 
