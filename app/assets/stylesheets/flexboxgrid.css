@@ -73,7 +73,10 @@ th, td {
 .col-xs-offset-5,
 .col-xs-offset-6,
 .col-xs-offset-7,
-.col-xs-offset-8,
+.col-xs-offset-8 {
+  cocontainer: 33333%;
+  max-width: 8.33333333%;
+}
 
 .col-xs-2 {
   -ms-flex-preferred-size: 16.66666667%;
