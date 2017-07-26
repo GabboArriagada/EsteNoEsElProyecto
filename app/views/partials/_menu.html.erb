@@ -26,18 +26,18 @@
                   </li><br>
                 <li>
                   <% if current_user.has_role? :profesor %>
-                    <%= link_to 'Ingresar notas', profesor_notas_path %><br>
+                    <%= link_to 'Ingresar notas', profesor_notas_path %>
                   <% elsif current_user.has_role? :alumno %>
-                    <%= link_to 'Notas', alumno_notas_path %><br>
+                    <%= link_to 'Notas', alumno_notas_path %>
                   <% end %>
-                </li>
+                </li><br>
                 <li>
                   <% if current_user.has_role? :alumno %>
-                    <%= link_to 'Asignaturas', alumno_asignaturas_path %><br>
+                    <%= link_to 'Asignaturas', alumno_asignaturas_path %>
                   <% elsif current_user.has_role? :profesor %>
-                    <%= link_to 'Subir archivos', profesor_asignaturas_path %><br>
+                    <%= link_to 'Subir archivos', profesor_asignaturas_path %>
                   <% end %>
-                </li>
+                </li><br>
                 <li>
                   <%= link_to 'Agregar/Actualizar datos', edit_user_registration_path %>
                 </li>
