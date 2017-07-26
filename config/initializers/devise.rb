@@ -111,10 +111,10 @@ Devise.setup do |config|
   # config.pepper = '02eb05bc1f889430bcb0ad7c60c7d1fd12c1c3e16cdaea463ab2c0b5086c57b730ef2c43ee3e879ffd16c4645522993f8aba8ffb6a99462d9970efaf56e69d38'
 
   # Send a notification to the original email when the user's email is changed.
-  config.send_email_changed_notification = true
+  config.send_email_changed_notification = false
 
   #Send a notification email when the user's password is changed.
-  config.send_password_change_notification = true
+  config.send_password_change_notification = false
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -136,7 +136,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+  config.reconfirmable = false
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
