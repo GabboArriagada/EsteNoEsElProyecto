@@ -16,7 +16,7 @@ development:
 
 production:
   <<: *default
-  host: <%= ENV['DATABASE_HOST'] %>
+  host: localhost
   database: rails_production
   username: gabbo
   password: 1234
