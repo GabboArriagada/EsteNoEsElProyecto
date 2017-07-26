@@ -5,11 +5,13 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
+              <!-- Sidebar, colocalndo el cierre al final del menu, hace q no se desplace (achique el lado derecho) -->
                 <li class="sidebar-brand">
 
                 </li>
+                <div class="container1">
                 <li>
-                    <a href=/inicio>Inicio menú</a>
+                    Menú
                 </li><br>
                   <% if current_user.has_role? :admin %>
                 <li>
@@ -21,26 +23,25 @@
                   </li><br>
                   <li>
                       <a href=/questions>Preguntas/Respuestas</a>
-                  </li>
+                  </li><br>
                 <li>
                   <% if current_user.has_role? :profesor %>
-                    <br><%= link_to 'Ingresar notas', profesor_notas_path %>
+                    <%= link_to 'Ingresar notas', profesor_notas_path %><br>
                   <% elsif current_user.has_role? :alumno %>
-                    <br><%= link_to 'Notas', alumno_notas_path %>
+                    <%= link_to 'Notas', alumno_notas_path %><br>
                   <% end %>
                 </li>
                 <li>
                   <% if current_user.has_role? :alumno %>
-                    <br><%= link_to 'Asignaturas', alumno_asignaturas_path %>
+                    <%= link_to 'Asignaturas', alumno_asignaturas_path %><br>
                   <% elsif current_user.has_role? :profesor %>
-                    <br><%= link_to 'Subir archivos', profesor_asignaturas_path %>
+                    <%= link_to 'Subir archivos', profesor_asignaturas_path %><br>
                   <% end %>
                 </li>
-
-                <br><br><br><br><br><br><br><br><br><br><br><br>
                 <li>
                   <%= link_to 'Agregar/Actualizar datos', edit_user_registration_path %>
                 </li>
+                </div>
             </ul>
         </div>
 

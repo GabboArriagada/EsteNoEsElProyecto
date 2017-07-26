@@ -17,6 +17,11 @@
       </div>
 
       <div class="field">
+        <%= f.label :telefono,"Introduzca su telefono" %><br />
+        <%= f.text_field :telefono, autocomplete: "off", class:"from-control", autofocus: true, :placeholder => "Ej: 912345678 - 221234567" %>
+      </div>
+
+      <div class="field">
         <%= f.label :rut,"introduzca su rut" %><br />
         <%= f.text_field :rut, :id => "rut", :required => "true", :placeholder => "Ej: 12345612-3", autocomplete: "off", class:"from-control", autofocus: true %>
       </div>
