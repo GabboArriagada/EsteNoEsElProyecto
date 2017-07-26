@@ -11,16 +11,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand">Proyecto Colegio</a>
-      <a class="navbar-brand"><img src="http://www.projetreussite.be/img/Icones-Direction-Blanc.png" width="25" height="25"></a>
+      <% if user_signed_in? %>
+      <a href="#menu-toggle" id="menu-toggle"><img src="http://icon-icons.com/icons2/1141/PNG/512/1486395871-menu_80607.png" width="50" height="50"></a>
+      <%end%>
+      <!--<a class="navbar-brand">Proyecto Colegio</a>-->
+
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href=/inicio>INICIO</a></li>
-        <% if user_signed_in? %>
-        <!--<li><a href=/admin/panel>PANEL DE CONTROL</a></li>-->
+
+        <!--<li><a href=/admin/panel>PANEL DE CONTROL</a></li>
         <li><a href="#menu-toggle" id="menu-toggle">EXP./CONT. PANEL</a></li>
-        <%end%>
+        -->
+
         <% if user_signed_in? %>
         <li><%= link_to destroy_user_session_path, method: :delete do%>
           <%= fa_icon 'power-off', text: 'CERRAR SESIÓN' %>
