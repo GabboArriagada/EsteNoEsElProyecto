@@ -13,3 +13,10 @@ default: &default
 development:
   <<: *default
   database: rails_dev
+
+production:
+  <<: *default
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: rails_production
+  username: gabbo
+  password: 1234
