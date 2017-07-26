@@ -26,4 +26,11 @@ class User < ApplicationRecord
     end
     return notaf
   end
+
+  protected
+
+   def serializable_hash(options = nil)
+    super(options).merge(confirmed_at: confirmed_at) # you can keep adding attributes here that you wish to expose
+  end
+
 end
