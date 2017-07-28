@@ -18,7 +18,7 @@ class User < ApplicationRecord
             message: "Solo se permite letras" }
   validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
             message: "Solo se permite letras" }
-
+validates   :rut, uniqueness: true
   def nota_final
     notaf = 0.0
     self.asignaturas.each do |asignatura|
