@@ -69,7 +69,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rails_layout'
   gem 'capistrano'
-  gem 'capistrano-rbenv'
+  gem 'capistrano-rvm'
   gem 'capistrano-nginx'
   gem 'capistrano3-puma'
   gem 'capistrano-rails'
