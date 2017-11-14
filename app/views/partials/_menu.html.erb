@@ -32,6 +32,11 @@
                   <% end %>
                 </li><br>
                 <li>
+                  <% if current_user.has_role? :profesor %>
+                    <%= link_to 'Ingresar asistencia', profesor_notas_path %>
+                    <% end %>
+                </li><br>
+                <li>
                   <% if current_user.has_role? :alumno %>
                     <%= link_to 'Asignaturas', alumno_asignaturas_path %>
                   <% elsif current_user.has_role? :profesor %>

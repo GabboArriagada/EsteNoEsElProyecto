@@ -1,12 +1,12 @@
 class User < ApplicationRecord
   rolify
 
-  has_many :questions
-  has_many :answers
-  has_many :notas
-  has_many :relationships
-  has_and_belongs_to_many :cursos
-  has_and_belongs_to_many :asignaturas
+  has_many :questions, :dependent => :destroy
+  has_many :answers, :dependent => :destroy
+  has_many :notas, :dependent => :destroy
+  has_many :relationships, :dependent => :destroy
+  has_and_belongs_to_many :cursos, :dependent => :destroy
+  has_and_belongs_to_many :asignaturas, :dependent => :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
