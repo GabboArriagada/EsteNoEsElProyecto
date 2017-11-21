@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   rolify
 
+  has_many :presences, :dependent => :destroy
   has_many :questions, :dependent => :destroy
   has_many :answers, :dependent => :destroy
   has_many :notas, :dependent => :destroy

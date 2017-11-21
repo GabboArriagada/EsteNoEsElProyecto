@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
 mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 resources :posts
 resources :asignaturas
@@ -31,6 +32,7 @@ end
 
 #seccion profesor
 namespace :profesor do
+  resources :presences
   resources :notas
   resources :cursos
   resources :asignaturas do

@@ -1,0 +1,2 @@
+module Profesor::PresencesHelper
+end

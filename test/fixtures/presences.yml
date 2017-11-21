@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  asistio: false
+  fecha: 2017-11-21
+  user: one
+
+two:
+  asistio: false
+  fecha: 2017-11-21
+  user: two
