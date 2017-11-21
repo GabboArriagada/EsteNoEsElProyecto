@@ -8,6 +8,77 @@ letter-spacing: 10px;
 font-size: 20px;
 color: #111;
 }
+//sweetalert
+.swal2-warning{
+  color: black !important;
+  background-image: -webkit-linear-gradient(#faa123, #f89406 60%, #e48806);
+  background-image: -o-linear-gradient(#faa123, #f89406 60%, #e48806);
+  background-image: linear-gradient(#faa123, #f89406 60%, #e48806);
+  background-repeat: no-repeat;
+}
+.swal2-cancel{
+  background-image: -webkit-linear-gradient(#f17a77, #ee5f5b 60%, #ec4d49);
+  background-image: -o-linear-gradient(#f17a77, #ee5f5b 60%, #ec4d49);
+  background-image: linear-gradient(#f17a77, #ee5f5b 60%, #ec4d49);
+  background-repeat: no-repeat;
+}
+.swal2-confirm {
+    background-image: -webkit-linear-gradient(#78cc78, #62c462 60%, #53be53);
+    background-image: -o-linear-gradient(#78cc78, #62c462 60%, #53be53);
+    background-image: linear-gradient(#78cc78, #62c462 60%, #53be53);
+    background-repeat: no-repeat;
+}
+
+.show-swal2{
+  background-color: #3e444c !important;
+  border: 1px solid black !important;
+  border-radius: 10px !important;
+}
+.swal2-modal h2{
+  color: white !important;
+}
+
+.swal2-confirm{
+  margin: 10px !important;
+}
+.swal2-cancel{
+  margin:10px !important;
+}
+
+
+.swal2-icon.swal2-error .line {
+    background-color: red !important;
+}
+
+.swal2-icon.swal2-error {
+    border-color: red !important;
+}
+
+.swal2-modal .swal2-content {
+    color: orange !important;
+}
+
+.swal2-info{
+  color: red !important;
+}
+
+.styled.loading{
+  background: none !important;
+}
+.styled.loading i{
+  display: none;
+}
+
+.swal2-icon.swal2-success .fix {
+    background-color: transparent !important;
+}
+.swal2-icon.swal2-success::before, .swal2-icon.swal2-success::after {
+    background: transparent !important;
+}
+.botones{
+	margin-top: 2em;
+}
+
 .hamburger {
     min-height: 30px;
     max-width: 50px;

@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  
+  belongs_to :asignatura
   validates :title, presence: true
   attr_accessor :date_range
 
