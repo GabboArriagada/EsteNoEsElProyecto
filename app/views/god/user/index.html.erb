@@ -1,0 +1,27 @@
+<h1>Lista De usuarios</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Apellido</th>
+      <th>Nombre</th>
+      <th>Rut</th>
+      <th>Correo</th>
+      <th>Roles</th>
+      <th>acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.last_name %></td>
+        <td><%= user.name %></td>
+        <td><%= user.rut %></td>
+        <td><%= user.email %></td>
+        <td><%= user.roles.pluck(:name).join(", ") %></td>
+        <td><%= link_to 'Show', god_user_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

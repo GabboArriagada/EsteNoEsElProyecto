@@ -1,0 +1,32 @@
+<h1>Detalles de usuario <%= @user.last_name %> <%= @user.name %></h1>
+
+<table class="table table-bordered table-striped">
+  <tbody>
+    <tr>
+      <th>id</th>
+      <th>Nombre Completo</th>
+      <th>Rut</th>
+      <th>Correo</th>
+      <th>Roles</th>
+      <th>Fecha de Registro</th>
+      <th>Fecha de ultima conexion</th>
+      <th>Numero de conexiones</th>
+      <th>ultima ip</th>
+    </tr>
+      <tr>
+        <td><%= @user.id %></td>
+        <td><%= @user.name %> <%= @user.last_name %></td>
+        <td><%= @user.rut %></td>
+        <td><%= @user.email %></td>
+        <td><%= @user.roles.pluck(:name).join(", ") %></td>
+        <td><%= @user.created_at %></td>
+        <td><%= @user.last_sign_in_at %></td>
+        <td><%= @user.sign_in_count %></td>
+        <td><%= @user.last_sign_in_ip %></td>
+      </tr>
+  </tbody>
+</table>
+<button><%= link_to 'Show', god_user_path(@user) %></button>
+<button><%= link_to 'Edit', god_user_path(@user) %></button>
+<button><%= link_to 'Delete', god_user_path(@user),:method => :destroy %></button>
+<button><%= link_to 'Show', god_user_path(@user) %></button>
