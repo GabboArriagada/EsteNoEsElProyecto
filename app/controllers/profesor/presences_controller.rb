@@ -13,7 +13,7 @@ class Profesor::PresencesController < ApplicationController
   # GET /presences/1.json
   def show
     @presences = Presence.all
-    @users = current_user.cursos.find(params[:id]).users.all
+    @users = current_user.cursos.find(params[:id]).users.all.with_role(:alumno)
     @cursos = current_user.cursos.all
   end
 
@@ -22,7 +22,7 @@ class Profesor::PresencesController < ApplicationController
     @usuarios.each do |trabajador|
       trabajador.presences.create(asistio: true, fecha: Date.today.to_s)
     end
-    redirect_to profesor_presences_path
+    redirect_to profesor_presences_path(params[:id]), notice: 'Las asistencias han sido creadas'
   end
 
   # GET /presences/new

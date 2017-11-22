@@ -2,7 +2,7 @@
 
 <h1>Asistencias</h1>
 <br>
-<h4>Registrar asistencias del curso</h4>
+<h4>Registrar asistencias del curso <%= current_user.cursos.find_by(id: params[:id]).nombre %></h4>
 
 <%= form_tag create_multiple_profesor_presences_path, method: :post do %>
   <table class="table">
