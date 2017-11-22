@@ -47,12 +47,18 @@ namespace :profesor do
   resources :posts
 end
 
+#seccion god
+namespace :god do
+  resources :user,:profesor,:alumno
+end
 
 
 devise_for :users, controllers: { registrations: 'registrations' }
 root 'welcome#index'
 get 'welcome/index'
 get "inicio", to:"welcome#index"
+
+
 
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
