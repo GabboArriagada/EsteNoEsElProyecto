@@ -18,7 +18,9 @@ class God::UserController < ApplicationController
   end
 
   def destroy
+    @user = User.find_by_id(params[:id])
     @user.destroy
+    redirect_to "/god/user"
   end
 
   private
