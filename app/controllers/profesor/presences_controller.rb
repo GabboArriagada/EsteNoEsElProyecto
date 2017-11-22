@@ -6,8 +6,6 @@ class Profesor::PresencesController < ApplicationController
   # GET /presences
   # GET /presences.json
   def index
-    @presences = Presence.all
-    @users = current_user.cursos.last.users.all
     @cursos = current_user.cursos.all
   end
 
@@ -15,12 +13,12 @@ class Profesor::PresencesController < ApplicationController
   # GET /presences/1.json
   def show
     @presences = Presence.all
-    @users = current_user.cursos.last.users.all
+    @users = current_user.cursos.find(params[:id]).users.all
     @cursos = current_user.cursos.all
   end
 
   def create_multiple
-    @usuarios = Curso.user.find(params[:users_ids])
+    @usuarios = User.find(params[:users_ids])
     @usuarios.each do |trabajador|
       trabajador.presences.create(asistio: true, fecha: Date.today.to_s)
     end
@@ -43,7 +41,7 @@ class Profesor::PresencesController < ApplicationController
 
     respond_to do |format|
       if @presence.save
-        format.html { redirect_to profesor_presence_path(@presence), notice: 'Presence was successfully created.' }
+        format.html { redirect_to profesor_presence_path(@presence), notice: 'Asistencia correctamente creada.' }
         format.json { render :show, status: :created, location: @profesor_presence }
       else
         format.html { render :new }
@@ -57,7 +55,7 @@ class Profesor::PresencesController < ApplicationController
   def update
     respond_to do |format|
       if @presence.update(presence_params)
-        format.html { redirect_to profesor_presence_path, notice: 'Presence was successfully updated.' }
+        format.html { redirect_to profesor_presence_path, notice: 'Asistencia correctamente modificada.' }
         format.json { render :show, status: :ok, location: @presence }
       else
         format.html { render :edit }
@@ -71,7 +69,7 @@ class Profesor::PresencesController < ApplicationController
   def destroy
     @presence.destroy
     respond_to do |format|
-      format.html { redirect_to profesor_presences_url, notice: 'Presence was successfully destroyed.' }
+      format.html { redirect_to profesor_presences_url, notice: 'Asistencia correctamente borrada.' }
       format.json { head :no_content }
     end
   end
