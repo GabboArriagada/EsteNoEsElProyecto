@@ -32,7 +32,11 @@ end
 
 #seccion profesor
 namespace :profesor do
-  resources :presences
+  resources :presences do
+    collection do
+     post 'create_multiple'
+    end
+  end
   resources :notas
   resources :cursos
   resources :asignaturas do

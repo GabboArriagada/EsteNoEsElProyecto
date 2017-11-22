@@ -1,15 +1,27 @@
 class Profesor::PresencesController < ApplicationController
   before_action :set_presence, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :authenticate_profesor
 
   # GET /presences
   # GET /presences.json
   def index
     @presences = Presence.all
+    @users = User.all
+    @cursos = Curso.all
   end
 
   # GET /presences/1
   # GET /presences/1.json
   def show
+  end
+
+  def create_multiple
+    @usuarios = User.find(params[:users_ids])
+    @usuarios.each do |trabajador|
+      trabajador.presences.create(asistio: true, fecha: Date.today.to_s)
+    end
+    redirect_to profesor_presences_path
   end
 
   # GET /presences/new
@@ -67,8 +79,19 @@ class Profesor::PresencesController < ApplicationController
       @presence = Presence.find_by(params[:presence_id])
     end
 
+    def presence_params
+      params.fetch(:presence, {})
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def presence_params
       params.require(:presence).permit(:asistio, :fecha, :user_id)
+    end
+
+    def authenticate_profesor
+      unless current_user.has_role? :profesor
+        flash[:alert] = "No tienes permisos necesarios para ver esta sección."
+        redirect_to root_path
+      end
     end
 end

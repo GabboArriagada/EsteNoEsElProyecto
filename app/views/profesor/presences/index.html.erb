@@ -19,7 +19,7 @@
         <td><%= presence.fecha %></td>
         <td><%= presence.user.name+' '+ presence.user.last_name%></td>
         <td><%= link_to 'Show', profesor_presence_path(@presences) %></td>
-        <td><%= link_to 'Destroy', profesor_presence_path(@presences), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', profesor_presence_path(@presences), method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,3 +28,23 @@
 <br>
 
 <%= link_to 'New Presence', new_profesor_presence_path %>
+
+<%= form_tag create_multiple_profesor_presences_path, method: :post do %>
+  <table class="table">
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Fecha</th>
+      <th>Asistencia</th>
+    </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%=user.last_name%></td>
+        <td><%=Date.today.to_s%></td>
+        <td><%= check_box_tag "users_ids[]", user.id %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= submit_tag "Crear Asistencias" %>
+<% end %>
