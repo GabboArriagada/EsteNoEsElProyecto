@@ -1,50 +1,31 @@
-<p id="notice"><%= notice %></p>
+<h1>Ingresar Asistencia</h1>
 
-<h1>Presences</h1>
-
-<table>
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Asistio</th>
-      <th>Fecha</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Cursos</th>
+      <th>Asistencia</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @presences.each do |presence| %>
+    <% @cursos.each do |curso| %>
       <tr>
-        <td><%= presence.asistio %></td>
-        <td><%= presence.fecha %></td>
-        <td><%= presence.user.name+' '+ presence.user.last_name%></td>
-        <td><%= link_to 'Show', profesor_presence_path(@presences) %></td>
-        <td><%= link_to 'Destroy', profesor_presence_path(@presences), method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        <td><%= curso.nombre %></td>
+        <td>
+          <%= link_to profesor_presence_path(curso) do %>
+            <%= fa_icon 'search', text: 'Ver' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Presence', new_profesor_presence_path %>
-
-<%= form_tag create_multiple_profesor_presences_path, method: :post do %>
-  <table class="table">
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Fecha</th>
-      <th>Asistencia</th>
-    </tr>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%=user.last_name%></td>
-        <td><%=Date.today.to_s%></td>
-        <td><%= check_box_tag "users_ids[]", user.id %></td>
-      </tr>
-    <% end %>
-  </table>
-  <%= submit_tag "Crear Asistencias" %>
-<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

@@ -33,7 +33,7 @@
                 </li><br>
                 <li>
                   <% if current_user.has_role? :profesor %>
-                    <%= link_to 'Ingresar asistencia', profesor_notas_path %>
+                    <%= link_to 'Ingresar asistencia', profesor_presences_path %>
                     <% end %>
                 </li><br>
                 <li>

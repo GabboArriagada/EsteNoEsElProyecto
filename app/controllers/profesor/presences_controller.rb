@@ -7,17 +7,20 @@ class Profesor::PresencesController < ApplicationController
   # GET /presences.json
   def index
     @presences = Presence.all
-    @users = User.all
-    @cursos = Curso.all
+    @users = current_user.cursos.last.users.all
+    @cursos = current_user.cursos.all
   end
 
   # GET /presences/1
   # GET /presences/1.json
   def show
+    @presences = Presence.all
+    @users = current_user.cursos.last.users.all
+    @cursos = current_user.cursos.all
   end
 
   def create_multiple
-    @usuarios = User.find(params[:users_ids])
+    @usuarios = Curso.user.find(params[:users_ids])
     @usuarios.each do |trabajador|
       trabajador.presences.create(asistio: true, fecha: Date.today.to_s)
     end

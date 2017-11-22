@@ -5,7 +5,6 @@
     <tr>
       <th>Cursos</th>
       <th>Notas</th>
-      <th>Asistencia</th>
     </tr>
   </thead>
 
@@ -13,11 +12,6 @@
     <% @cursos.each do |curso| %>
       <tr>
         <td><%= curso.nombre %></td>
-        <td>
-          <%= link_to profesor_curso_path(curso) do %>
-            <%= fa_icon 'search', text: 'Ver' %>
-          <% end %>
-        </td>
         <td>
           <%= link_to profesor_curso_path(curso) do %>
             <%= fa_icon 'search', text: 'Ver' %>
