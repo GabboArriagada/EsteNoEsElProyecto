@@ -10,10 +10,23 @@ class Curso < ApplicationRecord
   #https://rubyplus.com/articles/3681-Complex-Forms-in-Rails-5
   #https://www.sitepoint.com/better-nested-attributes-in-rails-with-the-cocoon-gem/
 
-  validates :nombre, presence: true, length: { in: 2..4 }
-  validates :año, presence: true, length: { is: 4 }, numericality: { only_integer: true, greater_than_or_equal_to: 2017}
+  validates :grado, presence: true, :inclusion => {:in => [1,2,3,4,5,6,7,8] }#Cursos desde 1 a 8 basico
+  validates :letra_codigo, presence: true,:inclusion => {in: %w(a b c d A B C D) } #Letras permitidas
+  validates :año, presence: true, length: { is: 4 }, numericality: { only_integer: true}
+  validates :grado, uniqueness: {scope: [:letra_codigo, :año]}
+  validate :validar_año
 
   def tittle
     "#{nombre}"
+  end
+  #para que cuando guarde sea siempre mayuscula la letra
+  def letra_codigo=(val)
+    write_attribute :letra_codigo, val.upcase
+  end
+
+  def validar_año
+    if año != Date.current.year
+      errors.add(:año,"Año incorrecto, debe ser el actual")
+    end
   end
 end

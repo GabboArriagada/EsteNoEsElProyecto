@@ -7,15 +7,15 @@ class Asignatura < ApplicationRecord
   accepts_nested_attributes_for :notas , reject_if: :all_blank , allow_destroy: true
   validates :nombre, presence: true, format: { with: /\A[a-zA-Z]+\z/,
     message: "Solo se permite letras" }
-  validates :año, presence: true, length: { is: 4 }, numericality: { only_integer: true, greater_than_or_equal_to: 2017}
-
-
-
-
-
-
+  validates :año, presence: true, length: { is: 4 }, numericality: { only_integer: true}
+  validate :validar_año
 
   def title
     "#{nombre}"
+  end
+  def validar_año
+    if año != Date.current.year
+      errors.add(:año,"Año incorrecto, debe ser el actual")
+    end
   end
 end
