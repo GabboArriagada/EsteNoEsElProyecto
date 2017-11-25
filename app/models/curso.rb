@@ -13,7 +13,7 @@ class Curso < ApplicationRecord
   validates :grado, presence: true, :inclusion => {:in => [1,2,3,4,5,6,7,8] }#Cursos desde 1 a 8 basico
   validates :letra_codigo, presence: true,:inclusion => {in: %w(a b c d A B C D) } #Letras permitidas
   validates :año, presence: true, length: { is: 4 }, numericality: { only_integer: true}
-  validates :grado, uniqueness: {scope: [:letra_codigo, :año]}
+  validates :grado, uniqueness: {scope: [:letra_codigo, :año], message: "Curso, grado y letra, ya existe en este año"}
   validate :validar_año
 
   def tittle
