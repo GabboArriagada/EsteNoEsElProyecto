@@ -1,17 +1,20 @@
-<%= simple_form_for([:profesor, @post]) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :asignatura_id, as: :hidden, input_html: {value: @asignatura} %>
-    <%= f.input :title, label: 'Título', placeholder: 'Ingrese Título' %>
-    <%= f.input :description, label: 'Descripción', placeholder: 'Ingrese Descripción' %>
-    <label class="btn btn-primary btn-file btn-sm">
+
+  <%= simple_form_for([:profesor, @post]) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :asignatura_id, as: :hidden, input_html: {value: @asignatura} %>
+      <%= f.input :title, label: 'Título', placeholder: 'Ingrese Título' %>
+      <%= f.input :description, label: 'Descripción', placeholder: 'Ingrese Descripción' %>
+    </div>
+    <div class="btn btn-link btn-file btn-sm">
       <%= fa_icon 'upload', text: "Seleccionar Archivo" %>
       <%= f.file_field :image, multiple: false %>
-    </label>
-  </div>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, 'Subir Archivo' %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, 'Subir Archivo', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <br>

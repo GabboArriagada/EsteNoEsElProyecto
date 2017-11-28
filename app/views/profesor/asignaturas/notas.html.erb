@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Notas de <%= Asignatura.find(@asignatura).nombre %> del alumno <%= User.find(@user).name %> <%= User.find(@user).last_name %></h1>
-
+<h3>Notas de <%= Asignatura.find(@asignatura).nombre.titleize %>, del alumno <%= User.find(@user).name %> <%= User.find(@user).last_name %></h3>
+<br><br>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -31,7 +31,9 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to profesor_asignatura_path(@asignatura) do %>
-  <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
-<% end %>
+<br>
+<div class="panel-footer">
+  <%= link_to profesor_asignatura_path(@asignatura), class: 'btn btn-success' do %>
+    <%= fa_icon 'arrow-circle-left', text: t(:list) +'a de cursos' %>
+  <% end %>
+</div>

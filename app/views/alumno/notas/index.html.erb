@@ -1,5 +1,5 @@
-<h1>Notas</h1>
-
+<h3>Notas</h3>
+<br><br>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -11,7 +11,7 @@
   <tbody>
     <% @notas.each do |nota| %>
       <tr>
-        <td><%= nota.nombre %></td>
+        <td><%= nota.nombre.titleize %></td>
         <td>
           <%= link_to alumno_notas_show_nota_path(asignatura: nota) do %>
             <%= fa_icon 'search', text: 'Ver' %>

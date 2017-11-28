@@ -6,7 +6,7 @@ class Alumno::AsignaturasController < ApplicationController
   # GET /alumno/asignaturas
   # GET /alumno/asignaturas.json
   def index
-    @asignaturas = Asignatura.all
+    @asignaturas = current_user.asignaturas.all
   end
 
   # GET /alumno/asignaturas/1

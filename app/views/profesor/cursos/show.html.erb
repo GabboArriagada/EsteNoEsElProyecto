@@ -1,9 +1,9 @@
-<h1>Curso <%= @curso.grado %>°<%= @curso.letra_codigo %></h1>
-
+<h3>Curso <%= @curso.grado %>°<%= @curso.letra_codigo %></h3>
+<br><br>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Asignatuas</th>
+      <th>Asignaturas</th>
       <th>Ver</th>
     </tr>
   </thead>
@@ -11,7 +11,7 @@
   <tbody>
     <% @asignaturas.each do |asignatura| %>
       <tr>
-        <td><%= asignatura.nombre %></td>
+        <td><%= asignatura.nombre.titleize %></td>
         <td>
           <%= link_to profesor_asignatura_path(asignatura) do %>
             <%= fa_icon 'search', text: 'Ver' %>

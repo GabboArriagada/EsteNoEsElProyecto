@@ -1,5 +1,5 @@
-<h1>Asignatura <%= @asignatura.nombre %></h1>
-
+<h3>Asignatura <%= @asignatura.nombre.titleize %></h3>
+<br><br>
 <div class="panel panel-default">
 
   <div class="tabs">
@@ -92,9 +92,12 @@
 
   </div>
 
-<%= link_to profesor_curso_path(@asignatura.curso.id) do %>
-  <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
-<% end %>
+
+<div class="panel-footer">
+  <%= link_to profesor_curso_path(@asignatura.curso.id), class: 'btn btn-success' do %>
+    <%= fa_icon 'arrow-circle-left', text: t(:Lista)+' de asignaturas'%>
+  <% end %>
+</div>
 <br>
 <br>
 <br>

@@ -10,8 +10,8 @@
 
                 </li>
                 <div class="container1">
-                <li>
-                    Menú
+                <li><u><b>MENÚ</b></u>
+
                 </li><br>
                   <% if current_user.has_role? :admin %>
                 <li>
@@ -33,7 +33,7 @@
                 </li><br>
                 <li>
                   <% if current_user.has_role? :profesor %>
-                    <%= link_to 'Ingresar asistencia', profesor_presences_path %>
+                    <%= link_to 'Ingresar asistencia', profesor_presences_path, :class => "menu" %>
                 </li><br><% end %>
                 <li>
                   <% if current_user.has_role? :alumno %>
@@ -44,10 +44,11 @@
                 </li><br>
                 <li>
                   <%= link_to 'Agregar/Actualizar datos', edit_user_registration_path %>
-                </li><br><br><br>
-                <li>
-                  BIENVENIDO, <%=current_user.name%>_<%=current_user.last_name%>
-                </li>
+                </li><br><br><br><br><br><br>
+                <li><i>BIENVENIDO,</i>
+
+                </li><br>
+                <li><i><%=current_user.name%> <%=current_user.last_name%></i></li>
                 </div>
             </ul>
         </div>

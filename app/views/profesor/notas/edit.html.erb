@@ -1,5 +1,5 @@
-<h1>Modificar Nota</h1>
-
+<h3>Modificar Nota</h3>
+<br><br>
 <%= simple_form_for([:profesor, @nota]) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
@@ -10,14 +10,13 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, 'Cambiar Nota' %>
+    <%= f.button :submit, 'Cambiar Nota',class: "btn btn-danger" %>
   </div>
 <% end %>
 
-<%= link_to "/profesor/asignaturas/#{@asignatura}/notas?asignatura=#{@asignatura}&user=#{@user}" do %>
-  <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
-<% end %>
 <br>
-<br>
-<br>
-<br>
+<div class="panel-footer">
+  <%= link_to "/profesor/asignaturas/#{@asignatura}/notas?asignatura=#{@asignatura}&user=#{@user}", class: 'btn btn-success' do %>
+    <%= fa_icon 'arrow-circle-left', text: t(:Atrás) %>
+  <% end %>
+</div>

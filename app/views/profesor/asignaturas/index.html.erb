@@ -1,11 +1,10 @@
-<h1>Subir Archivos</h1>
-
+<h3>Subir Archivos</h3>
+<br><br>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Cursos/Asignaturas</th>
-      <th>Subir</th>
-      <th>Ver Archivos</th>
+      <th>Acciones</th>
     </tr>
   </thead>
 
@@ -17,7 +16,7 @@
       </tr>
         <% curso.asignaturas.each do |asignatura| %>
         <tr>
-          <td><%= asignatura.nombre %></td>
+          <td><%= asignatura.nombre.titleize %></td>
           <td><%= link_to new_profesor_post_path(asignatura: asignatura) do %>
               <%= fa_icon 'upload', text: 'Subir Archivo' %>
               <% end %></td>

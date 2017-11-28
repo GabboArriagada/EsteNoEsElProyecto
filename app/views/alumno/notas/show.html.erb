@@ -1,5 +1,5 @@
-<h1>Asignatura <%=Asignatura.find(@asignatura).nombre%></h1>
-
+<h3>Asignatura <%=Asignatura.find(@asignatura).nombre.titleize%></h3>
+<br><br>
 <% unless @notas.empty? %>
 <table class="table table-bordered table-striped">
   <thead>
@@ -23,19 +23,14 @@
   </tbody>
 </table>
 <% else %>
-<h2>No tiene notas.</h2>
+<h4>No tiene notas aún.</h4>
 <% end %>
+<br>
 
-<%= link_to alumno_notas_path do %>
-  <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
-<% end %>
-<br>
-<br>
-<br><br>
-<br><br>
-<br>
-<br>
-<br>
-<br>
+<div class="panel-footer">
+  <%= link_to alumno_notas_path, class: 'btn btn-success' do %>
+    <%= fa_icon 'arrow-circle-left', text: t(:Atrás) %>
+  <% end %>
+</div>
 <br>
 <br>

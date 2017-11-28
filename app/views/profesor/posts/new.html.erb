@@ -1,7 +1,13 @@
-<h1>Subir Archivo</h1>
+<div class="row center-xs text-left">
+  <div class="col-xs-8">
+<h3>Subir Archivo</h3>
 
 <%= render 'form', profesor_post: @profesor_post %>
 
-<%= link_to profesor_asignaturas_path do %>
-  <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
-<% end %>
+</div>
+</div><br><br><br>
+<div class="panel-footer">
+  <%= link_to profesor_asignaturas_path, class: 'btn btn-success' do %>
+    <%= fa_icon 'arrow-circle-left', text: t(:list) +'a de cursos' %>
+  <% end %>
+</div>
