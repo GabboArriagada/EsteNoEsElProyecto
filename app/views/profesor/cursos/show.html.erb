@@ -1,4 +1,4 @@
-<h1>Curso <%= @curso.nombre %></h1>
+<h1>Curso <%= @curso.grado %>°<%= @curso.letra_codigo %></h1>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -21,10 +21,12 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to profesor_notas_path do %>
-  <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
-<% end %>
+</div>
+<div class="panel-footer">
+  <%= link_to profesor_notas_path, class: 'btn btn-success' do %>
+    <%= fa_icon 'arrow-circle-left', text: t(:list) +'a de cursos' %>
+  <% end %>
+</div>
 <br>
 <br>
 <br>

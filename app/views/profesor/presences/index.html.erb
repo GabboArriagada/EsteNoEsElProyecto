@@ -13,7 +13,7 @@
   <tbody>
     <% @cursos.each do |curso| %>
       <tr>
-        <td><%= curso.nombre %></td>
+        <td><%= curso.grado %>° <%= curso.letra_codigo %></td>
         <td>
           <%= link_to profesor_presence_path(curso) do %>
             <%= fa_icon 'search', text: 'Ver' %>

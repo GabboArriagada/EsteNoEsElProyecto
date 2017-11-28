@@ -3,7 +3,7 @@
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Cursos</th>
+      <th>Cursos/Asignaturas</th>
       <th>Subir</th>
       <th>Ver Archivos</th>
     </tr>
@@ -12,17 +12,15 @@
   <tbody>
     <% @cursos.each do |curso| %>
       <tr>
-        <td><%= curso.nombre %></td>
+        <td><%= curso.grado %>°<%= curso.letra_codigo %></td>
         <td></td>
       </tr>
         <% curso.asignaturas.each do |asignatura| %>
         <tr>
           <td><%= asignatura.nombre %></td>
-          <td>
-            <%= link_to new_profesor_post_path(asignatura: asignatura) do %>
+          <td><%= link_to new_profesor_post_path(asignatura: asignatura) do %>
               <%= fa_icon 'upload', text: 'Subir Archivo' %>
-            <% end %>
-          </td>
+              <% end %></td>
         </tr>
         <% end %>
     <% end %>

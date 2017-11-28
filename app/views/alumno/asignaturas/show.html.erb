@@ -1,7 +1,6 @@
 <div class="page-header clearfix">
-  <h3><%= fa_icon 'book' %> Asignaturas <small>Detalle Asignatura</small></h3>
+  <h3><%= fa_icon 'book' %> Asignaturas de <%= @asignatura.curso.grado %>°<%= @asignatura.curso.letra_codigo %> <small>Detalle Asignatura</small></h3>
 </div>
-
 <div class="panel panel-default">
 
   <div class="tabs">
@@ -83,13 +82,8 @@
   </div>
   <div class="panel-footer">
     <%= link_to alumno_asignaturas_path, class: 'btn btn-success' do %>
-      <%= fa_icon 'list', text: t(:list) + ' ' + 'Asignaturas' %>
+      <%= fa_icon 'list', text: t(:list) +'a de Asignaturas' %>
     <% end %>
 
 
   </div>
-</div>
-<br>
-<br>
-<br>
-<br>

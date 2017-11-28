@@ -2,7 +2,7 @@
 
 <h1>Asistencias</h1>
 <br>
-<h4>Registrar asistencias del curso <%= current_user.cursos.find_by(id: params[:id]).nombre %></h4>
+<h4>Registrar asistencias del curso <%= current_user.cursos.find_by(id: params[:id]).grado %>°<%= current_user.cursos.find_by(id: params[:id]).letra_codigo %></h4>
 
 <%= form_tag create_multiple_profesor_presences_path, method: :post do %>
   <table class="table">
@@ -17,7 +17,8 @@
         <td><%= user.name %></td>
         <td><%= user.last_name%></td>
         <td><%=Date.today.to_s%></td>
-        <td><%= check_box_tag "users_ids[]", user.id %></td>
+        <td><%= check_box_tag "users_ids[]", user.id%></td>
+
       </tr>
     <% end %>
   </table>

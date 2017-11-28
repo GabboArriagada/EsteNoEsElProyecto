@@ -12,17 +12,22 @@ class Profesor::PresencesController < ApplicationController
   # GET /presences/1
   # GET /presences/1.json
   def show
-    @presences = Presence.all
     @users = current_user.cursos.find(params[:id]).users.all.with_role(:alumno)
     @cursos = current_user.cursos.all
+    @presences = Presence.all
   end
 
   def create_multiple
-    @usuarios = User.find(params[:users_ids])
-    @usuarios.each do |trabajador|
-      trabajador.presences.create(asistio: true, fecha: Date.today.to_s)
+    if params[:users_ids].present?
+      @usuarios = User.find(params[:users_ids])
+      @usuarios.each do |t|
+        t.presences.create(asistio: true, fecha: Date.today.to_s)
+      end
+      flash[:notice] = "Asistencias creadas correctamente"
+    else
+      flash[:alert] = "Asistencias no creadas, no a seleccionado a alumnos"
     end
-    redirect_to profesor_presences_path(params[:id]), notice: 'Las asistencias han sido creadas'
+    redirect_to profesor_presences_path
   end
 
   # GET /presences/new
