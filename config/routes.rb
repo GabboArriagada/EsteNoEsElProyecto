@@ -6,20 +6,14 @@ resources :posts
 resources :asignaturas
 resources :cursos
 resources :contacts, only: [:new, :create]
-get "archivos/subir_archivos"
-post "archivos/subir_archivos"
-get "archivos/listar_archivos"
-post "archivos/borrar_archivos"
-get "archivos/guardar_comentarios"
-post "archivos/guardar_comentarios"
 
-get 'foro/index'
 resources :asignaturas do
   resources :notas
 end
 resources :questions do
 resources :answers
 end
+get "preguntas", to:"questions#index"
 resources :events
 
 get 'calendario/index'

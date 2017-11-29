@@ -32,7 +32,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Pregunta correctamente creada.' }
+        format.html { redirect_to preguntas_path, notice: 'Pregunta correctamente creada.' }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }

@@ -1,8 +1,8 @@
 <div class="row center-xs text-left">
   <div class="col-xs-8 col-md-6">
     <div class="box-sizing text-left">
-<h2>Editar <%= resource_name.to_s.humanize %></h2>
-
+<h3>Editar Usuario</h3>
+<br><br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
@@ -31,8 +31,12 @@
 <div class="actions">
   <%= f.submit "Actualizar", class:"btn be-red white" %>
 </div>
-<% end %>
-<%= link_to "Atrás", :back %>
+<% end %><br><br>
+<div class="panel-footer">
+  <%= link_to :back, class: 'btn btn-success' do %>
+    <%= fa_icon 'arrow-circle-left', text: t(:Atrás) %>
+  <% end %>
+
 
 </div>
 </div>
