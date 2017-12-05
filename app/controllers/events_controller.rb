@@ -10,23 +10,31 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    if current_user.has_role? :profesor
+      @event = Event.new
+    end
   end
 
   def edit
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.save
+    if current_user.has_role? :profesor
+      @event = Event.new(event_params)
+      @event.save
+    end
   end
 
   def update
-    @event.update(event_params)
+    if current_user.has_role? :profesor
+      @event.update(event_params)
+    end
   end
 
   def destroy
+    if current_user.has_role? :profesor
     @event.destroy
+    end
   end
 
   private
