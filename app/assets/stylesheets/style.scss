@@ -89,6 +89,12 @@ color: #111;
     min-height: 30px;
     max-width: 50px;
 }
+.hamburger-box {
+  width: 40px;
+  height:  10px * 3 + 6px * 2;
+  display: inline-block;
+  position: relative;
+}
 .hamburger-inner, .hamburger-inner:after, .hamburger-inner:before {
     background-color: white;
     position: absolute;
