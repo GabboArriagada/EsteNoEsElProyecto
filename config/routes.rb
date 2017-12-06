@@ -43,7 +43,7 @@ end
 
 #seccion god
 namespace :god do
-  resources :user,:profesor,:alumno
+  resources :user,:profesor,:alumno,:cursos
 end
 
 

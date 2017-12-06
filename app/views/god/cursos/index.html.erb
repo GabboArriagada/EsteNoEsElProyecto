@@ -1,0 +1,24 @@
+<h1>Lista De asdasda</h1>a
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nivel</th>
+      <th>Letra</th>
+      <th>Año</th>
+      <th>acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cursos.each do |curso| %>
+      <tr>
+        <td><%= curso.id %></td>
+        <td><%= curso.grado %></td>
+        <td><%= curso.letra_codigo %></td>
+        <td><%= curso.año %></td>
+        <td><%= link_to 'asignar alumnos', god_curso_path(curso) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

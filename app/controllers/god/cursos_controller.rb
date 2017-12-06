@@ -1,24 +1,29 @@
-class God::ProfesorController < ApplicationController
+class God::CursosController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin
 
   def index
+    @cursos = Curso.all
+  end
+  def show
+    @curso = Curso.find(params[:id])
+    @profesor_assigned = @curso.users.with_role:profesor
+    @alumnos_assigned = @curso.users.with_role:alumnos
+    @alumnos = User.with_role:alumno
     @profesores = User.with_role:profesor
   end
 
-  def show
-    @profesor = Profesor.find(params[:id])
+  def assign
+    @cursos = Curso.all
   end
 
   def edit
   end
 
   def update
-    @event.update(event_params)
   end
 
   def destroy
-    @user.destroy
   end
 
   private

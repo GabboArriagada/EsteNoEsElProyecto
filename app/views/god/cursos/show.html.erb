@@ -1,0 +1,77 @@
+<h1>Vista del curso <%= @curso.grado %><%=@curso.letra_codigo%></h1>
+<h2>Profesor asignado:<% @profesores.each do |user| %>
+  <%= user.name %> <%= user.last_name %> <% end %> </h2>
+
+<h4>Alumnos del curso</h4>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Apellido</th>
+      <th>Nombre</th>
+      <th>Rut</th>
+      <th>Correo</th>
+      <th>acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @alumnos_assigned.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.name %></td>
+        <td><%= user.rut %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'eliminar alumno del curso', god_cursos_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h4>Asignar Alumno</h4>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Apellido</th>
+      <th>Nombre</th>
+      <th>Rut</th>
+      <th>Correo</th>
+      <th>acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @alumnos.each do |user| %>
+      <tr>
+        <td><%= user.last_name %></td>
+        <td><%= user.name %></td>
+        <td><%= user.rut %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'assignar alumno', god_cursos_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<h4>Asignar Profesor</h4>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Apellido</th>
+      <th>Nombre</th>
+      <th>Rut</th>
+      <th>Correo</th>
+      <th>acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profesores.each do |user| %>
+      <tr>
+        <td><%= user.last_name %></td>
+        <td><%= user.name %></td>
+        <td><%= user.rut %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'assignar profesor', god_cursos_path(user) %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
