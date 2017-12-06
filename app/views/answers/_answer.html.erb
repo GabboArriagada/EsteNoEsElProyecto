@@ -1,5 +1,5 @@
 <p style="border-bottom: 1px solid black; background-color: #F0F0F0;">
-  <li style="font-: large"><td><%= answer.content %></td> |
+  <li style="font: large"><td><font size="4" ><%= answer.content %></font></td> |
     -<i class="fa fa-clock-o"> Hace <%= time_ago_in_words(answer.created_at) %> atrás, por <%= answer.user.name %> <%= answer.user.last_name %></i>-
   <% if can? :destroy, answer %>
   <td>| <%= link_to question_answer_path(answer.question, answer), method: :delete do%>

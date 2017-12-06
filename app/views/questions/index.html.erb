@@ -26,8 +26,7 @@
       <h4>Respuestas</h4>
       <div class="preguntas">
       <% if question.answers.any? %>
-
-      <%= render question.answers %>
+        <%= render question.answers %>
       <% end %>
       <hr>
       <%= form_for([question, question.answers.build]) do |f| %>
