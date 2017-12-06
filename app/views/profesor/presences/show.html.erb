@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><% flash[:notice] = "Cuidado!, no podrá modificar ni borrar las asistencias" %></p>
 
-<h3>Asistencias</h3>
+<h3>Asistencias <small>Cuidado!, no podrá modificar ni borrar las asistencias</small></h3>
 <br>
 <h4>Registrar asistencias del curso <%= current_user.cursos.find_by(id: params[:id]).grado %>°<%= current_user.cursos.find_by(id: params[:id]).letra_codigo %></h4>
-
+<%@current_curso=current_user.cursos.find_by(id: params[:id])%>
 <%= form_tag create_multiple_profesor_presences_path, method: :post do %>
   <table class="table">
     <tr>
@@ -16,18 +16,19 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.last_name%></td>
-        <td><%=Date.today.to_s%></td>
+        <td><%=Date.today.strftime("%d-%m-%Y")%></td>
         <td><%= check_box_tag "users_ids[]", user.id%></td>
 
       </tr>
     <% end %>
   </table>
-  <%= submit_tag "Crear Asistencias", class:"btn btn-primary btn-xl" %>
+<%= submit_tag "Crear Asistencias", class:"btn btn-primary btn-xl" %>
 <% end %>
 <br>
-<h4>Listado completo</h4>
+<h4>Listado completo de asistencias del curso</h4>
 <br>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar por nombre.." title="Type in a name">
+
 <br>
 <table class="table" id="myTable">
   <thead>
@@ -35,22 +36,16 @@
       <th>Nombre</th>
       <th>Asistió</th>
       <th>Fecha</th>
-      <th colspan="3">Acciones</th>
     </tr>
   </thead>
   <tbody>
-    <% @presences.each do |presence| %>
+    <% @presences.reverse_each do |presence| %>
       <tr>
         <td><%= presence.user.name+' '+ presence.user.last_name%></td>
         <%if presence.asistio == true%>
         <td><%= 'Si' %></td>
-        <%else%>
-        <td><%= 'No' %></td>
         <%end%>
-        <td><%= presence.fecha %></td>
-        <td><%= link_to profesor_presence_path(@presences), method: :delete, data: { confirm: 'Está seguro?' } do%>
-          <%= fa_icon 'trash', text: 'Borrar' %>
-        <% end %></td>
+        <td><%= presence.fecha.strftime("%d-%m-%Y") %></td>
       </tr>
     <% end %>
   </tbody>

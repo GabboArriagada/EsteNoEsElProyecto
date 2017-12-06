@@ -14,14 +14,16 @@ class Profesor::PresencesController < ApplicationController
   def show
     @users = current_user.cursos.find(params[:id]).users.all.with_role(:alumno)
     @cursos = current_user.cursos.all
-    @presences = Presence.all
+    @presences = Presence.where(curso: params[:id])
+
   end
 
   def create_multiple
     if params[:users_ids].present?
       @usuarios = User.find(params[:users_ids])
+      @usuario_last = @usuarios.last.cursos.last.id #pasar id del curso a la mala
       @usuarios.each do |t|
-        t.presences.create(asistio: true, fecha: Date.today.to_s)
+        t.presences.create(asistio: true, fecha: Date.today.to_s, curso_id: @usuario_last)
       end
       flash[:notice] = "Asistencias creadas correctamente"
     else

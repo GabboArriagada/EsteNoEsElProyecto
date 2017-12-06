@@ -1,5 +1,6 @@
 class Curso < ApplicationRecord
   has_and_belongs_to_many :users
+  has_many :presences
   has_many :asignaturas, :dependent => :destroy
   accepts_nested_attributes_for :asignaturas
   #accept_nested_attributes_for :asignatura , reject_if: :all_blank , allow_destroy: true
