@@ -1,5 +1,5 @@
 class Profesor::PresencesController < ApplicationController
-  before_action :set_presence, only: [:show, :edit, :update, :destroy]
+  before_action :set_presence, only: [:show, :edit, :update]
   before_action :authenticate_user!
   before_action :authenticate_profesor
 
@@ -29,7 +29,7 @@ class Profesor::PresencesController < ApplicationController
     else
       flash[:alert] = "Asistencias no creadas, no a seleccionado a alumnos"
     end
-    redirect_to profesor_presences_path
+    redirect_to "/profesor/presences/#{@usuario_last}"
   end
 
   # GET /presences/new
@@ -74,9 +74,11 @@ class Profesor::PresencesController < ApplicationController
   # DELETE /presences/1
   # DELETE /presences/1.json
   def destroy
+    @presence = Presence.find_by(id: params[:id])
+    @curso_id = @presence.curso_id
     @presence.destroy
     respond_to do |format|
-      format.html { redirect_to profesor_presences_url, notice: 'Asistencia correctamente borrada.' }
+      format.html { redirect_to "/profesor/presences/#{@curso_id}", notice: 'Asistencia correctamente borrada.' }
       format.json { head :no_content }
     end
   end
@@ -93,7 +95,7 @@ class Profesor::PresencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def presence_params
-      params.require(:presence).permit(:asistio, :fecha, :user_id)
+      params.require(:presence).permit(:asistio, :fecha, :user_id, :curso_id)
     end
 
     def authenticate_profesor

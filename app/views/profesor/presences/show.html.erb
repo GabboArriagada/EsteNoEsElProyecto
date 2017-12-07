@@ -1,6 +1,4 @@
-<p id="notice"><% flash[:notice] = "Cuidado!, no podrá modificar ni borrar las asistencias" %></p>
-
-<h3>Asistencias <small>Cuidado!, no podrá modificar ni borrar las asistencias</small></h3>
+<h3>Asistencias <small><%= current_user.cursos.find_by(id: params[:id]).grado %>°<%= current_user.cursos.find_by(id: params[:id]).letra_codigo %></small></h3>
 <br>
 <h4>Registrar asistencias del curso <%= current_user.cursos.find_by(id: params[:id]).grado %>°<%= current_user.cursos.find_by(id: params[:id]).letra_codigo %></h4>
 <%@current_curso=current_user.cursos.find_by(id: params[:id])%>
@@ -36,6 +34,7 @@
       <th>Nombre</th>
       <th>Asistió</th>
       <th>Fecha</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -46,6 +45,9 @@
         <td><%= 'Si' %></td>
         <%end%>
         <td><%= presence.fecha.strftime("%d-%m-%Y") %></td>
+        <td><%= link_to profesor_presence_path(presence), method: :delete, data: {confirm: 'Está seguro?'} do%>
+        <%= fa_icon 'trash', text: 'Eliminar' %>
+      <% end %></td>
       </tr>
     <% end %>
   </tbody>
