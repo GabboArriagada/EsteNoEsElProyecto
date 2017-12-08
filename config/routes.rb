@@ -27,6 +27,9 @@ end
 #seccion profesor
 namespace :profesor do
   resources :presences do
+    member do
+      get :asists
+    end
     collection do
      post 'create_multiple'
     end

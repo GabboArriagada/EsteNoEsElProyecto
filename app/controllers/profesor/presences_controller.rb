@@ -14,8 +14,11 @@ class Profesor::PresencesController < ApplicationController
   def show
     @users = current_user.cursos.find(params[:id]).users.all.with_role(:alumno)
     @cursos = current_user.cursos.all
-    @presences = Presence.where(curso: params[:id])
-
+    @presences = Presence.where(curso: params[:id]).paginate(:page => params[:page], :per_page => 30)
+  end
+  def asists
+    @users = current_user.cursos.find(params[:id]).users.all.with_role(:alumno)
+    @presences = Presence.where(curso: params[:id]).paginate(:page => params[:page], :per_page => 30)
   end
 
   def create_multiple
@@ -29,7 +32,7 @@ class Profesor::PresencesController < ApplicationController
     else
       flash[:alert] = "Asistencias no creadas, no a seleccionado a alumnos"
     end
-    redirect_to "/profesor/presences/#{@usuario_last}"
+    redirect_to "/profesor/presences/#{@usuario_last}/asists"
   end
 
   # GET /presences/new
@@ -78,7 +81,7 @@ class Profesor::PresencesController < ApplicationController
     @curso_id = @presence.curso_id
     @presence.destroy
     respond_to do |format|
-      format.html { redirect_to "/profesor/presences/#{@curso_id}", notice: 'Asistencia correctamente borrada.' }
+      format.html { redirect_to "/profesor/presences/#{@curso_id}/asists", notice: 'Asistencia correctamente borrada.' }
       format.json { head :no_content }
     end
   end
