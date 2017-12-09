@@ -14,11 +14,11 @@ class Profesor::PresencesController < ApplicationController
   def show
     @users = current_user.cursos.find(params[:id]).users.all.with_role(:alumno)
     @cursos = current_user.cursos.all
-    @presences = Presence.where(curso: params[:id]).paginate(:page => params[:page], :per_page => 30)
+    @presences = Presence.where(curso: params[:id]).paginate(:page => params[:page])
   end
   def asists
     @users = current_user.cursos.find(params[:id]).users.all.with_role(:alumno)
-    @presences = Presence.where(curso: params[:id]).paginate(:page => params[:page], :per_page => 30)
+    @presences = Presence.where(curso: params[:id]).text_search(params[:query]).paginate(:page => params[:page])
   end
 
   def create_multiple
@@ -73,6 +73,7 @@ class Profesor::PresencesController < ApplicationController
       end
     end
   end
+
 
   # DELETE /presences/1
   # DELETE /presences/1.json
