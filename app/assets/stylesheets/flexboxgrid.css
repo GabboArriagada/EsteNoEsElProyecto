@@ -4,8 +4,9 @@
   margin-left: auto;
 }
 textarea#message_area {
-  width: 700px;
-  height: 70px;
+  width: 80%;
+  height: 8rem;
+  margin-bottom: 5px;
 }
 .texto{
   font-size: large;

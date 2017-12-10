@@ -1,6 +1,4 @@
-<p id="notice"><% flash[:notice] = "Cuidado!, no podrá modificar ni borrar las asistencias" %></p>
-
-<h3>Asistencias <small>Cuidado!, no podrá modificar ni borrar las asistencias</small></h3>
+<h3>Asistencias <small><%= current_user.cursos.find_by(id: params[:id]).grado %>°<%= current_user.cursos.find_by(id: params[:id]).letra_codigo %></small></h3>
 <br>
 <h4>Registrar asistencias del curso <%= current_user.cursos.find_by(id: params[:id]).grado %>°<%= current_user.cursos.find_by(id: params[:id]).letra_codigo %></h4>
 <%@current_curso=current_user.cursos.find_by(id: params[:id])%>
@@ -25,48 +23,8 @@
 <%= submit_tag "Crear Asistencias", class:"btn btn-primary btn-xl" %>
 <% end %>
 <br>
-<h4>Listado completo de asistencias del curso</h4>
-<br>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar por nombre.." title="Type in a name">
-
-<br>
-<table class="table" id="myTable">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Asistió</th>
-      <th>Fecha</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @presences.reverse_each do |presence| %>
-      <tr>
-        <td><%= presence.user.name+' '+ presence.user.last_name%></td>
-        <%if presence.asistio == true%>
-        <td><%= 'Si' %></td>
-        <%end%>
-        <td><%= presence.fecha.strftime("%d-%m-%Y") %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<script>
-
-function myFunction() {
-  var input, filter, tabla, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
+<div class="panel-footer">
+<%= link_to "/profesor/presences/#{@users.last.cursos.last.id}/asists", class: 'btn btn-success' do %>
+  <%= fa_icon 'list', text: t(:list) +'a de Asignaturas' %>
+<% end %>
+</div>
