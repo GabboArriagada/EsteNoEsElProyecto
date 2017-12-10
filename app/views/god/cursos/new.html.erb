@@ -6,7 +6,7 @@
   <div class="form-inputs">
     <%= f.input :grado, placeholder: 'Ej: 7', input_html: {min: 1, max: 8}, required: true %>
     <%= f.input :letra_codigo, placeholder: 'Ej: B', required: true %>
-    <%= f.input :año, placeholder: '2017',input_html: {min: 1990, max: 2999}, required:true %>
+    <%= f.input :año, :as => :hidden, :input_html =>{:value => Date.current.year } , required:true %>
   </div>
 
   <div class="form-actions">
