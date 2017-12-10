@@ -43,6 +43,8 @@ class God::CursosController < ApplicationController
     end
   end
 
+  end
+
   def asignar
     @curso = Curso.find(params[:curso])
     @user = User.find(params[:user])
@@ -67,10 +69,12 @@ class God::CursosController < ApplicationController
   end
 
   private
+  def curso_params
+    params.required(:curso).permit(:grado, :año, :letra_codigo)
+  end
     def authenticate_admin
       unless current_user.has_role? :admin
         flash[:error] = "No tienes permisos necesarios para ver esta sección."
         redirect_to root_path
       end
     end
-end
