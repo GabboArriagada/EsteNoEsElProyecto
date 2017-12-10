@@ -46,7 +46,10 @@ end
 
 #seccion god
 namespace :god do
-  resources :user,:profesor,:alumno,:cursos
+  resources :user,:profesor,:alumno,:cursos,:asignaturas
+  match 'asignaturas/notas/' => 'asignaturas#notas', via: :post
+  match 'asignaturas/asignar/' => 'asignaturas#asignar', via: :post
+  match 'asignaturas/desasignar/' => 'asignaturas#desasignar', via: :post
   match 'cursos/asignar/' => 'cursos#asignar', via: :post
   match 'cursos/desasignar/' => 'cursos#desasignar', via: :post
   match 'user/toprofesor/' => 'user#toprofesor',via: :post
