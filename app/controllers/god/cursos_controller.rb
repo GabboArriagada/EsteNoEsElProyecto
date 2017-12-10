@@ -29,21 +29,19 @@ class God::CursosController < ApplicationController
 
   def destroy
   end
-
   def create
-    @curso = Curso.new(curso)
+    @curso = Curso.new(curso_params)
     respond_to do |format|
       if @curso.save
-        format.html { redirect_to profesor_asignatura_path(@nota.asignatura_id), notice: 'La nota ha sido ingresada' }
-        format.json { render :show, status: :created, location: @nota }
+        format.html { redirect_to god_cursos_path, notice: 'La asignatura ha sido ingresada' }
+        format.json { render :show, status: :created, location: @curso }
       else
         format.html { render :new }
-        format.json { render json: @nota.errors, status: :unprocessable_entity }
+        format.json { render json: @curso.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  end
 
   def asignar
     @curso = Curso.find(params[:curso])
@@ -78,3 +76,4 @@ class God::CursosController < ApplicationController
         redirect_to root_path
       end
     end
+end
