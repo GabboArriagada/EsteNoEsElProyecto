@@ -14,7 +14,42 @@ class God::UserController < ApplicationController
   end
 
   def update
-    @event.update(event_params)
+  end
+
+  def toprofesor
+    @user = User.find(params[:user])
+    @user.add_role(:profesor)
+    redirect_to action: "index"
+  end
+
+  def toalumno
+    @user = User.find(params[:user])
+    @user.add_role(:alumno)
+    redirect_to action: "index"
+  end
+
+  def toaadmin
+    @user = User.find(params[:user])
+    @user.add_role(:admin)
+    redirect_to action: "index"
+  end
+
+  def removeprofesor
+    @user = User.find(params[:user])
+    @user.remove_role :profesor
+    redirect_to action: "index"
+  end
+
+  def removealumno
+    @user = User.find(params[:user])
+    @user.remove_role :alumno
+    redirect_to action: "index"
+  end
+
+  def removeadmin
+    @user = User.find(params[:user])
+    @user.remove_role :admin
+    redirect_to action: "index"
   end
 
   def destroy

@@ -8,7 +8,9 @@
       <th>Rut</th>
       <th>Correo</th>
       <th>Roles</th>
-      <th>acciones</th>
+      <th>asignar rol profesor</th>
+      <th>asignar rol alumno</th>
+      <th>asignar rol admin</th>
     </tr>
   </thead>
 
@@ -20,7 +22,23 @@
         <td><%= user.rut %></td>
         <td><%= user.email %></td>
         <td><%= user.roles.pluck(:name).join(", ") %></td>
-        <td><%= link_to 'Show', god_user_path(user) %></td>
+        <% if user.has_role? :profesor %>
+          <td><%= link_to 'quitar rol', god_user_removeprofesor_path('user' => user.id),:method => "post" %></td>
+        <% else %>
+          <td><%= link_to 'asignar', god_user_toprofesor_path('user' => user.id),:method => "post" %></td>
+        <% end %>
+        <% if user.has_role? :alumno %>
+          <td><%= link_to 'quitar rol', god_user_removealumno_path('user' => user.id),:method => "post" %></td>
+        <% else %>
+          <td><%= link_to 'asignar', god_user_toalumno_path('user' => user.id),:method => "post" %></td>
+        <% end %>
+        <% if user.has_role? :admin %>
+          <td><%= link_to 'quitar rol', god_user_removeadmin_path('user' => user.id),:method => "post" %></td>
+        <% else %>
+          <td><%= link_to 'asignar', god_user_toadmin_path('user' => user.id),:method => "post"  %></td>
+        <% end %>
+
+
       </tr>
     <% end %>
   </tbody>

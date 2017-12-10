@@ -49,6 +49,12 @@ namespace :god do
   resources :user,:profesor,:alumno,:cursos
   match 'cursos/asignar/' => 'cursos#asignar', via: :post
   match 'cursos/desasignar/' => 'cursos#desasignar', via: :post
+  match 'user/toprofesor/' => 'user#toprofesor',via: :post
+  match 'user/toalumno/' => 'user#toalumno',via: :post
+  match 'user/toadmin/' => 'user#toadmin',via: :post
+  match 'user/removeprofesor/' => 'user#removeprofesor',via: :post
+  match 'user/removealumno/' => 'user#removealumno',via: :post
+  match 'user/removeadmin/' => 'user#removeadmin',via: :post
 end
 
 
