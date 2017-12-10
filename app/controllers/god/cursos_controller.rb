@@ -17,6 +17,10 @@ class God::CursosController < ApplicationController
     @cursos = Curso.all
   end
 
+  def new
+    @curso = Curso.new
+  end
+
   def edit
   end
 
