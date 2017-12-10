@@ -1,6 +1,6 @@
 <h3>Crear Curso</h3>
 <br><br>
-<%= simple_form_for(@curso) do |f| %>
+  <%= simple_form_for(@curso,:url => god_cursos_path, :method => :post) do |f| %>
   <%= f.error_notification %>
   <% porcentaje = 0 %>
   <div class="form-inputs">

@@ -31,6 +31,16 @@ class God::CursosController < ApplicationController
   end
 
   def create
+    @curso = Curso.new(curso)
+    respond_to do |format|
+      if @curso.save
+        format.html { redirect_to profesor_asignatura_path(@nota.asignatura_id), notice: 'La nota ha sido ingresada' }
+        format.json { render :show, status: :created, location: @nota }
+      else
+        format.html { render :new }
+        format.json { render json: @nota.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def asignar
