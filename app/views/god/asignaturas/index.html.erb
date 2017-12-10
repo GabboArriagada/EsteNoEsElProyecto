@@ -7,7 +7,7 @@
       <th>Curso</th>
       <th>Año</th>
       <th>assignar</th>
-      <th>notas</th>
+
     </tr>
   </thead>
   <tbody>
@@ -15,10 +15,14 @@
       <tr>
         <td><%= asignatura.id %></td>
         <td><%= asignatura.nombre %></td>
-        <td><%= asignatura.curso.grado %><%= asignatura.curso.letra_codigo %></td>
+        <% if defined?asignatura.curso.grado and defined?asignatura.curso.letra_codigo  %>
+          <td><%= asignatura.curso.grado %><%= asignatura.curso.letra_codigo %></td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td><%= asignatura.año %></td>
         <td><%= link_to 'asignar alumnos o profesor', god_asignatura_path(asignatura) %></td>
-        <td><%= link_to 'notas', god_asignaturas_notas_path('asignatura' => asignatura.id),:method => "post" %></td>
+
 
 
       </tr>

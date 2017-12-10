@@ -13,8 +13,21 @@ class God::AsignaturasController < ApplicationController
     @profesores = User.with_role:profesor
   end
 
-  def assign
-    @cursos = Curso.all
+  def new
+    @asignatura = Asignatura.new
+  end
+
+  def create
+    @asignatura = Asignatura.new(asignatura_params)
+    respond_to do |format|
+      if @asignatura.save
+        format.html { redirect_to god_asignaturas_path, notice: 'La asignatura ha sido ingresada' }
+        format.json { render :show, status: :created, location: @asignatura }
+      else
+        format.html { render :new }
+        format.json { render json: @asignatura.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
@@ -26,9 +39,6 @@ class God::AsignaturasController < ApplicationController
   def destroy
   end
 
-  def create
-  end
-
   def asignar
     @asignatura = Asignatura.find(params[:asignatura])
     @user = User.find(params[:user])
@@ -38,10 +48,6 @@ class God::AsignaturasController < ApplicationController
       @asignatura.users << @user
       redirect_to action: "show", id: @asignatura.id
     end
-  end
-
-  def notas
-    @curso = Curso.find(params[:curso])
   end
 
   def desasignar
@@ -56,6 +62,9 @@ class God::AsignaturasController < ApplicationController
   end
 
   private
+  def asignatura_params
+    params.required(:asignatura).permit(:nombre,:año)
+  end
     def authenticate_admin
       unless current_user.has_role? :admin
         flash[:error] = "No tienes permisos necesarios para ver esta sección."

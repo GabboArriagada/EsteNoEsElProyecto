@@ -29,11 +29,12 @@ class God::CursosController < ApplicationController
 
   def destroy
   end
+
   def create
     @curso = Curso.new(curso_params)
     respond_to do |format|
       if @curso.save
-        format.html { redirect_to god_cursos_path, notice: 'La asignatura ha sido ingresada' }
+        format.html { redirect_to god_cursos_path, notice: 'El curso ha sido ingresado' }
         format.json { render :show, status: :created, location: @curso }
       else
         format.html { render :new }
