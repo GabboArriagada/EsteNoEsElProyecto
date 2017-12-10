@@ -1,27 +1,34 @@
-<h1>Vista del curso <%= @curso.grado %><%=@curso.letra_codigo%></h1>
-<h2>Profesor asignado:<% @profesores.each do |user| %>
-  <%= user.name %> <%= user.last_name %> <% end %> </h2>
+  <h1>Vista del curso <%= @curso.grado %><%=@curso.letra_codigo%></h1>
+  <% if defined?@profesor_assigned %>
+      <h2>Profesor asignado:
+    <% @profesor_assigned.each do |user| %>
+      <%= user.name%>
+      <%= user.last_name%>
+      </h2>
+    <% end %>
+  <% else %>
+    <h2>Sin Profesor Asignado</h2>
+  <% end %>
+  <h4>Alumnos del curso</h4>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Apellido</th>
+        <th>Nombre</th>
+        <th>Rut</th>
+        <th>Correo</th>
+        <th>acciones</th>
+      </tr>
+    </thead>
 
-<h4>Alumnos del curso</h4>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Apellido</th>
-      <th>Nombre</th>
-      <th>Rut</th>
-      <th>Correo</th>
-      <th>acciones</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @alumnos_assigned.each do |user| %>
+    <tbody>
+      <% @alumnos_assigned.each do |user| %>
       <tr>
         <td><%= user.name %></td>
         <td><%= user.name %></td>
         <td><%= user.rut %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'eliminar alumno del curso', god_cursos_path(user) %></td>
+        <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -41,13 +48,16 @@
 
   <tbody>
     <% @alumnos.each do |user| %>
+      <% if @curso.users.exists?(:id => user.id) %>
+      <% else %>
       <tr>
         <td><%= user.last_name %></td>
         <td><%= user.name %></td>
         <td><%= user.rut %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'assignar alumno', god_cursos_path(user) %></td>
+        <td><%= link_to 'asignar', god_cursos_asignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
@@ -70,7 +80,11 @@
         <td><%= user.name %></td>
         <td><%= user.rut %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'assignar profesor', god_cursos_path(user) %></td>
+        <% if   @curso.users.exists?(:id => user.id) %>
+        <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
+        <% else %>
+        <td><%= link_to 'asignar', god_cursos_asignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
+        <% end %>
         </tr>
     <% end %>
   </tbody>
