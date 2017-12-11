@@ -3,13 +3,22 @@
   <%= simple_form_for(@asignatura,:url => god_asignaturas_path, :method => :post) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
-    <%= f.input :nombre, placeholder: 'Ej: Ciencias sociales', required: true %>
-    <%= f.input :curso_id, collection: @cursos.all.collect{|a|[a.grado.to_s+'°'+a.letra_codigo,a.id]}, required: true %>
     <%= f.input :año, :as => :hidden, :input_html =>{:value => Date.current.year } , required:true %>
+    <%= f.input :nombre, placeholder: 'Ej: Ciencias sociales', required: true %>
+    <%if @cursos.present? %>
+    <%= f.input :curso_id, collection: @cursos.all.collect{|a|[a.grado.to_s+'° '+a.letra_codigo,a.id]}, required: true %>
+    <div class="form-actions">
+      <%= f.button :submit, 'Crear Asignatura', class: "btn btn-primary" %>
+    </div>
+    <%else%>
+    <h4>No puede crear asignatura, debe tener cursos al cual asignar</h4>
+    <div class="form-actions">
+      <%= f.button :submit, 'Crear Asignatura',disabled: true, class: "btn btn-primary" %>
+    </div>
+    <%end%>
+
   </div>
-  <div class="form-actions">
-    <%= f.button :submit, 'Crear Asignatura', class: "btn btn-primary" %>
-  </div>
+
 <% end %>
 <br>
 <div class="panel-footer">

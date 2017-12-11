@@ -19,7 +19,7 @@
         <td><%= asignatura.id %></td>
         <td><%= asignatura.nombre %></td>
         <%if asignatura.curso.present?%>
-          <td><%= asignatura.curso.grado %><%= asignatura.curso.letra_codigo %></td>
+          <td><%= asignatura.curso.grado %>° <%= asignatura.curso.letra_codigo %></td>
           <%else%>
           <td>No tiene curso asignado</td>
           <%end%>
