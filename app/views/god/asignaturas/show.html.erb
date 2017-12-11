@@ -1,4 +1,8 @@
-  <h1>Vista del asignatura <%= @asignatura.nombre %> <%=@asignatura.curso.grado%> <%=@asignatura.curso.letra_codigo%> <%=@asignatura.año%></h1>
+  <h1>Vista del asignatura <%= @asignatura.nombre %>
+  <% if defined?asignatura.curso.grado %>
+    <%=@asignatura.curso.grado%> <%=@asignatura.curso.letra_codigo%>
+  <% end %>
+    <%=@asignatura.año%></h1>
   <% if defined?@profesor_assigned %>
       <h2>Profesor asignado:
     <% @profesor_assigned.each do |user| %>
@@ -9,7 +13,7 @@
   <% else %>
     <h2>Sin Profesor Asignado</h2>
   <% end %>
-  <h4>Alumnos del curso</h4>
+  <h4>Alumnos de la asignatura</h4>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -84,6 +88,30 @@
         <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" %></td>
         <% else %>
         <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" %></td>
+        <% end %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+<h4>Asignar Curso</h4>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Curso</th>
+      <th>Año</th>
+      <th>acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cursos.each do |curso| %>
+      <tr>
+        <td><%= curso.grado %><%= curso.letra_codigo %></td>
+        <td><%= curso.año %></td>
+        <% if @asignatura.curso_id == curso.id %>
+          <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignarcurso_path('asignatura' => @asignatura.id, 'curso' => curso.id),:method => "post" %></td>
+        <% else %>
+          <td><%= link_to 'asignar', god_asignaturas_asignarcurso_path('asignatura' => @asignatura.id, 'curso' => curso.id),:method => "post" %></td>
         <% end %>
         </tr>
     <% end %>

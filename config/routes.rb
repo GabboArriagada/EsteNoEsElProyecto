@@ -50,6 +50,8 @@ namespace :god do
   match 'asignaturas/notas/' => 'asignaturas#notas', via: :post
   match 'asignaturas/asignar/' => 'asignaturas#asignar', via: :post
   match 'asignaturas/desasignar/' => 'asignaturas#desasignar', via: :post
+  match 'asignaturas/asignarcurso/' => 'asignaturas#asignarcurso', via: :post
+  match 'asignaturas/desasignarcurso/' => 'asignaturas#desasignarcurso', via: :post
   match 'cursos/asignar/' => 'cursos#asignar', via: :post
   match 'cursos/desasignar/' => 'cursos#desasignar', via: :post
   match 'user/toprofesor/' => 'user#toprofesor',via: :post

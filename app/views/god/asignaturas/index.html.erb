@@ -15,7 +15,7 @@
       <tr>
         <td><%= asignatura.id %></td>
         <td><%= asignatura.nombre %></td>
-        <% if defined?asignatura.curso.grado and defined?asignatura.curso.letra_codigo  %>
+        <% if defined?asignatura.curso.grado %>
           <td><%= asignatura.curso.grado %><%= asignatura.curso.letra_codigo %></td>
         <% else %>
           <td></td>
