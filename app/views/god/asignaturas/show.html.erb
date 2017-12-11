@@ -10,11 +10,10 @@
     <% @profesor_assigned.each do |user| %>
       <%= user.name%>
       <%= user.last_name%>
-    </h3><br>
-    <% end %>
+    <% end %></h3><br>
   <% else %>
-    <h2>Sin Profesor Asignado</h2>
-  <% end %>
+    <h2>Sin Profesor Asignado</h2><br>
+  <% end %><br>
   <%=link_to god_asignaturas_path, class: 'btn btn-primary' do %>
     <%= fa_icon 'arrow-left', text: "Atrás" %>
   <% end %>
