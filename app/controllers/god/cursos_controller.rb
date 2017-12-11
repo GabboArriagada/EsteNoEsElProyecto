@@ -47,6 +47,8 @@ class God::CursosController < ApplicationController
   def asignar
     @curso = Curso.find(params[:curso])
     @user = User.find(params[:user])
+    @user.curso_id = @curso.id
+    @user.save
     if @curso.users.exists?(:id => @user.id)
       redirect_to action: "show", id: @curso.id
     else
@@ -59,6 +61,8 @@ class God::CursosController < ApplicationController
     @curso = Curso.find(params[:curso])
     @user = User.find(params[:user])
     @curso.users.delete(@user)
+    @user.curso_id = nil
+    @user.save
     if @curso.users.exists?(:id => @user.id)
 
       redirect_to action: "show", id: @curso.id

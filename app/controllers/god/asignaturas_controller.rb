@@ -9,7 +9,7 @@ class God::AsignaturasController < ApplicationController
     @asignatura = Asignatura.find(params[:id])
     @profesor_assigned = @asignatura.users.with_role:profesor
     @alumnos_assigned = @asignatura.users.with_role:alumno
-    @alumnos = User.with_role:alumno
+    @alumnos = User.where(curso_id: @asignatura.curso.id).with_role:alumno
     @profesores = User.with_role:profesor
     @cursos = Curso.where(año: @asignatura.año)
   end

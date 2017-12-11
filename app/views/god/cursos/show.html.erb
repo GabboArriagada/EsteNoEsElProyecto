@@ -22,7 +22,7 @@
         <tbody>
           <% @profesor_assigned.each do |user| %>
           <tr>
-            <td><%= user.name %></td>
+            <td><%= user.last_name %></td>
             <td><%= user.name %></td>
             <td><%= user.rut %></td>
             <td><%= user.email %></td>
@@ -50,7 +50,7 @@
             <tbody>
               <% @alumnos_assigned.each do |user| %>
               <tr>
-                <td><%= user.name %></td>
+                <td><%= user.last_name %></td>
                 <td><%= user.name %></td>
                 <td><%= user.rut %></td>
                 <td><%= user.email %></td>
