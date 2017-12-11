@@ -1,7 +1,5 @@
   <h1>Vista del asignatura <%= @asignatura.nombre %>
-  <% if defined?asignatura.curso.grado %>
     <%=@asignatura.curso.grado%> <%=@asignatura.curso.letra_codigo%>
-  <% end %>
     <%=@asignatura.año%></h1>
   <% if defined?@profesor_assigned %>
       <h2>Profesor asignado:
@@ -109,7 +107,7 @@
         <td><%= curso.grado %><%= curso.letra_codigo %></td>
         <td><%= curso.año %></td>
         <% if @asignatura.curso_id == curso.id %>
-          <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignarcurso_path('asignatura' => @asignatura.id, 'curso' => curso.id),:method => "post" %></td>
+          <td>Asignado actualmente</td>
         <% else %>
           <td><%= link_to 'asignar', god_asignaturas_asignarcurso_path('asignatura' => @asignatura.id, 'curso' => curso.id),:method => "post" %></td>
         <% end %>
