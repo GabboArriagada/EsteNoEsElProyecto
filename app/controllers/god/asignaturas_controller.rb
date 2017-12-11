@@ -16,7 +16,7 @@ class God::AsignaturasController < ApplicationController
 
   def new
     @asignatura = Asignatura.new
-    @cursos = Curso.where(año: @asignatura.año)
+    @cursos = Curso.where(año: Date.current.year)
   end
 
   def create
