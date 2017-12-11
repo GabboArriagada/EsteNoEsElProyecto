@@ -1,39 +1,67 @@
-  <h1>Vista del curso <%= @curso.grado %>°<%=@curso.letra_codigo%></h1>
+  <h1>Asignación al curso <%= @curso.grado %>°<%=@curso.letra_codigo%> de alumnos y profesores</h1><br>
   <% if defined?@profesor_assigned %>
-      <h2>Profesor asignado:
     <% @profesor_assigned.each do |user| %>
-      <%= user.name%>
-      <%= user.last_name%>
-      </h2>
     <% end %>
   <% else %>
     <h2>Sin Profesor Asignado</h2>
   <% end %>
+
+<h4>Profesores del curso</h4>
+<%if @profesor_assigned.present?%>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>Rut</th>
+            <th>Correo</th>
+            <th>acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @profesor_assigned.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.name %></td>
+            <td><%= user.rut %></td>
+            <td><%= user.email %></td>
+            <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <%else%>
+    <h3>No hay profesores asignados al curso</h3><br>
+    <%end%>
   <h4>Alumnos del curso</h4>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Apellido</th>
-        <th>Nombre</th>
-        <th>Rut</th>
-        <th>Correo</th>
-        <th>acciones</th>
-      </tr>
-    </thead>
+  <%if @alumnos_assigned.present?%>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>Rut</th>
+                <th>Correo</th>
+                <th>acciones</th>
+              </tr>
+            </thead>
 
-    <tbody>
-      <% @alumnos_assigned.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.name %></td>
-        <td><%= user.rut %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+            <tbody>
+              <% @alumnos_assigned.each do |user| %>
+              <tr>
+                <td><%= user.name %></td>
+                <td><%= user.name %></td>
+                <td><%= user.rut %></td>
+                <td><%= user.email %></td>
+                <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+  <%else%>
+    <h3>No hay alumnos asignados al curso</h3><br>
+  <%end%>
 <h4>Asignar Alumno</h4>
 <table class="table table-bordered table-striped">
   <thead>

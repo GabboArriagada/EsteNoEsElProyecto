@@ -41,20 +41,6 @@ class God::AsignaturasController < ApplicationController
   def destroy
   end
 
-  def asignarcurso
-    @asignatura = Asignatura.find(params[:asignatura])
-    @asignatura.curso_id = params[:curso]
-    @asignatura.save
-    redirect_to action: "show", id: @asignatura.id
-  end
-
-  def desasignarcurso
-    @asignatura = Asignatura.find(params[:asignatura])
-    @asignatura.curso_id = nil
-    @asignatura.save
-    redirect_to action: "show", id: @asignatura.id
-  end
-
   def asignar
     @asignatura = Asignatura.find(params[:asignatura])
     @user = User.find(params[:user])
