@@ -18,7 +18,11 @@
       <tr>
         <td><%= asignatura.id %></td>
         <td><%= asignatura.nombre %></td>
+        <%if asignatura.curso.present?%>
           <td><%= asignatura.curso.grado %><%= asignatura.curso.letra_codigo %></td>
+          <%else%>
+          <td>No tiene curso asignado</td>
+          <%end%>
         <td><%= asignatura.año %></td>
         <td><%= link_to 'asignar alumnos o profesor', god_asignatura_path(asignatura) %></td>
 
