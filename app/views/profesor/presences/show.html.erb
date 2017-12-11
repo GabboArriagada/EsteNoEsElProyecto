@@ -20,11 +20,17 @@
       </tr>
     <% end %>
   </table>
-    <%= submit_tag "Crear Asistencias", class:"btn btn-primary btn-xl"%>
+    <%if @users.present?%>
+      <%= submit_tag "Crear Asistencias", class:"btn btn-primary btn-xl"%>
+    <%else%>
+    <h3>No hay alumnos en el curso</h3>
+    <%end%>
 <% end %>
 <br>
-<div class="panel-footer">
-<%= link_to "/profesor/presences/#{@users.last.cursos.last.id}/asists", class: 'btn btn-success' do %>
-  <%= fa_icon 'list', text: t(:list) +'a de Asignaturas' %>
-<% end %>
-</div>
+<%if @users.present?%>
+    <div class="panel-footer">
+          <%= link_to "/profesor/presences/#{@users.last.cursos.last.id}/asists", class: 'btn btn-success' do %>
+            <%= fa_icon 'list', text: t(:list) +'a de Asignaturas' %>
+          <% end %>
+    </div>
+<%end%>
