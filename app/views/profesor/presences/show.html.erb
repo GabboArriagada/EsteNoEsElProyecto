@@ -33,4 +33,10 @@
             <%= fa_icon 'list', text: t(:list) +'a de Asignaturas' %>
           <% end %>
     </div>
+    <%else%>
+    <div class="panel-footer">
+          <%= link_to "/profesor/presences", class: 'btn btn-success' do %>
+            <%= fa_icon 'list', text: t(:list) +'a de Cursos' %>
+          <% end %>
+    </div>
 <%end%>
