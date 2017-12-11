@@ -33,12 +33,12 @@
                 <tr>
                   <td><%= alumno.name %> <%= alumno.last_name %></td>
                   <td>
-                    <%= link_to new_profesor_nota_path(user: alumno, asignatura: @asignatura) do %>
+                    <%= link_to new_profesor_nota_path(user: alumno, asignatura: @asignatura), class: 'btn btn-default' do %>
                       <%= fa_icon 'hand-pointer-o', text: 'Ingresar' %>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to notas_profesor_asignatura_path(user: alumno, asignatura: @asignatura) do %>
+                    <%= link_to notas_profesor_asignatura_path(user: alumno, asignatura: @asignatura), class: 'btn btn-default' do %>
                       <%= fa_icon 'search', text: 'Ver' %>
                     <% end %>
                   </td>
@@ -94,8 +94,8 @@
 
 
 <div class="panel-footer">
-  <%= link_to profesor_curso_path(@asignatura.curso.id), class: 'btn btn-success' do %>
-    <%= fa_icon 'arrow-circle-left', text: t(:Lista)+' de asignaturas'%>
+  <%= link_to profesor_curso_path(@asignatura.curso.id), class: 'btn btn-primary' do %>
+    <%= fa_icon 'arrow-circle-left', text: 'Atrás'%>
   <% end %>
 </div>
 <br>

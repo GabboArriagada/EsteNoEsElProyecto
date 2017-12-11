@@ -8,12 +8,12 @@
     <%if @cursos.present? %>
     <%= f.input :curso_id, collection: @cursos.all.collect{|a|[a.grado.to_s+'° '+a.letra_codigo,a.id]}, required: true %>
     <div class="form-actions">
-      <%= f.button :submit, 'Crear Asignatura', class: "btn btn-primary" %>
+      <%= f.button :submit, 'Crear Asignatura', class: "btn btn-success" %>
     </div>
     <%else%>
     <h4>No puede crear asignatura, debe tener cursos al cual asignar</h4>
     <div class="form-actions">
-      <%= f.button :submit, 'Crear Asignatura',disabled: true, class: "btn btn-primary" %>
+      <%= f.button :submit, 'Crear Asignatura',disabled: true, class: 'btn btn-danger'%>
     </div>
     <%end%>
 
@@ -22,7 +22,7 @@
 <% end %>
 <br>
 <div class="panel-footer">
-  <%= link_to god_asignaturas_path(@asignatura), class: 'btn btn-success' do %>
-    <%= fa_icon 'arrow-circle-left', text: t(:list) +'a de asignaturas' %>
+  <%= link_to god_asignaturas_path(@asignatura), class: 'btn btn-primary' do %>
+    <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
   <% end %>
 </div>

@@ -1,5 +1,5 @@
-<h1>Lista asignaturas</h1>
-<%= link_to new_god_asignatura_path, class: 'btn btn-primary' do %>
+<h3>Lista asignaturas</h3><br>
+<%= link_to new_god_asignatura_path, class: 'btn btn-success' do %>
   <%= fa_icon 'plus', text: "Crear asignatura" %>
 <% end %><br><br>
 <table class="table table-bordered table-striped">
@@ -9,7 +9,7 @@
       <th>Nombre</th>
       <th>Curso</th>
       <th>Año</th>
-      <th>assignar</th>
+      <th>asignar</th>
 
     </tr>
   </thead>
@@ -24,7 +24,7 @@
           <td>No tiene curso asignado</td>
           <%end%>
         <td><%= asignatura.año %></td>
-        <td><%= link_to 'asignar alumnos o profesor', god_asignatura_path(asignatura) %></td>
+        <td><%= link_to 'asignar alumnos o profesor', god_asignatura_path(asignatura), class: 'btn btn-default'%></td>
 
 
 

@@ -1,4 +1,4 @@
-<h1>Lista De usuarios</h1>
+<h3>Lista De usuarios</h3><br><br>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -23,19 +23,19 @@
         <td><%= user.email %></td>
         <td><%= user.roles.pluck(:name).join(", ") %></td>
         <% if user.has_role? :profesor %>
-          <td><%= link_to 'quitar rol', god_user_removeprofesor_path('user' => user.id),:method => "post" %></td>
+          <td><%= link_to 'quitar rol', god_user_removeprofesor_path('user' => user.id),:method => "post",class: 'btn btn-danger'%></td>
         <% else %>
-          <td><%= link_to 'asignar', god_user_toprofesor_path('user' => user.id),:method => "post" %></td>
+          <td><%= link_to 'asignar', god_user_toprofesor_path('user' => user.id),:method => "post" ,class: 'btn btn-success'%></td>
         <% end %>
         <% if user.has_role? :alumno %>
-          <td><%= link_to 'quitar rol', god_user_removealumno_path('user' => user.id),:method => "post" %></td>
+          <td><%= link_to 'quitar rol', god_user_removealumno_path('user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
         <% else %>
-          <td><%= link_to 'asignar', god_user_toalumno_path('user' => user.id),:method => "post" %></td>
+          <td><%= link_to 'asignar', god_user_toalumno_path('user' => user.id),:method => "post",class: 'btn btn-success' %></td>
         <% end %>
         <% if user.has_role? :admin %>
-          <td><%= link_to 'quitar rol', god_user_removeadmin_path('user' => user.id),:method => "post" %></td>
+          <td><%= link_to 'quitar rol', god_user_removeadmin_path('user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
         <% else %>
-          <td><%= link_to 'asignar', god_user_toadmin_path('user' => user.id),:method => "post"  %></td>
+          <td><%= link_to 'asignar', god_user_toadmin_path('user' => user.id),:method => "post",class: 'btn btn-success'  %></td>
         <% end %>
 
 

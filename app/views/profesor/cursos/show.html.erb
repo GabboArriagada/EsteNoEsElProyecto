@@ -13,7 +13,7 @@
       <tr>
         <td><%= asignatura.nombre.titleize %></td>
         <td>
-          <%= link_to profesor_asignatura_path(asignatura) do %>
+          <%= link_to profesor_asignatura_path(asignatura),class: 'btn btn-default' do %>
             <%= fa_icon 'search', text: 'Ver' %>
           <% end %>
         </td>
@@ -23,8 +23,8 @@
 </table>
 </div>
 <div class="panel-footer">
-  <%= link_to profesor_notas_path, class: 'btn btn-success' do %>
-    <%= fa_icon 'arrow-circle-left', text: t(:list) +'a de cursos' %>
+  <%= link_to profesor_notas_path, class: 'btn btn-primary' do %>
+    <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
   <% end %>
 </div>
 <br>

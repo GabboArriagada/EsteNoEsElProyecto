@@ -1,19 +1,22 @@
-  <h1>Asignatura <%= @asignatura.nombre %>
+  <h3>Asignatura <%= @asignatura.nombre %>
     <%if @asignatura.curso.present?%>
-      <%=@asignatura.curso.grado%> <%=@asignatura.curso.letra_codigo%>
+      <%=@asignatura.curso.grado%>°<%=@asignatura.curso.letra_codigo%>
       <%else%>
       <td>Sin curso asignado</td>
       <%end%>
-    <%=@asignatura.año%></h1>
+    <%=@asignatura.año%></h3><br>
   <% if defined?@profesor_assigned %>
-      <h2>Profesor asignado:
+      <h3>Profesor asignado:
     <% @profesor_assigned.each do |user| %>
       <%= user.name%>
       <%= user.last_name%>
-      </h2>
+    </h3><br>
     <% end %>
   <% else %>
     <h2>Sin Profesor Asignado</h2>
+  <% end %>
+  <%=link_to god_asignaturas_path, class: 'btn btn-primary' do %>
+    <%= fa_icon 'arrow-left', text: "Atrás" %>
   <% end %>
   <h4>Alumnos de la asignatura</h4>
   <table class="table table-bordered table-striped">
@@ -34,7 +37,7 @@
         <td><%= user.name %></td>
         <td><%= user.rut %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" %></td>
+        <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" ,class: 'btn btn-danger'%></td>
       </tr>
     <% end %>
   </tbody>
@@ -61,7 +64,7 @@
         <td><%= user.name %></td>
         <td><%= user.rut %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" %></td>
+        <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post",class: 'btn btn-success' %></td>
       </tr>
       <% end %>
     <% end %>
@@ -87,9 +90,9 @@
         <td><%= user.rut %></td>
         <td><%= user.email %></td>
         <% if   @asignatura.users.exists?(:id => user.id) %>
-        <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" %></td>
+        <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
         <% else %>
-        <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" %></td>
+        <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" ,class: 'btn btn-success'%></td>
         <% end %>
         </tr>
     <% end %>

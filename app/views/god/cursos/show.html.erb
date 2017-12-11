@@ -1,11 +1,13 @@
-  <h1>Asignación al curso <%= @curso.grado %>°<%=@curso.letra_codigo%> de alumnos y profesores</h1><br>
+  <h3>Asignación al curso <%= @curso.grado %>°<%=@curso.letra_codigo%> de alumnos y profesores</h3><br><br>
   <% if defined?@profesor_assigned %>
     <% @profesor_assigned.each do |user| %>
     <% end %>
   <% else %>
     <h2>Sin Profesor Asignado</h2>
   <% end %>
-
+<%=link_to god_cursos_path, class: 'btn btn-primary' do %>
+  <%= fa_icon 'arrow-left', text: "Atrás" %>
+<% end %>
 <h4>Profesores del curso</h4>
 <%if @profesor_assigned.present?%>
       <table class="table table-bordered table-striped">
@@ -26,7 +28,7 @@
             <td><%= user.name %></td>
             <td><%= user.rut %></td>
             <td><%= user.email %></td>
-            <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
+            <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
           </tr>
           <% end %>
         </tbody>
@@ -54,7 +56,7 @@
                 <td><%= user.name %></td>
                 <td><%= user.rut %></td>
                 <td><%= user.email %></td>
-                <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
+                <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
               </tr>
             <% end %>
           </tbody>
@@ -83,7 +85,7 @@
         <td><%= user.name %></td>
         <td><%= user.rut %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'asignar', god_cursos_asignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
+        <td><%= link_to 'asignar', god_cursos_asignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-success' %></td>
       </tr>
       <% end %>
     <% end %>
@@ -109,9 +111,9 @@
         <td><%= user.rut %></td>
         <td><%= user.email %></td>
         <% if   @curso.users.exists?(:id => user.id) %>
-        <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
+        <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
         <% else %>
-        <td><%= link_to 'asignar', god_cursos_asignar_path('curso' => @curso.id, 'user' => user.id),:method => "post" %></td>
+        <td><%= link_to 'asignar', god_cursos_asignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-success' %></td>
         <% end %>
         </tr>
     <% end %>

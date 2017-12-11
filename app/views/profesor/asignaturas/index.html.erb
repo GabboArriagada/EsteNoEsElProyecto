@@ -17,7 +17,7 @@
         <% curso.asignaturas.each do |asignatura| %>
         <tr>
           <td><%= asignatura.nombre.titleize %></td>
-          <td><%= link_to new_profesor_post_path(asignatura: asignatura) do %>
+          <td><%= link_to new_profesor_post_path(asignatura: asignatura), class:'btn btn-default' do %>
               <%= fa_icon 'upload', text: 'Subir Archivo' %>
               <% end %></td>
         </tr>

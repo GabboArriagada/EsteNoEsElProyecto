@@ -13,7 +13,7 @@
       <tr>
         <td><%= nota.nombre.titleize %></td>
         <td>
-          <%= link_to alumno_notas_show_nota_path(asignatura: nota) do %>
+          <%= link_to alumno_notas_show_nota_path(asignatura: nota), class: 'btn btn-default' do %>
             <%= fa_icon 'search', text: 'Ver' %>
           <% end %>
         </td>
