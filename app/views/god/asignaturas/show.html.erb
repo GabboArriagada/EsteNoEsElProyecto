@@ -1,5 +1,9 @@
-  <h1>Vista del asignatura <%= @asignatura.nombre %>
-    <%=@asignatura.curso.grado%> <%=@asignatura.curso.letra_codigo%>
+  <h1>Asignatura <%= @asignatura.nombre %>
+    <%if @asignatura.curso.present?%>
+      <%=@asignatura.curso.grado%> <%=@asignatura.curso.letra_codigo%>
+      <%else%>
+      <td>Sin curso asignado</td>
+      <%end%>
     <%=@asignatura.año%></h1>
   <% if defined?@profesor_assigned %>
       <h2>Profesor asignado:
