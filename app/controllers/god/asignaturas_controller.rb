@@ -11,11 +11,12 @@ class God::AsignaturasController < ApplicationController
     @alumnos_assigned = @asignatura.users.with_role:alumno
     @alumnos = User.with_role:alumno
     @profesores = User.with_role:profesor
-    @cursos = Curso.all
+    @cursos = Curso.where(año: @asignatura.año)
   end
 
   def new
     @asignatura = Asignatura.new
+    @cursos = Curso.where(año: @asignatura.año)
   end
 
   def create
@@ -78,7 +79,7 @@ class God::AsignaturasController < ApplicationController
 
   private
   def asignatura_params
-    params.required(:asignatura).permit(:nombre,:año)
+    params.required(:asignatura).permit(:nombre,:año,:curso_id)
   end
     def authenticate_admin
       unless current_user.has_role? :admin

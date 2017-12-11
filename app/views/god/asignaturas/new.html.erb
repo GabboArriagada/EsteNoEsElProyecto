@@ -5,6 +5,7 @@
   <% porcentaje = 0 %>
   <div class="form-inputs">
     <%= f.input :nombre, placeholder: 'Ej: Ciencias sociales', required: true %>
+    <%= f.input :curso_id, collection: @cursos, required: true %>
     <%= f.input :año, :as => :hidden, :input_html =>{:value => Date.current.year } , required:true %>
   </div>
 
