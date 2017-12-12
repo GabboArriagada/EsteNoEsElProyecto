@@ -21,6 +21,10 @@ class God::AsignaturasController < ApplicationController
 
   def create
     @asignatura = Asignatura.new(asignatura_params)
+    @curso = Curso.find(@asignatura.curso_id)
+    @curso.users.each do |user|
+      @asignatura.users << user
+    end
     respond_to do |format|
       if @asignatura.save
         format.html { redirect_to god_asignaturas_path, notice: 'La asignatura ha sido ingresada' }
