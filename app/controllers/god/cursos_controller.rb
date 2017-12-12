@@ -47,6 +47,10 @@ class God::CursosController < ApplicationController
   def asignar
     @curso = Curso.find(params[:curso])
     @user = User.find(params[:user])
+    @asignaturas = Asignatura.where(curso_id: @curso.id)
+    @asignaturas.each do |asignatura|
+      asignatura.users << @user
+    end
     @user.curso_id = @curso.id
     @user.save
     if @curso.users.exists?(:id => @user.id)
@@ -60,6 +64,10 @@ class God::CursosController < ApplicationController
   def desasignar
     @curso = Curso.find(params[:curso])
     @user = User.find(params[:user])
+    @asignaturas = Asignatura.where(curso_id: @curso.id)
+    @asignaturas.each do |asignatura|
+      asignatura.users.delete(@user)
+    end
     @curso.users.delete(@user)
     @user.curso_id = nil
     @user.save
