@@ -28,7 +28,7 @@ class God::UserController < ApplicationController
     redirect_to action: "index"
   end
 
-  def toaadmin
+  def toadmin
     @user = User.find(params[:user])
     @user.add_role(:admin)
     redirect_to action: "index"

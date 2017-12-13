@@ -48,8 +48,10 @@ class God::CursosController < ApplicationController
     @curso = Curso.find(params[:curso])
     @user = User.find(params[:user])
     @asignaturas = Asignatura.where(curso_id: @curso.id)
-    @asignaturas.each do |asignatura|
-      asignatura.users << @user
+    if @user.has_role? :alumno
+      @asignaturas.each do |asignatura|
+        asignatura.users << @user
+      end
     end
     @user.curso_id = @curso.id
     @user.save
