@@ -399,7 +399,7 @@ html, body {
 body {
   padding-top: 60px;
   background: no-repeat center center fixed;
-  background-image: image-url("background.jpg");
+  background-image: image-url("fondo.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -962,7 +962,7 @@ textarea{
     margin:3px;
     padding:0 1em;
     line-height:2em;
-    color:#ffffff;
+        color:#ffffff;
     font-weight:700;
     position:relative
 }
