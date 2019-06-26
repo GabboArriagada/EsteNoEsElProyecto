@@ -1,0 +1,26 @@
+<%unless type == "timedout"%>
+  <div class="alert
+  <%=
+    case type.to_sym
+      when :alert, :danger, :error, :validation_errors
+        'alert-danger'
+      when :warning, :todo
+        'alert-warning'
+      when :success
+        'alert-success'
+      when :notice
+        'alert-info'
+    end
+  %>
+       alert-dismissible" role="alert">
+<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <% if content.respond_to? :each %>
+      <% content.each do |message| %>
+
+        <span class="glyphicon glyphicon-<%= bootstrap_icon_for(type.to_sym) %>"></span> <%= message %><br>
+        <% end %>
+    <% else %>
+    <span class="glyphicon glyphicon-<%= bootstrap_icon_for(type.to_sym) %>"></span> <%= content %><br>
+    <% end %>
+  </div>
+<%end%>

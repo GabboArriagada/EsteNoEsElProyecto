@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/TrevorS/bootstrap3-datetimepicker-rails.git
+  revision: 2934715911658f0ad00747711774b0f880797dea
+  specs:
+    bootstrap3-datetimepicker-rails (4.17.47)
+      momentjs-rails (>= 2.8.1)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -50,6 +57,8 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootswatch-rails (3.3.5)
+      railties (>= 3.1)
     builder (3.2.3)
     byebug (9.0.6)
     cancan (1.6.10)
@@ -101,6 +110,7 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    devise-bootstrap-views (1.1.0)
     devise-i18n (1.1.1)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -146,6 +156,8 @@ GEM
     mini_magick (4.8.0)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    momentjs-rails (2.20.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     nested_form (0.3.2)
     net-scp (1.2.1)
@@ -303,6 +315,8 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   bootstrap-sass
+  bootstrap3-datetimepicker-rails!
+  bootswatch-rails
   byebug
   cancan
   capistrano
@@ -319,10 +333,11 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   devise
+  devise-bootstrap-views
   devise-i18n
   faker
   figaro
-  font-awesome-rails (~> 4.7.0.0)
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -356,4 +371,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.16.0
+   1.17.3

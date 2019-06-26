@@ -1,73 +1,32 @@
-<!DOCTYPE html>
-<html lang="es">
-<%= render "partials/header" %>
+<html lang="en">
 <body background="https://www.phc-law.com/wp-content/uploads/2013/06/Background-opera-speeddials-community-web-simple-backgrounds.jpg" data-spy="scroll" data-target=".navbar" data-offset="50">
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
+<head>
+  <title>REMP</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%if user_signed_in?%>
+  <%=render "partials/header"%>
+  <%end%>
+</head>
+<body>
+
+  <%if user_signed_in?%>
+
+  <%end%>
+
+  <div class="container">
     <div id="div_alertas"></div>
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <% if user_signed_in? %>
+    <% flash.each do |type, content| %>
+      <%if !content.blank? %>
+      <%= render 'layouts/alert', type: type, content: content %>
+      <% end %>
+    <% end %>
+
+    <%= yield %>
 
 
-        <div class="hamburger" id="menu-toggle" role="button">
-          <div class="hamburger-box">
-            <div class="hamburger-inner"></div>
-          </div>
-        </div>
-
-
-      <%end%>
-
-      <!--<a class="navbar-brand">Proyecto Colegio</a>-->
-
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href=/inicio>INICIO</a></li>
-
-        <!--<li><a href=/admin/panel>PANEL DE CONTROL</a></li>
-        <li><a href="#menu-toggle" id="menu-toggle">EXP./CONT. PANEL</a></li>
-        -->
-
-        <% if user_signed_in? %>
-        <li><%= link_to destroy_user_session_path, method: :delete do%>
-          <%= fa_icon 'power-off', text: 'CERRAR SESIÓN' %>
-        <% end %>
-        </li>
-        <%else%>
-        <li><a href=/users/sign_in>INGRESAR</a></li>
-        <%end%>
-        <li><a href=/contacts/new>CONTACTO</a></li>
-      </ul>
-    </div>
+    <div id="modals"></div>
   </div>
-</nav>
-</div>
-<% if user_signed_in? %>
-<%=render "partials/menu"%>
-<%end%>
-
-
-
-
-<br>
-<br>
-<div id="notice_wrapper">
-  <% if notice %>
-     <p class="notice"><%= notice %></p>
-  <% elsif alert %>
-     <p class="alert"><%= alert %></p>
-  <% end %>
-</div>
-<section><p>
-<%= yield %>
-</p></section>
-
-<% debug(params) if Rails.env.development? %>
 </body>
 </html>
