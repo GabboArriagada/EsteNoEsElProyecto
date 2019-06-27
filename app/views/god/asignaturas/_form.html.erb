@@ -44,7 +44,7 @@
 
               <tbody class="pos_ventas" id="nested_pos_venta">
                 <%=f.simple_fields_for :bloques do |f|%>
-                  <%=render 'bloque_fields', f: f%>
+                  <%=render 'bloque_fields', :f => f%>
                 <%end%>
               </tbody>
           </table>

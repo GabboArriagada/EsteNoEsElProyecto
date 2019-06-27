@@ -20,10 +20,14 @@ class God::AsignaturasController < ApplicationController
     @hora_inicio = ["08:10","08:55","10:00","10:45","11:40","12:25","13:10","14:40","15:20"]
     @hora_fin = ["08:55","09:40","10:45","11:30","12:25","13:10","13:55","15:25","16:10"]
     @asignatura = Asignatura.new
+    bloque = @asignatura.bloques.build
     @cursos = Curso.where(año: Date.current.year)
   end
 
   def create
+    @dias_semana = ["Lunes","Martes","Miercoles","Jueves","Viernes"]
+    @hora_inicio = ["08:10","08:55","10:00","10:45","11:40","12:25","13:10","14:40","15:20"]
+    @hora_fin = ["08:55","09:40","10:45","11:30","12:25","13:10","13:55","15:25","16:10"]
     @asignatura = Asignatura.new(asignatura_params)
     @curso = Curso.find(@asignatura.curso_id)
     @curso.users.each do |user|
@@ -73,7 +77,7 @@ class God::AsignaturasController < ApplicationController
 
   private
   def asignatura_params
-    params.required(:asignatura).permit(:nombre,:año,:curso_id)
+    params.required(:asignatura).permit(:nombre,:año,:curso_id, :bloques_attributes => [:id, :_destroy, :dia, :asignatura_id, :hora_inicio, :hora_fin])
   end
     def authenticate_admin
       unless current_user.has_role? :admin
