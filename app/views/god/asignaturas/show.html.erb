@@ -1,99 +1,129 @@
-  <h3>Asignatura <%= @asignatura.nombre %>
-    <%if @asignatura.curso.present?%>
-      <%=@asignatura.curso.grado%>°<%=@asignatura.curso.letra_codigo%>
-      <%else%>
-      <td>Sin curso asignado</td>
-      <%end%>
-    <%=@asignatura.año%></h3><br>
-  <% if defined?@profesor_assigned %>
-      <h3>Profesor asignado:
-    <% @profesor_assigned.each do |user| %>
-      <%= user.name%>
-      <%= user.last_name%>
-    <% end %></h3><br>
-  <% else %>
-    <h2>Sin Profesor Asignado</h2><br>
-  <% end %><br>
-  <%=link_to god_asignaturas_path, class: 'btn btn-primary' do %>
-    <%= fa_icon 'arrow-left', text: "Atrás" %>
-  <% end %>
-  <h4>Alumnos de la asignatura</h4>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Apellido</th>
-        <th>Nombre</th>
-        <th>Rut</th>
-        <th>Correo</th>
-        <th>acciones</th>
-      </tr>
-    </thead>
+<div class="page-header clearfix">
+  <h3>
+    Profesor asignado:
+  <% @profesor_assigned.each do |user| %>
+    <%= user.name%>
+    <%= user.last_name%>
+  <% end %><%= '    -     '%>
+<%if @asignatura.curso.present?%>
+  <%=@asignatura.curso.grado%>°<%=@asignatura.curso.letra_codigo%>
+  <%else%>
+  <td>Sin curso asignado</td>
+  <%end%>
+<%=@asignatura.nombre%>
+</h3>
+</div>
 
-    <tbody>
-      <% @alumnos_assigned.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.name %></td>
-        <td><%= user.rut %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" ,class: 'btn btn-danger'%></td>
-      </tr>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Alumnos de la asignatura
+    </h4>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-bordered table-striped">
+
+          <thead>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Rut</th>
+            <th>Correo</th>
+            <th>acciones</th>
+
+          </thead>
+          <tbody>
+            <% @alumnos_assigned.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.last_name %></td>
+              <td><%= user.rut %></td>
+              <td><%= user.email %></td>
+              <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" ,class: 'btn btn-danger'%></td>
+            </tr>
+          <% end %>
+          </tbody>
+
+      </table>
+    </div>
+  </div>
+
+
+
+  <div class="panel-heading">
+    <h4>Asignar alumnos
+    </h4>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-bordered table-striped">
+
+          <thead>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Rut</th>
+            <th>Correo</th>
+            <th>acciones</th>
+
+          </thead>
+          <tbody>
+            <% @alumnos.each do |user| %>
+              <% if @asignatura.users.exists?(:id => user.id) %>
+              <% else %>
+              <tr>
+                <td><%= user.name %></td>
+                <td><%= user.last_name %></td>
+                <td><%= user.rut %></td>
+                <td><%= user.email %></td>
+                <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post",class: 'btn btn-success' %></td>
+              </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel-heading">
+    <h4>Asignar Profesor
+    </h4>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-bordered table-striped">
+
+        <thead>
+          <tr>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>Rut</th>
+            <th>Correo</th>
+            <th>acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @profesores.each do |user| %>
+            <tr>
+              <td><%= user.last_name %></td>
+              <td><%= user.name %></td>
+              <td><%= user.rut %></td>
+              <td><%= user.email %></td>
+              <% if   @asignatura.users.exists?(:id => user.id) %>
+              <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
+              <% else %>
+              <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" ,class: 'btn btn-success'%></td>
+              <% end %>
+              </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="panel-footer">
+    <%=link_to god_asignaturas_path, class: 'btn btn-primary' do %>
+      <%= fa_icon 'arrow-left', text: "Atrás" %>
     <% end %>
-  </tbody>
-</table>
+</div>
 
-<h4>Asignar Alumno</h4>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Apellido</th>
-      <th>Nombre</th>
-      <th>Rut</th>
-      <th>Correo</th>
-      <th>acciones</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @alumnos.each do |user| %>
-      <% if @asignatura.users.exists?(:id => user.id) %>
-      <% else %>
-      <tr>
-        <td><%= user.last_name %></td>
-        <td><%= user.name %></td>
-        <td><%= user.rut %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post",class: 'btn btn-success' %></td>
-      </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-<h4>Asignar Profesor</h4>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Apellido</th>
-      <th>Nombre</th>
-      <th>Rut</th>
-      <th>Correo</th>
-      <th>acciones</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @profesores.each do |user| %>
-      <tr>
-        <td><%= user.last_name %></td>
-        <td><%= user.name %></td>
-        <td><%= user.rut %></td>
-        <td><%= user.email %></td>
-        <% if   @asignatura.users.exists?(:id => user.id) %>
-        <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
-        <% else %>
-        <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" ,class: 'btn btn-success'%></td>
-        <% end %>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
