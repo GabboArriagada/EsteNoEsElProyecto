@@ -1,14 +1,21 @@
-<h3>Asignatura <%= @asignatura.nombre.titleize %></h3>
-<br><br>
-<div class="panel panel-default">
+<div class="page-header clearfix">
+  <h3>Asignatura
+    <%= @asignatura.nombre.titleize %>
+    <small><%= 'Listar cursos' %></small>
+  </h3>
+</div>
 
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <br>
+  </div>
   <div class="tabs">
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
         <a href="#cabecera" aria-controls="cabecera" role="tab" data-toggle="tab" id="ficha">Alumnos</a>
       </li>
       <li role="presentation">
-        <a href="#archivos" aria-controls="archivos" role="tab" data-toggle="tab" >Archivos</a>
+        <a href="#archivos" aria-controls="archivos" role="tab" data-toggle="tab">Archivos</a>
       </li>
     </ul>
   </div>
@@ -31,74 +38,69 @@
             <tbody>
               <% @alumnos.each do |alumno| %>
                 <tr>
-                  <td><%= alumno.name %> <%= alumno.last_name %></td>
+                  <td><%= alumno.name %>
+                    <%= alumno.last_name %></td>
                   <td>
-                    <%= link_to new_profesor_nota_path(user: alumno, asignatura: @asignatura), class: 'btn btn-default' do %>
-                      <%= fa_icon 'hand-pointer-o', text: 'Ingresar' %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= link_to notas_profesor_asignatura_path(user: alumno, asignatura: @asignatura), class: 'btn btn-default' do %>
-                      <%= fa_icon 'search', text: 'Ver' %>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-
-      <!-- Archivos -->
-      <div role="tabpanel" class="tab-pane" id="archivos">
-        <div class="table-responsive">
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>N°</th>
-                <th>Título</th>
-                <th>Descripción</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <%@asignatura.posts.each_with_index do |post, numero|%>
-                <tr>
-                  <td>
-                    <%= numero+1%>
-                  </td>
-                  <td>
-                    <%= post.title %>
-                  </td>
-                  <td>
-                    <%= post.description%>
-                  </td>
-                  <td>
-                    <%= link_to profesor_post_path(post), method: :delete,data: { confirm: '¿Estás seguro?' } do %>
-                      <%= fa_icon 'trash', text: 'Eliminar' %>
-                    <% end %>
-                  </td>
-                </tr>
-              <%end%>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-
-      </div>
+                    <%= link_to new_profesor_nota_path(user: alumno, asignatura: @asignatura), class: 'btn btn-success' do %>
+                    <%= fa_icon 'hand-pointer-o', text: 'Ingresar' %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to notas_profesor_asignatura_path(user: alumno, asignatura: @asignatura), class: 'btn btn-success' do %>
+                  <%= fa_icon 'search', text: 'Ver' %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
 
   </div>
 
+  <!-- Archivos -->
+  <div role="tabpanel" class="tab-pane" id="archivos">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@asignatura.posts.each_with_index do |post, numero|%>
+            <tr>
+              <td>
+                <%= numero+1%>
+              </td>
+              <td>
+                <%= post.title %>
+              </td>
+              <td>
+                <%= post.description%>
+              </td>
+              <td>
+                <%= link_to profesor_post_path(post), method: :delete,data: { confirm: '¿Estás seguro?' } do %>
+                <%= fa_icon 'trash', text: 'Eliminar' %>
+              <% end %>
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</div>
+</div>
 
 <div class="panel-footer">
-  <%= link_to profesor_curso_path(@asignatura.curso.id), class: 'btn btn-primary' do %>
-    <%= fa_icon 'arrow-circle-left', text: 'Atrás'%>
-  <% end %>
+<%= link_to profesor_curso_path(@asignatura.curso.id), class: 'btn btn-primary' do %>
+<%= fa_icon 'arrow-circle-left', text: 'Atrás'%>
+<% end %>
 </div>
-<br>
-<br>
-<br>
-<br>
+</div>

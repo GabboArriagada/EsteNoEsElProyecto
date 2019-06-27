@@ -1,31 +1,38 @@
-<h3>Ingresar Notas</h3>
-<br><br>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Cursos</th>
-      <th>Notas</th>
-    </tr>
-  </thead>
+<div class="page-header clearfix">
+  <h3><%= fa_icon 'leanpub' %>
+    <%= 'Notas' %>
+  </h3>
+</div>
 
-  <tbody>
-    <% @cursos.each do |curso| %>
-      <tr>
-        <td><%= curso.grado %>°<%= curso.letra_codigo %></td>
-        <td>
-          <%= link_to profesor_curso_path(curso), class: 'btn btn-default' do %>
-            <%= fa_icon 'search', text: 'Ver' %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="panel panel-default" id="table_clientes">
+  <div class="panel-heading clearfix"></div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+  <div class="panel-body">
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr class="pretty">
+            <th>Cursos</th>
+            <th>Notas</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @cursos.each do |curso| %>
+            <tr>
+              <td><%= curso.grado %>°<%= curso.letra_codigo %></td>
+              <td>
+                <%= link_to profesor_curso_path(curso), class: 'btn btn-success' do %>
+                <%= fa_icon 'search', text: 'Ver' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<div class="panel-footer"></div>
+</div>
