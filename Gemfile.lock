@@ -54,6 +54,9 @@ GEM
     awesome_print (1.8.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -138,6 +141,9 @@ GEM
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kaminari-i18n (0.5.0)
+      kaminari
+      rails
     libv8 (3.16.14.19)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -314,6 +320,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bootstrap-kaminari-views
   bootstrap-sass
   bootstrap3-datetimepicker-rails!
   bootswatch-rails
@@ -340,6 +347,8 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
+  kaminari
+  kaminari-i18n
   listen (~> 3.0.5)
   mail_form
   mini_magick

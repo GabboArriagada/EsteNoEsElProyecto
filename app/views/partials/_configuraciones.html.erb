@@ -1,0 +1,26 @@
+<ul class="nav navbar-nav">
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      <%= fa_icon 'cog', text: 'Configuraciones',class:"padding-right" %> <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to god_user_index_path do %>
+          <%= fa_icon 'file-text',class:"icon-fixed-width", text: 'Manejo de roles' %>
+        <% end %>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <%= link_to god_cursos_path do %>
+          <%= fa_icon 'file-text',class:"icon-fixed-width", text: 'Cursos' %>
+        <% end %>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <%= link_to god_asignaturas_path do %>
+          <%= fa_icon 'file-text',class:"icon-fixed-width", text: 'Asignaturas' %>
+        <% end %>
+      </li>
+    </ul>
+  </li>
+</ul>

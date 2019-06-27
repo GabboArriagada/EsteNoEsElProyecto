@@ -3,7 +3,8 @@ class God::CursosController < ApplicationController
   before_action :authenticate_admin
 
   def index
-    @cursos = Curso.all
+    @cursos = Curso.all.order(grado: :desc)
+    @cursos = Curso.page params[:page]
   end
   def show
     @curso = Curso.find(params[:id])

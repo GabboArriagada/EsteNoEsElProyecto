@@ -14,44 +14,15 @@
 
   </div>
     <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <%= fa_icon 'bar-chart', text: 'Venta',class:"padding-right" %> <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <%= link_to root_path do %>
-                <%= fa_icon 'file-text',class:"icon-fixed-width", text: 'Documentos' %>
-              <% end %>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to root_path do %>
-                <%= fa_icon 'file-text',class:"icon-fixed-width", text: 'Guia de Despacho' %>
-              <% end %>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to root_path do %>
-                <%= fa_icon 'file-text',class:"icon-fixed-width", text: 'Orden de Trabajo' %>
-              <% end %>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to root_path do %>
-                <%= fa_icon 'file-text',class:"icon-fixed-width", text: 'Boleta' %>
-              <% end %>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to root_path do %>
-                <%= fa_icon 'file-text',class:"icon-fixed-width", text: 'Facturación' %>
-              <% end %>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      <% if current_user.has_role? :profesor %>
+      <%=render "partials/cursos"%>
+        <% end %>
+      <% if current_user.has_role? :alumno %>
+      <%=render "partials/utilidades"%>
+      <% end %>
+      <% if current_user.has_role? :admin %>
+      <%=render "partials/configuraciones"%>
+      <% end %>
         <div class="navbar-right">
           <ul class="nav navbar-nav">
             <li class="dropdown">
@@ -61,13 +32,13 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
-                <%= link_to edit_user_password_path(current_user) do %>
-                  <%= fa_icon 'pencil', text: 'Cambiar Contraseña' %>
+                <%= link_to edit_user_registration_path do %>
+                  <%= fa_icon 'pencil', text: 'Actualizar datos' %>
                 <% end %>
               </li>
               <li>
                 <%= link_to destroy_user_session_path, :method => :delete do %>
-                  <%= fa_icon 'sign-out', text: t(:log_out) %>
+                  <%= fa_icon 'sign-out', text: 'Cerrar sesión' %>
                 <% end %>
               </li>
             </ul>

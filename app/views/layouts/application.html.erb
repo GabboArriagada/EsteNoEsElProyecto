@@ -1,19 +1,18 @@
 <html lang="en">
-<body background="https://www.phc-law.com/wp-content/uploads/2013/06/Background-opera-speeddials-community-web-simple-backgrounds.jpg" data-spy="scroll" data-target=".navbar" data-offset="50">
+
 <head>
   <title>REMP</title>
-  <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   <%if user_signed_in?%>
   <%=render "partials/header"%>
   <%end%>
 </head>
 <body>
+  
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <%if user_signed_in?%>
-
-  <%end%>
 
   <div class="container">
     <div id="div_alertas"></div>
