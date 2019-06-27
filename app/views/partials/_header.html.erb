@@ -14,15 +14,13 @@
 
   </div>
     <div id="navbar" class="collapse navbar-collapse">
-      <% if current_user.has_role? :profesor %>
+
       <%=render "partials/cursos"%>
-        <% end %>
-      <% if current_user.has_role? :alumno %>
+
       <%=render "partials/utilidades"%>
-      <% end %>
-      <% if current_user.has_role? :admin %>
+
       <%=render "partials/configuraciones"%>
-      <% end %>
+  
         <div class="navbar-right">
           <ul class="nav navbar-nav">
             <li class="dropdown">
