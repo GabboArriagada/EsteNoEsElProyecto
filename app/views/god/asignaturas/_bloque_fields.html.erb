@@ -3,10 +3,10 @@
     <%=f.select :dia, @dias_semana.collect{|x|[x, x]}, {}, class: "form-control"%>
   </td>
   <td>
-    <%=f.select :hora_inicio, @hora_inicio.collect{|x|[x, x]}, {}, class: "form-control"%>
+    <%=f.select :numero_bloque, @numero_bloque.collect{|x|[x, x]}, {}, class: "form-control"%>
   </td>
   <td>
-    <%=f.select :hora_fin, @hora_fin.collect{|x|[x, x]}, {}, class: "form-control"%>
+
   </td>
   <td>
     <%=link_to_remove_association f, class: 'btn btn-danger btn-sm' do%>

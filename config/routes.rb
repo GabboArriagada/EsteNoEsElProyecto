@@ -5,6 +5,7 @@ mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 resources :posts
 resources :asignaturas
 resources :cursos
+match 'curso/horario' => 'curso#horario', via: :get
 resources :contacts, only: [:new, :create]
 
 resources :asignaturas do
@@ -36,6 +37,7 @@ namespace :profesor do
   end
   resources :notas
   resources :cursos
+
   resources :asignaturas do
     member do
       get :notas

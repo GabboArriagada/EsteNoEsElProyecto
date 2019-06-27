@@ -19,12 +19,14 @@ class God::AsignaturasController < ApplicationController
     @dias_semana = ["Lunes","Martes","Miercoles","Jueves","Viernes"]
     @hora_inicio = ["08:10","08:55","10:00","10:45","11:40","12:25","13:10","14:40","15:20"]
     @hora_fin = ["08:55","09:40","10:45","11:30","12:25","13:10","13:55","15:25","16:10"]
+    @numero_bloque = [1,2,3,4,5,6,7,8,9]
     @asignatura = Asignatura.new
     bloque = @asignatura.bloques.build
     @cursos = Curso.where(año: Date.current.year)
   end
 
   def create
+    @numero_bloque = [1,2,3,4,5,6,7,8,9]
     @dias_semana = ["Lunes","Martes","Miercoles","Jueves","Viernes"]
     @hora_inicio = ["08:10","08:55","10:00","10:45","11:40","12:25","13:10","14:40","15:20"]
     @hora_fin = ["08:55","09:40","10:45","11:30","12:25","13:10","13:55","15:25","16:10"]
