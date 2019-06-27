@@ -399,12 +399,13 @@ html, body {
 body {
   padding-top: 60px;
   background: no-repeat center center fixed;
-  background-image: image-url("fondo.jpg");
+  background-image: image-url("fondo2.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  color: #CE9400;
+  color: #DCDCDC;
+  text-shadow: #585858;
   overflow-x: hidden;
 }
 
