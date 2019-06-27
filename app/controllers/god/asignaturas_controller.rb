@@ -77,7 +77,7 @@ class God::AsignaturasController < ApplicationController
 
   private
   def asignatura_params
-    params.required(:asignatura).permit(:nombre,:año,:curso_id, :bloques_attributes => [:id, :_destroy, :dia, :asignatura_id, :hora_inicio, :hora_fin])
+    params.required(:asignatura).permit(:nombre,:año,:curso_id, :bloques_attributes => [:id, :numero_bloque, :dia, :hora_inicio, :hora_fin, :asignatura_id])
   end
     def authenticate_admin
       unless current_user.has_role? :admin

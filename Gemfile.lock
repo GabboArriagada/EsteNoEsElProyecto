@@ -5,6 +5,12 @@ GIT
     bootstrap3-datetimepicker-rails (4.17.47)
       momentjs-rails (>= 2.8.1)
 
+GIT
+  remote: https://github.com/argerim/select2-rails.git
+  revision: 75a69f6c49bbbbddd6b6e93e857ce587a06b498e
+  specs:
+    select2-rails (4.0.3)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -366,6 +372,7 @@ DEPENDENCIES
   rolify
   rut_validation
   sass-rails (~> 5.0)
+  select2-rails!
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
