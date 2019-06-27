@@ -1,0 +1,28 @@
+<%= simple_form_for(@curso,:url => god_cursos_path, :method => :post) do |f| %>
+<%= f.error_notification %>
+<% porcentaje = 0 %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Nuevo curso</h4>
+  </div>
+<div class="panel-body">
+
+
+  <%= f.input :grado, placeholder: 'Ej: 7', input_html: {min: 1, max: 8}, required: true, label: 'Grado' %>
+  <%= f.input :letra_codigo, placeholder: 'Ej: B', required: true, label: 'Letra código' %>
+  <%= f.input :año, :as => :hidden, :input_html =>{:value => Date.current.year } , required:true %>
+
+
+
+</div>
+<div class="panel-footer">
+  <%= f.button :submit, class: 'btn btn-success' do %>
+      <%= fa_icon 'save', text: t(:save) %>
+  <% end %>
+
+  <%= link_to root_path, class: 'btn btn-danger' do %>
+      <%= fa_icon 'remove', text: t(:cancel) %>
+  <% end %>
+</div>
+</div>
+<% end %>

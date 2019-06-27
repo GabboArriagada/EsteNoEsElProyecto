@@ -1,21 +1,5 @@
-<h3>Crear Curso</h3>
-<br><br>
-  <%= simple_form_for(@curso,:url => god_cursos_path, :method => :post) do |f| %>
-  <%= f.error_notification %>
-  <% porcentaje = 0 %>
-  <div class="form-inputs">
-    <%= f.input :grado, placeholder: 'Ej: 7', input_html: {min: 1, max: 8}, required: true %>
-    <%= f.input :letra_codigo, placeholder: 'Ej: B', required: true %>
-    <%= f.input :año, :as => :hidden, :input_html =>{:value => Date.current.year } , required:true %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, 'Crear Curso', class: "btn btn-success" %>
-  </div>
-<% end %>
-<br>
-<div class="panel-footer">
-  <%= link_to god_cursos_path(@curso), class: 'btn btn-primary' do %>
-    <%= fa_icon 'arrow-circle-left', text: 'Atrás' %>
-  <% end %>
+<div class="page-header clearfix">
+  <h3><%= fa_icon 'users' %> <%= 'Curso' %> <small><%= 'Agregar curso' %></small></h3>
 </div>
+
+<%= render 'form'%>
