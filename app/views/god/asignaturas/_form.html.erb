@@ -1,27 +1,71 @@
 <%= simple_form_for(@asignatura,:url => god_asignaturas_path, :method => :post) do |f| %>
+
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h4>Proveedor</h4>
+
+  <div class="tabs">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#cabecera" aria-controls="cabecera" role="tab" data-toggle="tab" id="ficha">Ficha</a>
+      </li>
+      <li role="presentation">
+        <a href="#horario" aria-controls="Horario" role="tab" data-toggle="tab">Horario</a>
+      </li>
+    </ul>
   </div>
+
   <div class="panel-body">
 
-    <%= f.input :año, :as => :hidden, :input_html =>{:value => Date.current.year } , required:true %>
-    <%= f.input :nombre, placeholder: 'Ej: Ciencias sociales', required: true %>
-    <%if @cursos.present? %>
-      <%= f.input :curso_id, collection: @cursos.all.collect{|a|[a.grado.to_s+'° '+a.letra_codigo,a.id]}, required: true %>
-    <%else%>
-      <h4>No puede crear asignatura, debe tener cursos al cual asignar</h4>
-    <%end%>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="cabecera">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
 
+            <%= f.input :año, :as => :hidden, :input_html =>{:value => Date.current.year } , required:true %>
+            <%= f.input :nombre, placeholder: 'Ej: Ciencias sociales', required: true %>
+            <%if @cursos.present? %>
+              <%= f.input :curso_id, collection: @cursos.all.collect{|a|[a.grado.to_s+'° '+a.letra_codigo,a.id]}, required: true %>
+            <%else%>
+              <h4>No puede crear asignatura, debe tener cursos al cual asignar</h4>
+            <%end%>
+          </table>
+        </div>
+      </div>
+
+
+      <div role="tabpanel" class="tab-pane" id="horario">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <tr>
+              <th>Día</th>
+              <th>Hora incio de periodo</th>
+              <th>Hora fin de periodo</th>
+              <th>acciones</th>
+              </tr>
+
+              <tbody class="pos_ventas" id="nested_pos_venta">
+                <%=f.simple_fields_for :bloques do |f|%>
+                  <%=render 'bloque_fields', f: f%>
+                <%end%>
+              </tbody>
+          </table>
+          <%=link_to_add_association f, :bloques, class: 'add-association btn btn-primary btn-sm', id: 'boton_add_pos', data: {"association-insertion-node" => "tbody.pos_ventas", "association-insertion-method" => "append"} do%>
+            <%= fa_icon 'plus', text: "Agregar"%>
+          <%end%>
+        </div>
+
+      </div>
+
+    </div>
   </div>
+
   <div class="panel-footer">
     <%= f.button :submit, class: 'btn btn-success' do %>
     <%= fa_icon 'save', text: t(:save) %>
   <% end %>
-
   <%= link_to god_asignaturas_path(@asignatura), class: 'btn btn-danger' do %>
-      <%= fa_icon 'remove', text: t(:cancel) %>
-  <% end %>
-</div>
+  <%= fa_icon 'remove', text: t(:cancel) %>
+<% end %>
 </div>
 <% end %>
+
+</div>

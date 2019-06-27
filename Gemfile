@@ -25,6 +25,7 @@ gem 'awesome_print'
 gem 'rut_validation'
 gem 'mail_form'
 gem 'figaro'
+gem 'select2-rails', github: 'argerim/select2-rails'
 #gema para formularios anidados
 gem 'cocoon'
 #administra permisos

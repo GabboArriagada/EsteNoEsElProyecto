@@ -16,6 +16,9 @@ class God::AsignaturasController < ApplicationController
   end
 
   def new
+    @dias_semana = ["Lunes","Martes","Miercoles","Jueves","Viernes"]
+    @hora_inicio = ["08:10","08:55","10:00","10:45","11:40","12:25","13:10","14:40","15:20"]
+    @hora_fin = ["08:55","09:40","10:45","11:30","12:25","13:10","13:55","15:25","16:10"]
     @asignatura = Asignatura.new
     @cursos = Curso.where(año: Date.current.year)
   end

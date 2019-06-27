@@ -10,6 +10,7 @@ class Asignatura < ApplicationRecord
   validates :año, presence: true, length: { is: 4 }, numericality: { only_integer: true}
   validates :nombre, uniqueness: {scope: [:curso_id], message: "Asignatura ya está en el curso"}
   validate :validar_año
+  accepts_nested_attributes_for :bloques , reject_if: :all_blank , allow_destroy: true
 
   def title
     "#{nombre}"
