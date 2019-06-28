@@ -36,7 +36,7 @@
           <th>Nombre</th>
           <th>Curso</th>
           <th>Año</th>
-          <th>asignar</th>
+          <th>Acciones</th>
         </tr>
         </thead>
 
@@ -51,7 +51,8 @@
                 <td>No tiene curso asignado</td>
                 <%end%>
               <td><%= asignatura.año %></td>
-              <td><%= link_to 'asignar alumnos o profesor', god_asignatura_path(asignatura), class: 'btn btn-warning btn-xs'%></td>
+              <td><%= link_to 'asignar alumnos o profesor', god_asignatura_path(asignatura), class: 'btn btn-success btn-xs'%>
+              <%= link_to 'Editar horario', edit_god_asignatura_path(asignatura), class: 'btn btn-warning btn-xs'%></td>
             </tr>
           <% end %>
         </tbody>
@@ -61,6 +62,6 @@
 
   </div>
   <div class="panel-footer">
-  
+
   </div>
 </div>

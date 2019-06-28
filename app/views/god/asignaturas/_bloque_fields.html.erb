@@ -5,8 +5,10 @@
   <td>
     <%=f.select :numero_bloque, @numero_bloque.collect{|x|[x, x]}, {}, class: "form-control"%>
   </td>
-  <td>
-
+  <td class="form-inline pull-center">
+    <%= f.input_field :hora_inicio, class: 'form-control input-sm', label: false, as: :time, disabled: true, default: Time.parse('08:55') %>
+    &ensp;&ensp;&ensp;&ensp;&ensp;<strong>--</strong>&ensp;&ensp;&ensp;&ensp;&ensp;
+    <%= f.input_field :hora_fin, class: 'form-control input-sm', label: false, as: :time, disabled: true, default: Time.parse('08:55') %>
   </td>
   <td>
     <%=link_to_remove_association f, class: 'btn btn-danger btn-sm' do%>

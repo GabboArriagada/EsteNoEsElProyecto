@@ -1,7 +1,8 @@
-<p id="notice"><%= notice %></p>
 
-<h3>Notas de <%= Asignatura.find(@asignatura).nombre.titleize %>, del alumno <%= User.find(@user).name %> <%= User.find(@user).last_name %></h3>
-<br><br>
+<div class="page-header clearfix">
+  <h3>Notas de <%= Asignatura.find(@asignatura).nombre.titleize %>
+    <small><%= 'De ' %><%= User.find(@user).name %> <%= User.find(@user).last_name %></small>
+</div>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
