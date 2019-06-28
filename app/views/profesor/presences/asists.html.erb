@@ -1,99 +1,80 @@
-<h4>Listado completo de asistencias del curso</h4>
-<br>
-<table class="table">
-  <thead>
-  <th>
-    Busqueda por nombre y/o apellido
-  </th>
-<th>
-    Busqueda por fecha de asistencia
-</th>
-<th>
-  Borrar busqueda
-</th>
-</thead>
-<tbody>
-  <td>
-    <%= form_tag asists_profesor_presence_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], placeholder: "Busqueda exahustiva", pattern: "[A-Za-z ]{3,15}", title: 'Solo letras y espacios'%>
-    <%= submit_tag 'Buscar',class: 'btn btn-primary', name: nil%>
-    <% end %>
-  </td>
-  <td>
-    <%= form_tag asists_profesor_presence_path, method: :get do %>
-    <%= date_field_tag :query, params[:query], placeholder: "Busqueda por fecha" %>
-    <%= submit_tag 'Buscar',class: 'btn btn-primary', name: nil%>
-    <% end %>
-  </td>
-  <td>
-    <%= link_to asists_profesor_presence_path(@users.last.cursos.last.id), class: 'btn btn-danger' do %>
-      <%= fa_icon 'trash', text: "Borrar Busqueda" %>
-    <% end %>
-  </td>
-</tbody>
-</table>
-<br>
-<table class="table">
-  <thead>
-  <th>
-    Busqueda rápida, solo nombres y apellidos en esta pág.
-  </th>
-</thead>
-<tbody>
-  <td>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda rápida">
-</td>
-</tbody>
+<div class="page-header clearfix">
+  <h3><%= fa_icon 'exclamation-circle' %>
+    Listado completo de asistencias del curso
+  </h3>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <div class="row"></div><br>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-6">
+<div class="input-group">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda rápida" class="form-control">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="submit" disabled><%= fa_icon 'search', text: '' %></button>
+    </span>
+</div>
+</div><!-- /.row -->
+
+</div>
+    <br>
+    <table class="table table-bordered table-striped" id="myTable">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Asistió</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @presences.each do |presence| %>
+          <tr>
+            <td><%= presence.user.name+' '+ presence.user.last_name%></td>
+            <%if presence.asistio == true%>
+              <td><%= 'Si' %></td>
+            <%end%>
+            <td><%= presence.fecha.strftime("%d-%m-%Y") %></td>
+            <td><%= link_to profesor_presence_path(presence), method: :delete, data: {confirm: 'Está seguro?'} do%>
+              <%= fa_icon 'trash', text: 'Eliminar' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 
-<br>
-<table class="table table-bordered table-striped" id="myTable">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Asistió</th>
-      <th>Fecha</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @presences.each do |presence| %>
-      <tr>
-        <td><%= presence.user.name+' '+ presence.user.last_name%></td>
-        <%if presence.asistio == true%>
-        <td><%= 'Si' %></td>
-        <%end%>
-        <td><%= presence.fecha.strftime("%d-%m-%Y") %></td>
-        <td><%= link_to profesor_presence_path(presence), method: :delete, data: {confirm: 'Está seguro?'} do%>
-        <%= fa_icon 'trash', text: 'Eliminar' %>
-      <% end %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<div class="panel-footer">
-  <%= link_to "/profesor/presences/#{@users.last.cursos.last.id}", class: 'btn btn-success' do %>
+</div>  <div class="panel-footer">
+    <%= link_to "/profesor/presences/#{@users.last.cursos.last.id}", class: 'btn btn-success' do %>
     <%= fa_icon 'arrow-left', text: 'Atrás' %>
   <% end %>
 </div>
-
+</div>
 <script>
 function myFunction() {
-  var input, filter, tabla, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
+var input,
+  filter,
+  tabla,
+  tr,
+  td,
+  i;
+input = document.getElementById("myInput");
+filter = input.value.toUpperCase();
+table = document.getElementById("myTable");
+tr = table.getElementsByTagName("tr");
+for (i = 0; i < tr.length; i++) {
+  td = tr[i].getElementsByTagName("td")[0];
+  if (td) {
+    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      tr[i].style.display = "";
+    } else {
+      tr[i].style.display = "none";
     }
   }
+}
 }
 </script>
