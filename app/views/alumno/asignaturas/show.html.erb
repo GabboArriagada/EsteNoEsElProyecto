@@ -1,15 +1,21 @@
 <div class="page-header clearfix">
-  <h3><%= fa_icon 'book' %> Asignaturas de <%= @asignatura.curso.grado %>°<%= @asignatura.curso.letra_codigo %> <small>Detalle Asignatura</small></h3>
+  <h3><%= fa_icon 'book' %>
+    Asignaturas de
+    <%= @asignatura.curso.grado %>°<%= @asignatura.curso.letra_codigo %>
+    <small>Detalle Asignatura</small>
+  </h3>
 </div>
 <div class="panel panel-default">
-
+  <div class="panel-heading">
+    <br>
+  </div>
   <div class="tabs">
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
         <a href="#cabecera" aria-controls="cabecera" role="tab" data-toggle="tab" id="ficha">Ficha</a>
       </li>
       <li role="presentation">
-        <a href="#archivos" aria-controls="archivos" role="tab" data-toggle="tab" >Archivos</a>
+        <a href="#archivos" aria-controls="archivos" role="tab" data-toggle="tab">Archivos</a>
       </li>
     </ul>
   </div>
@@ -65,25 +71,24 @@
                   </td>
                   <td>
                     <%= link_to post.image.url, target: '_blank' do %>
-                      <%= fa_icon 'download', text: 'Descargar' %>
-                    <% end %>
-                  </td>
-                </tr>
-              <%end%>
-            </tbody>
-          </table>
-        </div>
-
+                    <%= fa_icon 'download', text: 'Descargar' %>
+                  <% end %>
+                </td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
       </div>
 
-      </div>
     </div>
 
   </div>
-  <div class="panel-footer">
-    <%= link_to alumno_asignaturas_path, class: 'btn btn-success' do %>
-      <%= fa_icon 'arrow-left', text: 'Atrás' %>
-    <% end %>
+</div>
 
 
-  </div>
+<div class="panel-footer">
+<%= link_to alumno_asignaturas_path, class: 'btn btn-success' do %>
+<%= fa_icon 'arrow-left', text: 'Atrás' %>
+<% end %>
+
+</div></div>

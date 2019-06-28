@@ -1,43 +1,87 @@
-<h3>Asistencias <small><%= current_user.cursos.find_by(id: params[:id]).grado %>°<%= current_user.cursos.find_by(id: params[:id]).letra_codigo %></small></h3>
-<br>
-<%= link_to "/profesor/presences", class: 'btn btn-success' do %>
-  <%= fa_icon 'arrow-left', text: 'Atrás' %>
-<% end %>
-<h4>Registrar asistencias del curso <%= current_user.cursos.find_by(id: params[:id]).grado %>°<%= current_user.cursos.find_by(id: params[:id]).letra_codigo %></h4>
-<%@current_curso=current_user.cursos.find_by(id: params[:id])%>
-<%= form_tag create_multiple_profesor_presences_path, method: :post do %>
-  <table class="table">
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Fecha</th>
-      <th>Asistencia</th>
-    </tr>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.last_name%></td>
-        <td><%=Date.today.strftime("%d-%m-%Y")%></td>
-        <td><%= check_box_tag "users_ids[]", user.id%></td>
+<div class="page-header clearfix">
+  <h3><%= fa_icon 'leanpub' %>
+    <%= 'Asistencias' %>
+    <small><%= current_user.cursos.find_by(id: params[:id]).grado %>°<%= current_user.cursos.find_by(id: params[:id]).letra_codigo %></small>
+  </ </h3>
+</div>
 
-      </tr>
-    <% end %>
-  </table>
-  <table class="table">
-    <tbody>
-      <td><%if @users.present?%>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <div class="row">
+      <div class="col-lg-6">
+
+        <div class="input-group">
+
+          <span class="input-group-btn">
+            <h4>Registrar asistencias del curso
+              <%= current_user.cursos.find_by(id: params[:id]).grado %>°<%= current_user.cursos.find_by(id: params[:id]).letra_codigo %></h4>
+          </span>
+        </div>
+        <!-- /input-group -->
+
+      </div>
+      <!-- /.col-lg-6 -->
+
+      <div class="col-lg-6">
+        <%= link_to "/profesor/presences", class: 'btn btn-success pull-right' do %>
+        <%= fa_icon 'arrow-left', text: 'Atrás' %>
+      <% end %>
+    </div>
+    <!-- /.col-lg-6 -->
+  </div>
+  <!-- /.row -->
+
+</div>
+
+<div class="panel-body">
+  <%@current_curso=current_user.cursos.find_by(id: params[:id])%>
+    <%= form_tag create_multiple_profesor_presences_path, method: :post do %>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha</th>
+            <th>Asistencia</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.last_name%></td>
+              <td><%=Date.today.strftime("%d-%m-%Y")%></td>
+              <td><%= check_box_tag "users_ids[]", user.id%></td>
+
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%if @users.present?%>
         <%= submit_tag "Crear Asistencias", class:"btn btn-success"%>
-        <%else%>
-          <h3>No hay alumnos en el curso</h3>
-        <%end%>
-        <% end %>
-          <%if @users.present?%>
-          <%= link_to "/profesor/presences/#{@users.last.cursos.last.id}/asists", class: 'btn btn-primary' do %>
-            <%= fa_icon 'list', text: 'Listado de asistencias' %>
-            <% end %>
-          <%else%>
-            <%= link_to "/profesor/presences", class: 'btn btn-primary' do %>
-            <%= fa_icon 'list', text: t(:list) +'a de Cursos' %>
-          <% end %></td>
+      <%else%>
+        <h3>No hay alumnos en el curso</h3>
 
+    <% end %>
+    <%if @users.present?%>
+      <%= link_to "/profesor/presences/#{@users.last.cursos.last.id}/asists", class: 'btn btn-primary' do %>
+      <%= fa_icon 'list', text: 'Listado de asistencias' %>
+    <% end %>
+  <%else%>
+    <%= link_to "/profesor/presences", class: 'btn btn-primary' do %>
+    <%= fa_icon 'list', text: t(:list) +'a de Cursos' %>
+  <% end %>
+
+  <%end%>
+    </div>
+  </div>
+
+  <div class="panel-footer">
+
+
+</div>
+</div>
 <%end%>
