@@ -1,8 +1,8 @@
 <div class="page-header clearfix">
-  <h3><%= fa_icon 'calendar' %>
+  <h2><%= fa_icon 'calendar' %>
     Horario
-    <small>Listado</small>
-  </h3>
+    <small><%= @asignaturas.first.curso.grado %>°    <%= @asignaturas.first.curso.letra_codigo %></small>
+  </h2>
 </div>
 <div class="panel panel-default" id="table_clientes">
   <div class="panel-heading clearfix">
