@@ -9,8 +9,6 @@ group :development do
   gem "rails-erd"
 end
 gem 'pg_search'
-gem 'will_paginate', '~> 3.1.0'
-gem 'will_paginate-bootstrap'
 gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
 gem 'sweet-alert2-rails'
 gem 'kaminari'
@@ -26,6 +24,7 @@ gem 'rut_validation'
 gem 'mail_form'
 gem 'figaro'
 gem 'select2-rails', github: 'argerim/select2-rails'
+gem 'pry'
 #gema para formularios anidados
 gem 'cocoon'
 #administra permisos

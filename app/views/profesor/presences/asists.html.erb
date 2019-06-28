@@ -71,7 +71,7 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @presences, renderer: BootstrapPagination::Rails, :previous_label => 'Pág. anterior', :next_label => 'Pág. siguiente' %>
+
 <div class="panel-footer">
   <%= link_to "/profesor/presences/#{@users.last.cursos.last.id}", class: 'btn btn-success' do %>
     <%= fa_icon 'arrow-left', text: 'Atrás' %>

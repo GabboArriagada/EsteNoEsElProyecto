@@ -105,6 +105,7 @@ GEM
     carrierwave-i18n (0.1.0)
     choice (0.2.0)
     cocoon (1.2.10)
+    coderay (1.1.2)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -184,6 +185,9 @@ GEM
       activerecord (>= 4.2)
       activesupport (>= 4.2)
       arel (>= 6)
+    pry (0.11.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
     puma (3.8.2)
     rack (2.0.1)
     rack-pjax (1.0.0)
@@ -317,9 +321,6 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    will_paginate (3.1.6)
-    will_paginate-bootstrap (1.0.1)
-      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
@@ -360,6 +361,7 @@ DEPENDENCIES
   mini_magick
   pg (~> 0.18)
   pg_search
+  pry
   puma (~> 3.0)
   rails (~> 5.0.2)
   rails-assets-sweetalert2 (~> 5.1.1)!
@@ -383,8 +385,6 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  will_paginate (~> 3.1.0)
-  will_paginate-bootstrap
 
 BUNDLED WITH
    1.17.3

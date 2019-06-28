@@ -4,7 +4,6 @@ class God::AsignaturasController < ApplicationController
 
   def index
     @asignaturas = Asignatura.all.order(created_at: :desc)
-    @asignaturas = Asignatura.page params[:page]
   end
   def show
     @asignatura = Asignatura.find(params[:id])
