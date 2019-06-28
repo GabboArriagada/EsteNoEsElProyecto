@@ -25,6 +25,8 @@ gem 'mail_form'
 gem 'figaro'
 gem 'select2-rails', github: 'argerim/select2-rails'
 gem 'pry'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 #gema para formularios anidados
 gem 'cocoon'
 #administra permisos

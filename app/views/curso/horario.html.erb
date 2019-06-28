@@ -8,526 +8,531 @@
   <div class="panel-heading clearfix">
 
     <div class="row">
-      <div class="col-md-12"></div>
+      <div class="col-md-12">
+        <%= link_to curso_horario_path(:pdf), class: 'btn btn-success pull-right', target: :_blank do %>
+        <%= fa_icon 'external-link', text: "Generar PDF" %>
+      <% end %>
     </div>
-
   </div>
 
-  <div class="panel-body">
-    <div class="table-responsive">
-      <div class="panel-heading clearfix">
-        <table class="table table-striped table-hover table-bordered">
-          <thead>
-            <tr class="pretty" align="center">
-              <th>
-                HORA &nbsp;
-                <%= fa_icon 'calendar-o' %></th>
-              <th>
-                LUNES &nbsp;
-                <%= fa_icon 'calendar-o' %></th>
-              <th>
-                MARTES &nbsp;
-                <%= fa_icon 'calendar-o' %></th>
-              <th>
-                MIERCOLES &nbsp;
-                <%= fa_icon 'calendar-o' %></th>
-              <th>
-                JUEVES &nbsp;
-                <%= fa_icon 'calendar-o' %></th>
-              <th>
-                VIERNES &nbsp;
-                <%= fa_icon 'calendar-o' %></th>
-            </tr>
-          </thead>
-          <tr>
-            <td class="pretty" align="center">08:10 - 08:55</td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 1 && bloque.dia == "Lunes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 1 && bloque.dia == "Martes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 1 && bloque.dia == "Miercoles" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 1 && bloque.dia == "Jueves" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 1 && bloque.dia == "Viernes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td class="pretty" align="center">08:55 - 09:40</td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 2 && bloque.dia == "Lunes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 2 && bloque.dia == "Martes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 2 && bloque.dia == "Miercoles" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 2 && bloque.dia == "Jueves" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 2 && bloque.dia == "Viernes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td class="pretty" align="center">09:40 - 10:00</td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">RECREO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">RECREO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">RECREO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">RECREO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">RECREO</font>
-            </td>
-          </tr>
-          <tr>
-            <td class="pretty" align="center">10:00 - 10:45</td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 3 && bloque.dia == "Lunes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 3 && bloque.dia == "Martes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 3 && bloque.dia == "Miercoles" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 3 && bloque.dia == "Jueves" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 3 && bloque.dia == "Viernes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td class="pretty" align="center">10:45 - 11:30</td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 4 && bloque.dia == "Lunes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 4 && bloque.dia == "Martes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 4 && bloque.dia == "Miercoles" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 4 && bloque.dia == "Jueves" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 4 && bloque.dia == "Viernes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td class="pretty" align="center">11:30 - 11:40</td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">RECREO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">RECREO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">RECREO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">RECREO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">RECREO</font>
-            </td>
-          </tr>
-          <tr>
-            <td class="pretty" align="center">11:40 - 12:25</td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 5 && bloque.dia == "Lunes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 5 && bloque.dia == "Martes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 5 && bloque.dia == "Miercoles" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 5 && bloque.dia == "Jueves" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 5 && bloque.dia == "Viernes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td class="pretty" align="center">12:25 - 13:10</td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 6 && bloque.dia == "Lunes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 6 && bloque.dia == "Martes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 6 && bloque.dia == "Miercoles" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 6 && bloque.dia == "Jueves" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 6 && bloque.dia == "Viernes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td class="pretty" align="center">13:10 - 13:55</td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 7 && bloque.dia == "Lunes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 7 && bloque.dia == "Martes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 7 && bloque.dia == "Miercoles" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 7 && bloque.dia == "Jueves" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 7 && bloque.dia == "Viernes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td class="pretty" align="center">13:55 - 14:40</td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">ALMUERZO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">ALMUERZO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">ALMUERZO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">ALMUERZO</font>
-            </td>
-            <td class="pretty" align="center">
-              <font color="#A5FF86">ALMUERZO</font>
-            </td>
-          </tr>
-          <tr>
-            <td class="pretty" align="center">14:40 - 15:25</td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 8 && bloque.dia == "Lunes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 8 && bloque.dia == "Martes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 8 && bloque.dia == "Miercoles" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 8 && bloque.dia == "Jueves" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 8 && bloque.dia == "Viernes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td class="pretty" align="center">15:25 - 16:10</td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 9 && bloque.dia == "Lunes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 9 && bloque.dia == "Martes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 9 && bloque.dia == "Miercoles" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 9 && bloque.dia == "Jueves" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-            <td class="pretty" align="center">
-              <% @asignaturas.each do |asignatura| %>
-                <% asignatura.bloques.each do |bloque| %>
-                  <% if bloque.numero_bloque == 9 && bloque.dia == "Viernes" %>
-                    <p><%= asignatura.nombre %></p>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
+</div>
 
+<div class="panel-body">
+  <div class="table-responsive">
+    <div class="panel-heading clearfix">
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr class="pretty" align="center">
+            <th>
+              HORA &nbsp;
+              <%= fa_icon 'calendar-o' %></th>
+            <th>
+              LUNES &nbsp;
+              <%= fa_icon 'calendar-o' %></th>
+            <th>
+              MARTES &nbsp;
+              <%= fa_icon 'calendar-o' %></th>
+            <th>
+              MIERCOLES &nbsp;
+              <%= fa_icon 'calendar-o' %></th>
+            <th>
+              JUEVES &nbsp;
+              <%= fa_icon 'calendar-o' %></th>
+            <th>
+              VIERNES &nbsp;
+              <%= fa_icon 'calendar-o' %></th>
+          </tr>
+        </thead>
+        <tr>
+          <td class="pretty" align="center">08:10 - 08:55</td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 1 && bloque.dia == "Lunes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 1 && bloque.dia == "Martes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 1 && bloque.dia == "Miercoles" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 1 && bloque.dia == "Jueves" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 1 && bloque.dia == "Viernes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="pretty" align="center">08:55 - 09:40</td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 2 && bloque.dia == "Lunes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 2 && bloque.dia == "Martes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 2 && bloque.dia == "Miercoles" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 2 && bloque.dia == "Jueves" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 2 && bloque.dia == "Viernes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="pretty" align="center">09:40 - 10:00</td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">RECREO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">RECREO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">RECREO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">RECREO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">RECREO</font>
+          </td>
+        </tr>
+        <tr>
+          <td class="pretty" align="center">10:00 - 10:45</td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 3 && bloque.dia == "Lunes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 3 && bloque.dia == "Martes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 3 && bloque.dia == "Miercoles" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 3 && bloque.dia == "Jueves" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 3 && bloque.dia == "Viernes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="pretty" align="center">10:45 - 11:30</td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 4 && bloque.dia == "Lunes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 4 && bloque.dia == "Martes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 4 && bloque.dia == "Miercoles" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 4 && bloque.dia == "Jueves" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 4 && bloque.dia == "Viernes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="pretty" align="center">11:30 - 11:40</td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">RECREO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">RECREO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">RECREO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">RECREO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">RECREO</font>
+          </td>
+        </tr>
+        <tr>
+          <td class="pretty" align="center">11:40 - 12:25</td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 5 && bloque.dia == "Lunes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 5 && bloque.dia == "Martes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 5 && bloque.dia == "Miercoles" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 5 && bloque.dia == "Jueves" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 5 && bloque.dia == "Viernes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="pretty" align="center">12:25 - 13:10</td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 6 && bloque.dia == "Lunes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 6 && bloque.dia == "Martes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 6 && bloque.dia == "Miercoles" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 6 && bloque.dia == "Jueves" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 6 && bloque.dia == "Viernes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="pretty" align="center">13:10 - 13:55</td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 7 && bloque.dia == "Lunes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 7 && bloque.dia == "Martes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 7 && bloque.dia == "Miercoles" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 7 && bloque.dia == "Jueves" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 7 && bloque.dia == "Viernes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="pretty" align="center">13:55 - 14:40</td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">ALMUERZO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">ALMUERZO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">ALMUERZO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">ALMUERZO</font>
+          </td>
+          <td class="pretty" align="center">
+            <font color="#A5FF86">ALMUERZO</font>
+          </td>
+        </tr>
+        <tr>
+          <td class="pretty" align="center">14:40 - 15:25</td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 8 && bloque.dia == "Lunes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 8 && bloque.dia == "Martes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 8 && bloque.dia == "Miercoles" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 8 && bloque.dia == "Jueves" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 8 && bloque.dia == "Viernes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="pretty" align="center">15:25 - 16:10</td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 9 && bloque.dia == "Lunes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 9 && bloque.dia == "Martes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 9 && bloque.dia == "Miercoles" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 9 && bloque.dia == "Jueves" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+          <td class="pretty" align="center">
+            <% @asignaturas.each do |asignatura| %>
+              <% asignatura.bloques.each do |bloque| %>
+                <% if bloque.numero_bloque == 9 && bloque.dia == "Viernes" %>
+                  <p><%= asignatura.nombre %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div class="panel-footer"></div>
+
+</div>
+<div class="panel-footer"></div>
+</div>
