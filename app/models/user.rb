@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :answers, :dependent => :destroy
   has_many :notas, :dependent => :destroy
   has_many :relationships
+  has_many :temas
   has_and_belongs_to_many :cursos, :dependent => :destroy
   has_and_belongs_to_many :asignaturas, :dependent => :destroy
   # Include default devise modules. Others available are:

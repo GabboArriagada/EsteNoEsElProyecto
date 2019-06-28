@@ -3,6 +3,7 @@ class Curso < ApplicationRecord
   has_many :presences
   has_many :asignaturas, :dependent => :destroy
   accepts_nested_attributes_for :asignaturas
+  has_many :temas
   #accept_nested_attributes_for :asignatura , reject_if: :all_blank , allow_destroy: true
   #links
   #http://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html

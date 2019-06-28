@@ -5,6 +5,7 @@ class Asignatura < ApplicationRecord
   has_many :notas
   has_many :bloques
   has_many :ponderacions
+  has_many :temas
   accepts_nested_attributes_for :notas , reject_if: :all_blank , allow_destroy: true
   validates :nombre, presence: true, format: { with: /\A[a-zA-Z ]+\Z/,
     message: "Solo se permite letras" }
