@@ -23,10 +23,15 @@
   <div class="panel-body">
 
     <div class="tab-content">
-      
+
       <!-- Cabecera -->
       <div role="tabpanel" class="tab-pane active" id="cabecera">
         <%= render 'ingresar_notas'%>
+        <% if Asignatura.find(params[:id]).ponderacions.present? %>
+          <%= link_to profesor_curso_path(@asignatura.curso.id), class: 'btn btn-success' do %>
+          <%= fa_icon 'tasks', text: 'Cargar notas ingresadas'%>
+        <% end %>
+        <% end %>
       </div>
 
       <!-- Archivos -->
@@ -67,10 +72,13 @@
     </div>
 
   </div>
+
 </div>
 
 <div class="panel-footer">
-  <%= link_to profesor_curso_path(@asignatura.curso.id), class: 'btn btn-primary' do %>
+
+
+  <%= link_to profesor_curso_path(@asignatura.curso.id), class: 'btn btn-primary text-right' do %>
   <%= fa_icon 'arrow-circle-left', text: 'Atrás'%>
 <% end %>
 </div>

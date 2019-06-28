@@ -68,13 +68,13 @@
           <th>Acciones</th>
         </tr>
 
-        <tbody class="pos_ventas" id="nested_pos_venta">
+        <tbody class="ponderaciones" id="nested_pos_venta">
           <%=f.simple_fields_for :ponderacions do |f|%>
           <%=render 'ponderacion_fields', :f => f%>
           <%end%>
       </tbody>
     </table>
-    <%=link_to_add_association f, :ponderacions, class: 'add-association btn btn-primary btn-sm', id: 'boton_add_pos', data: {"association-insertion-node" => "tbody.pos_ventas", "association-insertion-method" => "append"} do%>
+    <%=link_to_add_association f, :ponderacions, class: 'add-association btn btn-primary btn-sm', id: 'boton_add_pos', data: {"association-insertion-node" => "tbody.ponderaciones", "association-insertion-method" => "append"} do%>
     <%= fa_icon 'plus', text: "Agregar"%>
   <%end%>
 </div>
