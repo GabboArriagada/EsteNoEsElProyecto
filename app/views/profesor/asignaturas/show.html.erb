@@ -41,12 +41,12 @@
                   <td><%= alumno.name %>
                     <%= alumno.last_name %></td>
                   <td>
-                    <%= link_to new_profesor_nota_path(user: alumno, asignatura: @asignatura), class: 'btn btn-success' do %>
+                    <%= link_to new_profesor_nota_path(user: alumno, asignatura: @asignatura), class: 'btn btn-success btn-xs' do %>
                     <%= fa_icon 'hand-pointer-o', text: 'Ingresar' %>
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to notas_profesor_asignatura_path(user: alumno, asignatura: @asignatura), class: 'btn btn-success' do %>
+                  <%= link_to notas_profesor_asignatura_path(user: alumno, asignatura: @asignatura), class: 'btn btn-success btn-xs' do %>
                   <%= fa_icon 'search', text: 'Ver' %>
                 <% end %>
               </td>

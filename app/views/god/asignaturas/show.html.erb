@@ -38,7 +38,7 @@
               <td><%= user.last_name %></td>
               <td><%= user.rut %></td>
               <td><%= user.email %></td>
-              <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" ,class: 'btn btn-danger'%></td>
+              <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" ,class: 'btn btn-danger btn-xs'%></td>
             </tr>
           <% end %>
           </tbody>
@@ -74,7 +74,7 @@
                 <td><%= user.last_name %></td>
                 <td><%= user.rut %></td>
                 <td><%= user.email %></td>
-                <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post",class: 'btn btn-success' %></td>
+                <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post",class: 'btn btn-success btn-xs' %></td>
               </tr>
               <% end %>
             <% end %>
@@ -108,9 +108,9 @@
               <td><%= user.rut %></td>
               <td><%= user.email %></td>
               <% if   @asignatura.users.exists?(:id => user.id) %>
-              <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
+              <td><%= link_to 'quitar de la asignatura', god_asignaturas_desasignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post",class: 'btn btn-danger btn-xs' %></td>
               <% else %>
-              <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" ,class: 'btn btn-success'%></td>
+              <td><%= link_to 'asignar', god_asignaturas_asignar_path('asignatura' => @asignatura.id, 'user' => user.id),:method => "post" ,class: 'btn btn-success btn-xs'%></td>
               <% end %>
               </tr>
           <% end %>

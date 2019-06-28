@@ -1,0 +1,32 @@
+<%= simple_form_for([:profesor, @nota]) do |f| %>
+<%= f.error_notification %>
+<% porcentaje = 0 %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Nuevo curso</h4>
+    </div>
+    <div class="panel-body">
+      <% if @alumno.notas.exists? %>
+        <% Nota.where(user: @user, asignatura: @asignatura).each do |nota| %>
+          <% porcentaje += nota.porcentaje %><% end %>
+        <% end %>
+
+        <%= f.input :user_id, as: :hidden, input_html: {value: @user} %>
+        <%= f.input :asignatura_id, as: :hidden, input_html: {value: @asignatura} %>
+        <%= f.input :nota, placeholder: 'Ej: 70', input_html: {min: 10, max: 70}, required: true %>
+        <%= f.input :porcentaje, placeholder: 'Ej: 40%', input_html: {min: 1, max: (100-porcentaje)}, required: true %>
+        <%= f.input :descripcion %>
+
+      </div>
+      <div class="panel-footer">
+        <%= f.button :submit, class: 'btn btn-success' do %>
+            <%= fa_icon 'save', text: t(:save) %>
+        <% end %>
+
+        <%= link_to profesor_asignatura_path(@asignatura), class: 'btn btn-danger' do %>
+            <%= fa_icon 'remove', text: t(:cancel) %>
+        <% end %>
+      </div>
+
+</div>
+<% end %>

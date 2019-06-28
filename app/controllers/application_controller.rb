@@ -2,14 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-  redirect_to questions_url, :alert => exception.message
+  redirect_to welcome_index_path, :alert => exception.message
   end
 
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path
   end
   def after_sign_in_path_for(resource_or_scope)
-    preguntas_path
+    welcome_index_path
   end
 
   before_action :configure_permitted_parameters, if: :devise_controller?

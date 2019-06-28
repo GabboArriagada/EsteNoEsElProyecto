@@ -39,7 +39,7 @@
               <td><%= asignatura.nombre.titleize %></td>
               <td><%= asignatura.curso.grado %>°
                 <%= asignatura.curso.letra_codigo %></td>
-              <td><%= link_to alumno_asignatura_path(asignatura), class: 'btn btn-success' do%>
+              <td><%= link_to alumno_asignatura_path(asignatura), class: 'btn btn-success btn-xs' do%>
                 <%= fa_icon 'search', text: 'Ver' %>
               <% end %>
             </td>

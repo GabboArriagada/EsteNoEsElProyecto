@@ -28,7 +28,7 @@
                 <td><%= user.name %></td>
                 <td><%= user.rut %></td>
                 <td><%= user.email %></td>
-                <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
+                <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-danger btn-xs' %></td>
               </tr>
             <%end%>
           </tbody>
@@ -65,7 +65,7 @@
                 <td><%= user.name %></td>
                 <td><%= user.rut %></td>
                 <td><%= user.email %></td>
-                <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
+                <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-danger btn-xs' %></td>
               </tr>
             <%end%>
           </tbody>
@@ -105,7 +105,7 @@
                 <td><%= user.name %></td>
                 <td><%= user.rut %></td>
                 <td><%= user.email %></td>
-                <td><%= link_to 'asignar', god_cursos_asignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-success' %></td>
+                <td><%= link_to 'asignar', god_cursos_asignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-success btn-xs' %></td>
               </tr>
             <% end %>
           <% end %>
@@ -139,7 +139,7 @@
               <td><%= user.rut %></td>
               <td><%= user.email %></td>
               <% if   @curso.users.exists?(:id => user.id) %>
-                <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-danger' %></td>
+                <td><%= link_to 'quitar del curso', god_cursos_desasignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-danger btn-xs' %></td>
               <% else %>
                 <td><%= link_to 'asignar', god_cursos_asignar_path('curso' => @curso.id, 'user' => user.id),:method => "post",class: 'btn btn-success' %></td>
               <% end %>
