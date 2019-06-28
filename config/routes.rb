@@ -15,6 +15,8 @@ resources :questions do
 resources :answers
 end
 get "preguntas", to:"questions#index"
+get "foros", to:"questions#temas"
+
 resources :events
 
 get 'calendario/index'

@@ -1,0 +1,40 @@
+<div class="panel-heading clearfix">
+  <div class="row">
+    <div class="col-lg-6">
+      <%= form_tag('/god/cursos', method: :get) do %>
+      <div class="input-group">
+        <input id="search" name="search" value="<%= params[:search] %>" type="text" class="form-control" placeholder="Buscar tema">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit"><%= fa_icon 'search', text: '' %></button>
+        </span>
+      </div><!-- /input-group -->
+      <% end %>
+    </div><!-- /.col-lg-6 -->
+
+    <div class="col-lg-6">
+      <%= link_to root_path, class: 'btn btn-success pull-right' do %>
+          <%= fa_icon 'plus', text: 'Agregar tema' %>
+      <% end %>
+    </div><!-- /.col-lg-6 -->
+  </div><!-- /.row -->
+
+</div>
+<br>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Titulo tema</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@asignatura.temas.each_with_index do |tema, numero|%>
+        <tr>
+          <td>
+            <%= link_to tema.titulo,alumno_nota_path(current_user) %>
+          </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+</div>
