@@ -1,0 +1,39 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Alumnos</th>
+        <% if Asignatura.find(params[:id]).ponderacions.present? %>
+
+          <% Asignatura.find(params[:id]).ponderacions.each do |ponderacion| %>
+
+            <th><%=ponderacion.valor%>%</th>
+
+          <% end %>
+        <% else %>
+          <th>Ponderaciones</th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @alumnos.each do |alumno| %>
+        <tr>
+
+          <td><%= alumno.name %>
+            <%= alumno.last_name %></td>
+          <% if Asignatura.find(params[:id]).ponderacions.present? %>
+            <% Asignatura.find(params[:id]).ponderacions.each do |ponderacion| %>
+
+              <td><input type="number" name="fname"></td>
+
+            <% end %>
+          <% else %>
+            <th>No hay ponderaciones ingresadas</th>
+          <% end %>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

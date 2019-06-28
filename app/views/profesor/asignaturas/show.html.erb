@@ -23,84 +23,55 @@
   <div class="panel-body">
 
     <div class="tab-content">
+      
       <!-- Cabecera -->
       <div role="tabpanel" class="tab-pane active" id="cabecera">
+        <%= render 'ingresar_notas'%>
+      </div>
+
+      <!-- Archivos -->
+      <div role="tabpanel" class="tab-pane" id="archivos">
         <div class="table-responsive">
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>Alumnos</th>
-                <th>Ingresar Nota</th>
-                <th>Ver Notas</th>
+                <th>N°</th>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
               </tr>
             </thead>
-
             <tbody>
-              <% @alumnos.each do |alumno| %>
+              <%@asignatura.posts.each_with_index do |post, numero|%>
                 <tr>
-                  <td><%= alumno.name %>
-                    <%= alumno.last_name %></td>
                   <td>
-                    <%= link_to new_profesor_nota_path(user: alumno, asignatura: @asignatura), class: 'btn btn-success btn-xs' do %>
-                    <%= fa_icon 'hand-pointer-o', text: 'Ingresar' %>
+                    <%= numero+1%>
+                  </td>
+                  <td>
+                    <%= post.title %>
+                  </td>
+                  <td>
+                    <%= post.description%>
+                  </td>
+                  <td>
+                    <%= link_to profesor_post_path(post), method: :delete,data: { confirm: '¿Estás seguro?' } do %>
+                    <%= fa_icon 'trash', text: 'Eliminar' %>
                   <% end %>
                 </td>
-                <td>
-                  <%= link_to notas_profesor_asignatura_path(user: alumno, asignatura: @asignatura), class: 'btn btn-success btn-xs' do %>
-                  <%= fa_icon 'search', text: 'Ver' %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+
     </div>
 
   </div>
-
-  <!-- Archivos -->
-  <div role="tabpanel" class="tab-pane" id="archivos">
-    <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>N°</th>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%@asignatura.posts.each_with_index do |post, numero|%>
-            <tr>
-              <td>
-                <%= numero+1%>
-              </td>
-              <td>
-                <%= post.title %>
-              </td>
-              <td>
-                <%= post.description%>
-              </td>
-              <td>
-                <%= link_to profesor_post_path(post), method: :delete,data: { confirm: '¿Estás seguro?' } do %>
-                <%= fa_icon 'trash', text: 'Eliminar' %>
-              <% end %>
-            </td>
-          </tr>
-        <%end%>
-      </tbody>
-    </table>
-  </div>
-
-</div>
-
-</div>
 </div>
 
 <div class="panel-footer">
-<%= link_to profesor_curso_path(@asignatura.curso.id), class: 'btn btn-primary' do %>
-<%= fa_icon 'arrow-circle-left', text: 'Atrás'%>
+  <%= link_to profesor_curso_path(@asignatura.curso.id), class: 'btn btn-primary' do %>
+  <%= fa_icon 'arrow-circle-left', text: 'Atrás'%>
 <% end %>
 </div>
 </div>

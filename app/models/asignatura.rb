@@ -4,6 +4,7 @@ class Asignatura < ApplicationRecord
   has_many :posts, :dependent => :destroy
   has_many :notas
   has_many :bloques
+  has_many :ponderacions
   accepts_nested_attributes_for :notas , reject_if: :all_blank , allow_destroy: true
   validates :nombre, presence: true, format: { with: /\A[a-zA-Z ]+\Z/,
     message: "Solo se permite letras" }
@@ -11,6 +12,7 @@ class Asignatura < ApplicationRecord
   validates :nombre, uniqueness: {scope: [:curso_id], message: "Asignatura ya está en el curso"}
   validate :validar_año
   accepts_nested_attributes_for :bloques , reject_if: :all_blank , allow_destroy: true
+  accepts_nested_attributes_for :ponderacions , reject_if: :all_blank , allow_destroy: true
 
   def title
     "#{nombre}"

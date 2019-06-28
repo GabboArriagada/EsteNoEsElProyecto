@@ -10,12 +10,16 @@
       <li role="presentation">
         <a href="#horario" aria-controls="Horario" role="tab" data-toggle="tab">Horario</a>
       </li>
+      <li role="presentation">
+        <a href="#ponderaciones" aria-controls="Ponderaciones" role="tab" data-toggle="tab">Ponderaciones</a>
+      </li>
     </ul>
   </div>
 
   <div class="panel-body">
 
     <div class="tab-content">
+
       <div role="tabpanel" class="tab-pane active" id="cabecera">
         <div class="table-responsive">
           <table class="table table-bordered table-striped">
@@ -53,6 +57,29 @@
     </div>
 
   </div>
+
+
+
+  <div role="tabpanel" class="tab-pane" id="ponderaciones">
+    <div class="table-responsive row col-md-6">
+      <table class="table table-bordered table-striped">
+        <tr>
+          <th class="form-inline text-center">Valor (%) de evaluaciones</th>
+          <th>Acciones</th>
+        </tr>
+
+        <tbody class="pos_ventas" id="nested_pos_venta">
+          <%=f.simple_fields_for :ponderacions do |f|%>
+          <%=render 'ponderacion_fields', :f => f%>
+          <%end%>
+      </tbody>
+    </table>
+    <%=link_to_add_association f, :ponderacions, class: 'add-association btn btn-primary btn-sm', id: 'boton_add_pos', data: {"association-insertion-node" => "tbody.pos_ventas", "association-insertion-method" => "append"} do%>
+    <%= fa_icon 'plus', text: "Agregar"%>
+  <%end%>
+</div>
+
+</div>
 
 </div>
 </div>
