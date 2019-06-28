@@ -1,7 +1,15 @@
-<h3>Subir Archivos</h3>
-<br><br>
-<table class="table table-bordered table-striped">
-  <thead>
+<div class="page-header clearfix">
+  <h3><%= fa_icon 'leanpub' %>
+    <%= 'Subir Archivos' %>
+  </h3>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading"></div>
+
+  <div class="panel-body">
+      <table class="table table-striped table-hover">
+        <thead>
     <tr>
       <th>Cursos/Asignaturas</th>
       <th>Acciones</th>
@@ -11,13 +19,13 @@
   <tbody>
     <% @cursos.each do |curso| %>
       <tr>
-        <td><%= curso.grado %>°<%= curso.letra_codigo %></td>
-        <td></td>
+        <td bgcolor="#0a3a6a" colspan="2" align="center" color="#FFFFFF"><b><%= curso.grado %>°<%= curso.letra_codigo %></b></td>
+
       </tr>
         <% curso.asignaturas.each do |asignatura| %>
         <tr>
           <td><%= asignatura.nombre.titleize %></td>
-          <td><%= link_to new_profesor_post_path(asignatura: asignatura), class:'btn btn-default btn-xs' do %>
+          <td><%= link_to new_profesor_post_path(asignatura: asignatura), class:'btn btn-success btn-xs' do %>
               <%= fa_icon 'upload', text: 'Subir Archivo' %>
               <% end %></td>
         </tr>
@@ -25,8 +33,8 @@
     <% end %>
   </tbody>
 </table>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+
+</div>
+<div class="panel-footer"></div>
+</div>

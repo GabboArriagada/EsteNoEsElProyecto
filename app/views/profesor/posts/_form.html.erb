@@ -1,20 +1,27 @@
-
-
-  <%= simple_form_for([:profesor, @post]) do |f| %>
-    <%= f.error_notification %>
-
-    <div class="form-inputs">
-      <%= f.input :asignatura_id, as: :hidden, input_html: {value: @asignatura} %>
-      <%= f.input :title, label: 'Título', placeholder: 'Ingrese Título' %>
-      <%= f.input :description, label: 'Descripción', placeholder: 'Ingrese Descripción' %>
-    </div>
-    <div class="btn btn-link btn-file btn-sm">
-      <%= fa_icon 'upload', text: "Seleccionar Archivo" %>
-      <%= f.file_field :image, multiple: false %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, 'Subir Archivo', class: "btn btn-success" %>
-    </div>
+<%= simple_form_for([:profesor, @post]) do |f| %>
+<%= f.error_notification %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= link_to profesor_asignaturas_path, class: 'btn btn-primary' do %>
+    <%= fa_icon 'arrow-left', text: 'Atrás' %>
   <% end %>
+</div>
+<div class="panel-body">
+  <%= f.input :asignatura_id, as: :hidden, input_html: {value: @asignatura} %>
+  <%= f.input :title, label: 'Título', placeholder: 'Ingrese Título' %>
+  <%= f.input :description, label: 'Descripción', placeholder: 'Ingrese Descripción' %>
+</div>
+
+<div class="panel-footer">
+
+  <%= f.file_field :image, multiple: false %>
   <br>
+
+  <%= f.button :submit, class: 'btn btn-success' do %>
+  <%= fa_icon 'save', text: t(:save) %>
+<% end %>
+
+</div>
+
+</div>
+<% end %>

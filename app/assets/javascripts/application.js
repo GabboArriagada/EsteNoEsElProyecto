@@ -21,3 +21,4 @@
 //= require sweet-alert2-rails
 //= require_tree .
 //= require cocoon
+//= require bootstrap.file-input

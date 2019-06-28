@@ -27,6 +27,8 @@ gem 'select2-rails', github: 'argerim/select2-rails'
 gem 'pry'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'jquery-ui-rails'
+gem 'bootstrap_file_input_rails'
 #gema para formularios anidados
 gem 'cocoon'
 #administra permisos
