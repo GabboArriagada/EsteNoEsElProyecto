@@ -30,6 +30,7 @@ gem 'wkhtmltopdf-binary'
 gem 'jquery-ui-rails'
 gem 'bootstrap_file_input_rails'
 gem 'bootstrap3-datetimepicker-rails', github: 'TrevorS/bootstrap3-datetimepicker-rails'
+gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
 #gema para formularios anidados
 gem 'cocoon'
 #administra permisos

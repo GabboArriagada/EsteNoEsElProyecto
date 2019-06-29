@@ -22,3 +22,5 @@
 //= require_tree .
 //= require cocoon
 //= require bootstrap.file-input
+//= require bootstrap-datetimepicker
+//= require moment/es.js
