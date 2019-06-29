@@ -1,22 +1,23 @@
-<div class="row center-xs text-left">
-  <div class="col-xs-8 col-md-6">
-    <div class="box-sizing text-left">
-      <h2>¿olvidó su contraseña?</h2>
+<br />
+<%= bootstrap_devise_error_messages! %>
+<div class="panel panel-default devise-bs text-center">
+  <div class="panel-heading">
+    <h4><%= t('.forgot_your_password', :default => 'Forgot your password?') %></h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, role: "form" }) do |f| %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
 
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= devise_error_messages! %>
-
-        <div class="field">
-          <%= f.label :email,"Correo electónico" %><br />
-          <%= f.email_field :email, autofocus: true, class:"from-control"%>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Enviar instrucciones", class:"btn be-red white" %>
-        </div>
+      <%= button_tag(type: 'submit',class: "btn btn-primary") do %>
+        <%= fa_icon 'send', text: t('.send_me_reset_password_instructions', :default => "Send me reset password instructions")%>
       <% end %>
+    <% end %>
+  </div>
 
-      <%= render "devise/shared/links" %>
-    </div>
+  <div class="panel-footer">
+    <%= render "devise/shared/links" %>
   </div>
 </div>

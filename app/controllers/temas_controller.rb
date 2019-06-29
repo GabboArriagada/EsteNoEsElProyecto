@@ -1,6 +1,6 @@
 class TemasController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_tema, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -64,12 +64,13 @@ class TemasController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_question
+
+    def set_tema
       @tema = Tema.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tema_params
-      params.require(:tema).permit(:titulo, :user_id, asignatura_params: [:id], asignaturas_attributes: [:id])
+      params.require(:tema).permit!
     end
 end
