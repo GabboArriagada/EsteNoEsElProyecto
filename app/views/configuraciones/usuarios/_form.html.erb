@@ -1,37 +1,29 @@
 <%flag_new = !@usuario.persisted?%>
-<%= simple_form_for(@usuario,url: url_for(controller: 'usuarios', action: flag_new ? :create : :update),html: { class: 'form-horizontal' }, wrapper: :horizontal_form) do |f| %>
+  <%= simple_form_for(@usuario,url: url_for(controller: 'usuarios', action: flag_new ? :create : :update),html: { class: 'form-horizontal' }, wrapper: :horizontal_form) do |f| %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4>USUARIO</h4>
     </div>
     <div class="panel-body">
-      <%= f.association :usuario_clase,
-                        collection: UsuarioClase.all.collect {|a| [a.nombre, a.id]},
-                        input_html: { 'data-placeholder': '-- Seleccione una Clase --' } %>
-      <%= f.association :roles,
-                        collection: Role.all.where.not(name: "admin").collect {|a| [a.name, a.id]},
-                        input_html: { 'data-placeholder': '-- Seleccione Roles --' } %>
-      <%= f.input :nombre, placeholder: 'Nombre' %>
+
+      <%= f.input :name, placeholder: 'Nombre' %>
+      <%= f.input :last_name, placeholder: 'Apellido' %>
       <%= f.input :rut, placeholder: 'RUT' %>
-      <%=f.input :email,placeholder: 'usuario@lfew.cl', required: true%>
+      <%=f.input :email,placeholder: 'usuario@dominio.com', required: true%>
       <%= f.input :telefono, placeholder:'+56-' %>
-      <%= f.association :pais,
-                        collection: Pais.all.collect {|a| [a.nombre, a.id]},
-                        input_html: { 'data-placeholder': '-- Seleccione un Pais --' } %>
+      <%= f.input :fecha_nacimiento, as: :date_picker, placeholder:'' %>
       <%= f.input :direccion, placeholder:'Direccion'%>
-      <%= f.input :activo,
-                  collection: [['Activo', true], ['Inactivo', false]] %>
       <%= f.input :password, placeholder:'Contraseña' %>
       <%= f.input :password_confirmation, placeholder:'Confirmar Contraseña' %>
     </div>
     <div class="panel-footer">
       <%= button_tag(type: 'submit',class: "btn btn-success") do %>
-        <%= fa_icon 'save', text: "Guardar Usuario"%>
-      <% end %>
+      <%= fa_icon 'save', text: "Guardar Usuario"%>
+    <% end %>
 
-      <%= link_to configuraciones_usuarios_path, class: 'btn btn-danger' do %>
-          <%= fa_icon 'remove', text: t(:cancel) %>
-      <% end %>
-    </div>
-  </div>
+    <%= link_to configuraciones_usuarios_path, class: 'btn btn-danger' do %>
+    <%= fa_icon 'remove', text: t(:cancel) %>
+  <% end %>
+</div>
+</div>
 <%end%>

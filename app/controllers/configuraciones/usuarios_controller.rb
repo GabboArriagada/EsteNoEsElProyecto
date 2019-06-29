@@ -1,4 +1,5 @@
 class Configuraciones::UsuariosController < ApplicationController
+	before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin
 
@@ -8,7 +9,7 @@ class Configuraciones::UsuariosController < ApplicationController
 		@roles = Role.all
   end
 
-  def new
+	def new
     @usuario= User.new
   end
 
@@ -18,8 +19,7 @@ class Configuraciones::UsuariosController < ApplicationController
   def show
   end
 
-
-  def create
+	def create
     @usuario = User.new(usuario_params)
 
     respond_to do |format|
@@ -33,7 +33,7 @@ class Configuraciones::UsuariosController < ApplicationController
     end
   end
 
-  def update
+	def update
 		if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
 			params[:user].delete(:password)
 			params[:user].delete(:password_confirmation)
@@ -47,7 +47,7 @@ class Configuraciones::UsuariosController < ApplicationController
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
       end
     end
-  end
+	end
 
   def destroy
       @usuario.destroy

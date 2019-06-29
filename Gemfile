@@ -29,6 +29,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'jquery-ui-rails'
 gem 'bootstrap_file_input_rails'
+gem 'bootstrap3-datetimepicker-rails', github: 'TrevorS/bootstrap3-datetimepicker-rails'
 #gema para formularios anidados
 gem 'cocoon'
 #administra permisos
