@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Filterable
   rolify
 
   has_many :presences, :dependent => :destroy
@@ -21,6 +22,15 @@ class User < ApplicationRecord
   validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
             message: "Solo se permite letras" }
 validates   :rut, uniqueness: true
+
+scope :search, -> (search) { where('lower(name) LIKE ?', "%#{search.to_s.downcase}%")}
+scope :by_id, -> (id) { where(:id => id)}
+scope :by_rut, -> (rut) { where("rut like ?", "%#{rut}%")}
+scope :by_nombre, -> (name) { where("name ilike ?", "%#{name}%")}
+scope :by_rol, -> (rol) { joins(:roles).where("roles.id = ?", rol)}
+
+
+
   def nota_final
     notaf = 0.0
     self.asignaturas.each do |asignatura|

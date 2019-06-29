@@ -50,7 +50,9 @@ namespace :profesor do
   end
   resources :posts
 end
-
+namespace :configuraciones do
+  resources :usuarios
+end
 #seccion god
 namespace :god do
   resources :user,:profesor,:alumno,:cursos,:asignaturas

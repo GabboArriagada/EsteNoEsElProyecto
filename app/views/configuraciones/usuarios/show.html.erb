@@ -1,0 +1,74 @@
+<div class="page-header clearfix">
+  <h3><%= fa_icon 'users' %> <%= t(:users).pluralize %> <small><%= t(:detail) + ' ' + t(:user)%></small></h3>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h4 class="pull-left"><%= @usuario.name %></h4>
+
+
+  </div>
+
+  <div class="tabs">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#cabecera" aria-controls="cabecera" role="tab" data-toggle="tab">Datos</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="panel-body">
+
+    <div class="tab-content">
+      <!-- Cabecera -->
+      <div role="tabpanel" class="tab-pane active" id="cabecera">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <tbody>
+              <tr>
+                <td class="active col-title"><%= fa_icon 'info-circle',class:"icon-fixed-width", text: 'Nombre' %></td>
+                <td class="col-content"><%=@usuario.nombre%></td>
+                <td class="active col-title"><%= fa_icon 'barcode',class:"icon-fixed-width", text: 'RUT' %></td>
+                <td class="col-content"><%=@usuario.retornaRut(@usuario.rut)%></td>
+              </tr>
+              <tr>
+                <td class="active col-title"><%= fa_icon 'phone',class:"icon-fixed-width", text: 'Telefono' %></td>
+                <td class="col-content"><%=@usuario.telefono%></td>
+                <td class="active col-title"><%= fa_icon 'map-marker',class:"icon-fixed-width", text: 'Direccion' %></td>
+                <td class="col-content"><%=@usuario.direccion%></td>
+              </tr>
+              <tr>
+                <td class="active col-title"><%= fa_icon 'flag',class:"icon-fixed-width", text: 'País' %></td>
+                <td class="col-content"><%=@usuario.pais.nombre unless @usuario.pais.nil?%></td>
+                <td class="active col-title"><%= fa_icon 'user-circle',class:"icon-fixed-width", text: 'Clase de Usuario' %></td>
+                <td class="col-content"><%=@usuario.usuario_clase.nombre unless @usuario.usuario_clase.nil?%></td>
+              </tr>
+              <tr>
+                <td class="active col-title"><%= fa_icon 'envelope',class:"icon-fixed-width", text: 'Email' %></td>
+                <td class="col-content"><%=@usuario.email unless @usuario.email.nil?%></td>
+                <td class="active"><%= fa_icon 'info-circle', text: 'Estado' %></td>
+                <td><%= @usuario.activo == TRUE ? 'Activo' : 'Inactivo' %></td>
+              </tr>
+              <tr>
+                <td class="active col-title"><%= fa_icon 'user-circle',class:"icon-fixed-width", text: 'Roles' %></td>
+                <td class="col-content"><%=@usuario.roles.collect{|u| u.name}.join(',') %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  <div class="panel-footer">
+    <%= link_to edit_configuraciones_usuario_path(@usuario), class: 'btn btn-warning' do %>
+      <%= fa_icon 'pencil', text: t(:edit) %>
+    <% end %>
+    <%= link_to configuraciones_usuarios_path, class: 'btn btn-success' do %>
+      <%= fa_icon 'list', text: t(:list) + ' ' + 'Usuarios' %>
+    <% end %>
+
+  </div>
+</div>

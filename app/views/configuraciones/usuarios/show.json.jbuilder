@@ -1,0 +1,1 @@
+json.extract! @banco, :id, :nombre,:rut,:telefono,:direccion,:password,:password_confirmation
