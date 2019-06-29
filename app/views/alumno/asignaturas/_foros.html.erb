@@ -33,7 +33,7 @@
       <%@asignatura.temas.each_with_index do |tema, numero|%>
         <tr>
           <td>
-            <%= link_to tema.titulo,alumno_nota_path(current_user) %>
+            <%= link_to tema.titulo,tema_path(tema) %>
           </td>
       </tr>
     <%end%>
