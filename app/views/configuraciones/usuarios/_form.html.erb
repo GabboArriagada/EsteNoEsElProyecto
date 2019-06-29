@@ -2,17 +2,17 @@
   <%= simple_form_for(@usuario,url: url_for(controller: 'usuarios', action: flag_new ? :create : :update),html: { class: 'form-horizontal' }, wrapper: :horizontal_form) do |f| %>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4>USUARIO</h4>
+      <h4>USUARIO NUEVO</h4>
     </div>
     <div class="panel-body">
 
-      <%= f.input :name, placeholder: 'Nombre' %>
-      <%= f.input :last_name, placeholder: 'Apellido' %>
+      <%= f.input :name, placeholder: 'Nombre',label: 'Nombre' %>
+      <%= f.input :last_name, placeholder: 'Apellido', label: 'Apellidos' %>
       <%= f.input :rut, placeholder: 'RUT' %>
       <%=f.input :email,placeholder: 'usuario@dominio.com', required: true%>
-      <%= f.input :telefono, placeholder:'+56-' %>
+      <%= f.input :telefono, placeholder:'+56-', label: 'Teléfono' %>
       <%= f.input :fecha_nacimiento, as: :date_picker, placeholder:'' %>
-      <%= f.input :direccion, placeholder:'Direccion'%>
+      <%= f.input :direccion, placeholder:'Dirección', label: 'Dirección'%>
       <%= f.input :password, placeholder:'Contraseña' %>
       <%= f.input :password_confirmation, placeholder:'Confirmar Contraseña' %>
     </div>
@@ -22,7 +22,7 @@
     <% end %>
 
     <%= link_to configuraciones_usuarios_path, class: 'btn btn-danger' do %>
-    <%= fa_icon 'remove', text: t(:cancel) %>
+    <%= fa_icon 'remove', text: 'Cancelar' %>
   <% end %>
 </div>
 </div>
