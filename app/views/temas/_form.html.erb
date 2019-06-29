@@ -9,7 +9,7 @@
 
     <div class="form-inputs">
       <%= f.input :titulo, :label => "Titulo del tema" %>
-      <%= f.association :asignatura, as: :hidden, input_html: {value: asignatura} %>
+      <%= f.input :asignatura_id, as: :hidden, input_html: {value: params[:asignatura]}%>
       <%= f.association :user, as: :hidden, input_html: {value: current_user.id} %>
     </div>
 
