@@ -65,9 +65,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def temas
-
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

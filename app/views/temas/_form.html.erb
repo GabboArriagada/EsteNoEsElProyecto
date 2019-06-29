@@ -1,0 +1,13 @@
+<%= simple_form_for(@tema) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :titulo %>
+    <%= f.association :user %>
+    <%= f.association :asignatura %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

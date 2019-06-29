@@ -85,20 +85,23 @@
 
     </div>
 
-
     <div role="tabpanel" class="tab-pane" id="foros">
-<%= render 'foros'%>
-  </div>
-
-
+      <%= render 'foros'%>
+    </div>
 
   </div>
 </div>
 
-
 <div class="panel-footer">
-<%= link_to alumno_asignaturas_path, class: 'btn btn-success' do %>
-<%= fa_icon 'arrow-left', text: 'Atrás' %>
+  <%= link_to alumno_asignaturas_path, class: 'btn btn-success' do %>
+  <%= fa_icon 'arrow-left', text: 'Atrás' %>
 <% end %>
 
-</div></div>
+</div>
+</div>
+<%= link_to 'New tema', new_tema_path, :remote=>true %>
+
+
+<div id="new-tema" style="display:none;">
+
+</div>

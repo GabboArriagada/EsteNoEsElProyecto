@@ -11,9 +11,12 @@ resources :contacts, only: [:new, :create]
 resources :asignaturas do
   resources :notas
 end
+resources :temas
+
 resources :questions do
 resources :answers
 end
+
 get "preguntas", to:"questions#index"
 get "foros", to:"questions#temas"
 
