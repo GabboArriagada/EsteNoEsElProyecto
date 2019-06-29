@@ -18,12 +18,22 @@
       <thead>
         <tr>
           <th><%= question.content%><br>
-            -<i class="fa fa-clock-o">
-              Hace
+            <i class="fa fa-clock-o pull-right">
               <%= time_ago_in_words(question.created_at)%>
               atrás, por
               <%= question.user.name %>
-              <%= question.user.last_name %></i>-
+              <%= question.user.last_name %>
+              <% if can? :update, question %>
+                <%= link_to edit_question_path(question) do%>
+                <%= fa_icon 'pencil', text: 'Editar' %>
+              <% end %>
+            <% end %>
+            <% if can? :update, question %>
+              |
+              <%= link_to question, method: :delete, data: { confirm: 'Está seguro?' } do%>
+              <%= fa_icon 'trash', text: 'Borrar' %>
+            <% end %>
+          <% end %></i>
           </th>
         </tr>
       </thead>

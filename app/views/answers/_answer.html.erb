@@ -1,4 +1,19 @@
-
 <tr>
-  <td bgcolor="#5A5A5A"><%= answer.content%></td>
+  <td bgcolor="#5A5A5A"><%= answer.content%>
+
+
+    <i class="fa fa-clock-o pull-right">
+
+      <%= time_ago_in_words(answer.created_at) %>
+      atrás, por
+      <%= answer.user.name %>
+      <%= answer.user.last_name %>
+    <% if can? :destroy, answer %>
+      |
+      <%= link_to question_answer_path(answer.question, answer), method: :delete do%>
+      <%= fa_icon 'trash', text: 'Borrar' %>
+    <% end %>
+
+  <% end %></i>
+</td>
 </tr>
