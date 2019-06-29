@@ -1,6 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header clearfix">
+  <h3><%= fa_icon 'exclamation-circle' %>
+    Preguntas/respuestas para
+    <%=@tema.asignatura.nombre.titleize%>
+  </h3>
+</div>
 
-<p>
-  <strong>titulo:</strong>
-  <%= @tema.titulo %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 align="center"><%=@tema.titulo.titleize%></h4>
+  </div>
+  <div class="panel-body">
+    <%= link_to new_question_path, class:'btn btn-success pull-right' do%>
+    <%= fa_icon 'bars', text: 'Nueva pregunta' %>
+  <% end %>
+  <% @questions.reverse.each do |question| %>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%= question.content%><br>
+            -<i class="fa fa-clock-o">
+              Hace
+              <%= time_ago_in_words(question.created_at)%>
+              atrás, por
+              <%= question.user.name %>
+              <%= question.user.last_name %></i>-
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if question.answers.any? %>
+          <%= render question.answers %>
+        <% end %>
+      </tbody>
+    </table>
+    <%= form_for([question, question.answers.build]) do |f| %>
+    <%= f.text_area :content, cols: "150", rows: "2", :id => "message_area",required:true %>
+    <%=f.submit "Agregar Respuesta", class: "btn btn-primary pull-right"%>
+  <% end %>
+<br>
+<% end %>
+</div>
+
+<div class="panel-footer">
+<%= link_to alumno_notas_path, class: 'btn btn-success' do %>
+<%= fa_icon 'arrow-circle-left', text: t(:Atrás) %>
+<% end %>
+</div>
+</div>

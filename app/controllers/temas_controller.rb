@@ -10,6 +10,7 @@ class TemasController < ApplicationController
   # GET /temas/1
   # GET /temas/1.json
   def show
+    @questions = Question.all
   end
 
   # GET /temas/new

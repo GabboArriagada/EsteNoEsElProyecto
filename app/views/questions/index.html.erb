@@ -4,36 +4,43 @@
 <br>
 <br>
 <% @questions.reverse.each do |question| %>
-<div class="col-md-12">
-<div style="border: 2px solid black; background-color: #B8B8B8;">
+  <div class="col-md-12">
+    <div style="border: 2px solid black; background-color: #B8B8B8;">
 
-<br>
-  <div class="preguntas"><h3><%= question.content%></h3>
-      -<i class="fa fa-clock-o"> Hace <%= time_ago_in_words(question.created_at)%> atrás, por <%= question.user.name %> <%= question.user.last_name %></i>-
-  <br>
-
-      <% if can? :update, question %>
-      <%= link_to edit_question_path(question) do%>
-      <%= fa_icon 'pencil', text: 'Editar' %>
-      <% end %>
-      <% end %>
-      <% if can? :update, question %>
-      | <%= link_to question, method: :delete, data: { confirm: 'Está seguro?' } do%>
-      <%= fa_icon 'trash', text: 'Borrar' %>
-      <% end %>
-      <% end %>
-    </div>
-      <h4>Respuestas</h4>
+      <br>
       <div class="preguntas">
-      <% if question.answers.any? %>
-        <%= render question.answers %>
+        <h3><%= question.content%></h3>
+        -<i class="fa fa-clock-o">
+          Hace
+          <%= time_ago_in_words(question.created_at)%>
+          atrás, por
+          <%= question.user.name %>
+          <%= question.user.last_name %></i>-
+        <br>
+
+        <% if can? :update, question %>
+          <%= link_to edit_question_path(question) do%>
+          <%= fa_icon 'pencil', text: 'Editar' %>
+        <% end %>
       <% end %>
-      <hr>
-      <%= form_for([question, question.answers.build]) do |f| %>
-      <%= f.text_area :content, :id => "message_area",required:true %><br>
-      <%=f.submit "Agregar Respuesta", class: "btn pull.right"%></div><br>
+      <% if can? :update, question %>
+        |
+        <%= link_to question, method: :delete, data: { confirm: 'Está seguro?' } do%>
+        <%= fa_icon 'trash', text: 'Borrar' %>
       <% end %>
-      </div>
+    <% end %>
+  </div>
+  <h4>Respuestas</h4>
+  <div class="preguntas">
+    <% if question.answers.any? %>
+      <%= render question.answers %>
+    <% end %>
+    <hr>
+    <%= form_for([question, question.answers.build]) do |f| %>
+    <%= f.text_area :content, :id => "message_area",required:true %><br>
+    <%=f.submit "Agregar Respuesta", class: "btn pull.right"%></div><br>
+<% end %>
+</div>
 
 </div>
 
