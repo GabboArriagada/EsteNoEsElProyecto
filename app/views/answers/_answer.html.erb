@@ -10,7 +10,7 @@
       <%= answer.user.last_name %>
     <% if can? :destroy, answer %>
       |
-      <%= link_to question_answer_path(answer.question, answer), method: :delete do%>
+      <%= link_to question_answer_path(answer.question, answer), method: :delete, data: { confirm: 'Está seguro?' } do%>
       <%= fa_icon 'trash', text: 'Borrar' %>
     <% end %>
 

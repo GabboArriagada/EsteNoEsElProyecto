@@ -1,12 +1,22 @@
 <%= simple_form_for(@question) do |f| %>
-<%= f.error_notification %>
 
-<div class="form-inputs">
-  <%= f.text_area :content, :id => "message_area",required:true %><br>
-</div>
-<br>
-<div class="form-actions">
-  <%=f.submit "Agregar pregunta", class: "btn pull.right"%>
-</div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <br>
+    </div>
+    <div class="panel-body">
 
+      <%= f.text_area :content, cols: "150", rows: "2", :id => "message_area",required:true %>
+
+      </div>
+      <div class="panel-footer">
+        <%= f.button :submit, class: 'btn btn-success' do %>
+            <%= fa_icon 'save', text: t(:save) %>
+        <% end %>
+        <%= link_to preguntas_path, class: 'btn btn-success' do %>
+          <%= fa_icon 'arrow-circle-left', text: t(:Atrás)  %>
+        <% end %>
+      </div>
+
+</div>
 <% end %>

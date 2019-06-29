@@ -1,10 +1,4 @@
-<h3>Nueva pregunta</h3>
-<br>
-<%= render 'form', question: @question %>
-
-
-<div class="panel-footer">
-  <%= link_to preguntas_path, class: 'btn btn-success' do %>
-    <%= fa_icon 'arrow-circle-left', text: t(:Atrás)  %>
-  <% end %>
+<div class="page-header clearfix">
+  <h3><%= fa_icon 'users' %> <%= 'Ingresar pregunta' %> </h3>
 </div>
+<%= render 'form', question: @question %>
