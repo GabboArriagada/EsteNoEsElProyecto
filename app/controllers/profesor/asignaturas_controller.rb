@@ -30,7 +30,7 @@ class Profesor::AsignaturasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def asignatura_params
-      params.fetch(:asignatura, {})
+      params.require(:asignatura).permit!
     end
 
     def authenticate_profesor

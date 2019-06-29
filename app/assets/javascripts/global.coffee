@@ -1,16 +1,3 @@
-# Alert Desaparece despues de un tiempo
-$(document).on 'turbolinks:load', ->
-  $(".alert").delay(10000).slideUp 200, ->
-    $(this).alert('close')
-
-$(document).on 'turbolinks:before-cache', ->
-  try
-    $( document ).find('select').select2 'destroy'
-    return
-  catch err
-    console.log err.message
-    return
-
 
 # Datetimepicker
 $(document).on 'turbolinks:load', ->
