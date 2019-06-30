@@ -1,0 +1,27 @@
+<ul class="nav navbar-nav">
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      <%= fa_icon 'graduation-cap', text: 'Datos de curso',class:"padding-right" %>
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+    <li>
+      <%= link_to profesor_notas_path do %>
+      <%= fa_icon 'edit',class:"icon-fixed-width", text: 'Ingresar notas' %>
+    <% end %>
+  </li>
+  <li class="divider"></li>
+<li>
+  <%= link_to profesor_presences_path do %>
+  <%= fa_icon 'check',class:"icon-fixed-width", text: 'Ingresar asistencia' %>
+<% end %>
+</li>
+<li class="divider"></li>
+<li>
+<%= link_to profesor_asignaturas_path do %>
+<%= fa_icon 'file-text',class:"icon-fixed-width", text: 'Archivos y foros' %>
+<% end %>
+</li>
+</ul>
+</li>
+</ul>

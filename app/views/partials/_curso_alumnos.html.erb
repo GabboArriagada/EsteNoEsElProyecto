@@ -1,0 +1,20 @@
+<ul class="nav navbar-nav">
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      <%= fa_icon 'graduation-cap', text: 'Datos de curso',class:"padding-right" %> <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to alumno_notas_path do %>
+          <%= fa_icon 'check',class:"icon-fixed-width", text: 'Ver notas' %>
+        <% end %>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <%= link_to alumno_asignaturas_path do %>
+          <%= fa_icon 'book',class:"icon-fixed-width", text: 'Ver asignaturas' %>
+        <% end %>
+      </li>
+    </ul>
+  </li>
+</ul>

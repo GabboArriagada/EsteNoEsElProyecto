@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -11,33 +10,42 @@
       <%= link_to root_path, class: 'navbar-brand' do %>
       PROYECTO
     <% end %>
-
   </div>
-    <div id="navbar" class="collapse navbar-collapse">
+  <div id="navbar" class="collapse navbar-collapse">
 
-      <%=render "partials/cursos"%>
+    <% if current_user.has_role? :profesor %>
+      <%=render "partials/curso_profesores"%>
+    <% end %>
 
-      <%=render "partials/utilidades"%>
+    <% if current_user.has_role? :alumno %>
+      <%=render "partials/curso_alumnos"%>
+    <% end %>
 
+    <% if current_user.has_role? :profesor or :alumno %>
+    <%=render "partials/utilidades"%>
+    <% end %>
+
+    <% if current_user.has_role? :admin%>
       <%=render "partials/configuraciones"%>
+    <% end %>
 
-        <div class="navbar-right">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <%= fa_icon 'user', text: current_user.email %>
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-              <li>
-                <%= link_to destroy_user_session_path, :method => :delete do %>
-                  <%= fa_icon 'sign-out', text: 'Cerrar sesión' %>
-                <% end %>
-              </li>
-            </ul>
+    <div class="navbar-right">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <%= fa_icon 'user', text: current_user.email %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+              <%= fa_icon 'sign-out', text: 'Cerrar sesión' %>
+            <% end %>
           </li>
         </ul>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
+</div>
+</div>
 </nav>

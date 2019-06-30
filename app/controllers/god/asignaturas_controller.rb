@@ -3,7 +3,7 @@ class God::AsignaturasController < ApplicationController
   before_action :authenticate_admin
 
   def index
-    @asignaturas = Asignatura.all.order(created_at: :desc)
+    @asignaturas = Asignatura.all.joins(:curso).merge(Curso.order(grado: :desc))
   end
   def show
     @asignatura = Asignatura.find(params[:id])
