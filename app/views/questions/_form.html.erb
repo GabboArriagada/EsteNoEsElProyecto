@@ -7,6 +7,7 @@
     <div class="panel-body">
 
       <%= f.text_area :content, cols: "150", rows: "2", :id => "message_area",required:true %>
+      <%= f.input :tema_id, as: :hidden, input_html: {value: params[:tema]}%>
 
       </div>
       <div class="panel-footer">

@@ -12,7 +12,7 @@
     </h3>
   </div>
   <div class="panel-body">
-    <%= link_to new_question_path, class:'btn btn-success pull-right' do%>
+    <%= link_to new_question_path(tema: params[:id]), class:'btn btn-success pull-right' do%>
     <%= fa_icon 'bars', text: 'Nueva pregunta' %>
   <% end %>
   <% @questions.reverse.each do |question| %><br><br>

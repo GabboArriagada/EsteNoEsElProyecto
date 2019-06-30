@@ -11,7 +11,8 @@ class TemasController < ApplicationController
   # GET /temas/1
   # GET /temas/1.json
   def show
-    @questions = Question.all
+    #@questions = Question.all
+    @questions = Question.where(tema_id: params[:id])
   end
 
   # GET /temas/new

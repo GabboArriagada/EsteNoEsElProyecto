@@ -20,7 +20,7 @@
       <%=render "partials/utilidades"%>
 
       <%=render "partials/configuraciones"%>
-  
+
         <div class="navbar-right">
           <ul class="nav navbar-nav">
             <li class="dropdown">
@@ -29,11 +29,6 @@
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li>
-                <%= link_to edit_user_registration_path do %>
-                  <%= fa_icon 'pencil', text: 'Actualizar datos' %>
-                <% end %>
-              </li>
               <li>
                 <%= link_to destroy_user_session_path, :method => :delete do %>
                   <%= fa_icon 'sign-out', text: 'Cerrar sesión' %>
