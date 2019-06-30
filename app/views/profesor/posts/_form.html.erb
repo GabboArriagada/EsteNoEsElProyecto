@@ -1,27 +1,90 @@
 <%= simple_form_for([:profesor, @post]) do |f| %>
 <%= f.error_notification %>
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading"><br>
+  </div>
+  <div class="panel-body">
+    <div class="container">
+      <div class="col-md-6 col-md-offset-2">
+        <%= f.input :asignatura_id, as: :hidden, input_html: {value: @asignatura} %>
+        <%= f.input :title, label: 'Título', placeholder: 'Ingrese Título' %>
+        <%= f.input :description, label: 'Descripción', placeholder: 'Ingrese Descripción' %>
+
+        <form method="POST" action="#" enctype="multipart/form-data">
+          <!-- COMPONENT START -->
+          <div class="form-group">
+            <div class="input-group input-file" name="Fichier1">
+              <span class="input-group-btn">
+                <button class="btn btn-default btn-choose" type="button">Elige</button>
+              </span>
+              <input type="text" class="form-control" placeholder='Elige un archivo...'/>
+              <span class="input-group-btn">
+                <button class="btn btn-warning btn-reset" type="button">Borrar</button>
+              </span>
+            </div>
+          </div>
+          <!-- COMPONENT END -->
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary pull-right">Subir archivo</button>
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+    <!-- COMPONENT START -->
+  </div>
+  <div class="panel-footer">
     <%= link_to profesor_asignaturas_path, class: 'btn btn-primary' do %>
     <%= fa_icon 'arrow-left', text: 'Atrás' %>
   <% end %>
-</div>
-<div class="panel-body">
-  <%= f.input :asignatura_id, as: :hidden, input_html: {value: @asignatura} %>
-  <%= f.input :title, label: 'Título', placeholder: 'Ingrese Título' %>
-  <%= f.input :description, label: 'Descripción', placeholder: 'Ingrese Descripción' %>
-</div>
-
-<div class="panel-footer">
-
-  <%= f.file_field :image, multiple: false %>
-  <br>
-
-  <%= f.button :submit, class: 'btn btn-success' do %>
-  <%= fa_icon 'save', text: t(:save) %>
 <% end %>
-
+</div>
 </div>
 
-</div>
-<% end %>
+    <!--
+    esto funciona, se debe poner entre etiquetas de erb
+      f.file_field :image, multiple: false
+      f.button :submit, class: 'btn btn-success' do
+      fa_icon 'save', text: t(:save)
+     end
+   -->
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+function bs_input_file() {
+$(".input-file").before(function () {
+  if (!$(this).prev().hasClass('input-ghost')) {
+    var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
+    element.attr("name", $(this).attr("name"));
+    element.change(function () {
+      element.next(element).find('input').val((element.val()).split('\\').pop());
+    });
+    $(this).find("button.btn-choose").click(function () {
+      element.click();
+    });
+    $(this).find("button.btn-reset").click(function () {
+      element.val(null);
+      $(this).parents(".input-file").find('input').val('');
+    });
+    $(this).find('input').css("cursor", "pointer");
+    $(this).find('input').mousedown(function () {
+      $(this).parents('.input-file').prev().click();
+      return false;
+    });
+    return element;
+  }
+});
+}
+$(function () {
+bs_input_file();
+});
+</script>

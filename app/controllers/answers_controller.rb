@@ -6,13 +6,13 @@ before_action :authenticate_user!
     @answer.user    = current_user
     @answer.save
 
-    redirect_to questions_url
+    redirect_to tema_path(@question.tema_id)
   end
 
   def destroy
     @question       =  Question.find(params[:question_id])
     @answer         =  @question.answers.find(params[:id]).destroy
-    redirect_to questions_url
+    redirect_to tema_path(params[:id])
   end
 
   private
