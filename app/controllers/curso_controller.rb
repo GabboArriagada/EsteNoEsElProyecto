@@ -10,4 +10,8 @@ class CursoController < ApplicationController
   end
 
 
+def foro
+  @asignatura = Asignatura.find(params[:asignatura])
+end
+
 end

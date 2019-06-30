@@ -7,13 +7,15 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 align="center"><b><%=@tema.titulo%></b></h3>
+    <h3 align="center">
+      <b><%=@tema.titulo%></b>
+    </h3>
   </div>
   <div class="panel-body">
     <%= link_to new_question_path, class:'btn btn-success pull-right' do%>
     <%= fa_icon 'bars', text: 'Nueva pregunta' %>
   <% end %>
-  <% @questions.reverse.each do |question| %>
+  <% @questions.reverse.each do |question| %><br><br>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
@@ -33,21 +35,28 @@
               <%= link_to question, method: :delete, data: { confirm: 'Está seguro?' } do%>
               <%= fa_icon 'trash', text: 'Borrar' %>
             <% end %>
-          <% end %></i>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if question.answers.any? %>
-          <%= render question.answers %>
-        <% end %>
-      </tbody>
-    </table>
-    <%= form_for([question, question.answers.build]) do |f| %>
-    <%= f.text_area :content, cols: "150", rows: "2", :id => "message_area",required:true %>
-    <%=f.submit "Agregar Respuesta", class: "btn btn-primary pull-right"%>
-  <% end %>
-<br>
+          <% end %>
+        </i>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if question.answers.any? %>
+      <%= render question.answers %>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="col-md-12">
+  <%= form_for([question, question.answers.build]) do |f| %>
+  <div class="col-md-10">
+    <%= f.text_area :content, cols: '300', rows: "1", :id => "message_area",required:true %><br>
+  </div>
+  <div class="col-md-2">
+    <%=f.submit "Agregar Respuesta", class: "btn btn-primary pull-right btn-xs"%>
+  </div>
+<% end %>
+</div>
 <% end %>
 </div>
 

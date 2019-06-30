@@ -1,0 +1,51 @@
+<div class="page-header clearfix">
+  <h3><%= fa_icon 'leanpub' %>
+    <%= 'Temas disponibles para la asignatura' %>
+  </h3>
+</div>
+
+<div class="panel panel-default" id="table_clientes">
+  <div class="panel-heading clearfix">
+    <div class="row">
+      <div class="col-lg-6">
+        <%= form_tag('/god/cursos', method: :get) do %>
+        <div class="input-group">
+          <input id="search" name="search" value="<%= params[:search] %>" type="text" class="form-control" placeholder="Buscar tema">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit"><%= fa_icon 'search', text: '' %></button>
+          </span>
+        </div>
+        <!-- /input-group -->
+      <% end %>
+    </div>
+    <!-- /.col-lg-6 -->
+    <div class="col-lg-6"></div>
+    <!-- /.col-lg-6 -->
+  </div>
+  <!-- /.row -->
+</div>
+
+<div class="panel-body">
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Titulo tema</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@asignatura.temas.each_with_index do |tema, numero|%>
+          <tr>
+            <td>
+              <%= link_to tema.titulo,tema_path(tema) %>
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<div class="panel-footer"></div>
+</div>
