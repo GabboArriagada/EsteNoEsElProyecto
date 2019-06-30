@@ -10,26 +10,15 @@
         <%= f.input :title, label: 'Título', placeholder: 'Ingrese Título' %>
         <%= f.input :description, label: 'Descripción', placeholder: 'Ingrese Descripción' %>
 
-        <form method="POST" action="#" enctype="multipart/form-data">
-          <!-- COMPONENT START -->
-          <div class="form-group">
-            <div class="input-group input-file" name="Fichier1">
-              <span class="input-group-btn">
-                <button class="btn btn-default btn-choose" type="button">Elige</button>
-              </span>
-              <input type="text" class="form-control" placeholder='Elige un archivo...'/>
-              <span class="input-group-btn">
-                <button class="btn btn-warning btn-reset" type="button">Borrar</button>
-              </span>
-            </div>
-          </div>
-          <!-- COMPONENT END -->
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary pull-right">Subir archivo</button>
 
-          </div>
 
-        </form>
+      <label class="btn btn-success fa fa-upload">
+        Agregar el archivo
+        <span style="display:none;">
+          <%= f.file_field :image, required: true, multiple: false %>
+        </span>
+      </label>
+      <%= f.button :submit, 'Cargar archivo', class: 'btn btn-primary pull-right fa' %>
 
       </div>
     </div>
@@ -42,49 +31,3 @@
 <% end %>
 </div>
 </div>
-
-    <!--
-    esto funciona, se debe poner entre etiquetas de erb
-      f.file_field :image, multiple: false
-      f.button :submit, class: 'btn btn-success' do
-      fa_icon 'save', text: t(:save)
-     end
-   -->
-
-
-
-
-
-
-
-
-
-<script type="text/javascript">
-function bs_input_file() {
-$(".input-file").before(function () {
-  if (!$(this).prev().hasClass('input-ghost')) {
-    var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
-    element.attr("name", $(this).attr("name"));
-    element.change(function () {
-      element.next(element).find('input').val((element.val()).split('\\').pop());
-    });
-    $(this).find("button.btn-choose").click(function () {
-      element.click();
-    });
-    $(this).find("button.btn-reset").click(function () {
-      element.val(null);
-      $(this).parents(".input-file").find('input').val('');
-    });
-    $(this).find('input').css("cursor", "pointer");
-    $(this).find('input').mousedown(function () {
-      $(this).parents('.input-file').prev().click();
-      return false;
-    });
-    return element;
-  }
-});
-}
-$(function () {
-bs_input_file();
-});
-</script>
