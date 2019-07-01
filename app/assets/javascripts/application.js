@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require moment
-//= require fullcalendar
 //= require daterangepicker
 //= require sweetalert2
 //= require sweet-alert2-rails

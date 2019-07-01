@@ -9,6 +9,7 @@ class Alumno::AsistenciasController < ApplicationController
     @notas = current_user.asignaturas.all
     @user = current_user
     @presences = Presence.where(curso: params[:id]).text_search(params[:query])
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
   # GET /alumno/notas/1

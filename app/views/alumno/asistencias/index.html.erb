@@ -1,37 +1,22 @@
 <div class="page-header clearfix">
-  <h3><%= fa_icon 'leanpub' %> <%= 'Notas' %>
+  <h3><%= fa_icon 'leanpub' %>
+    <%= 'Notas' %>
   </h3>
 </div>
 
 <div class="panel panel-default" id="table_clientes">
-  <div class="panel-heading clearfix">
+  <div class="panel-heading clearfix"></div>
 
+  <div class="panel-body" id="articles">
+    <h2 id="month">
+      <%= link_to "<", date: @date.prev_month %>
+      <%= @date.strftime("%B %Y") %>
+      <%= link_to ">", date: @date.next_month %>
+    </h2>
+    <%= calendar @date do |date| %>
+    <%= date.day %>
 
+  <% end %>
   </div>
-
-  <div class="panel-body">
-
-    <div class="table-responsive">
-      <table class="table table-striped table-hover">
-        <thead>
-        <tr class="pretty">
-
-      <th>Nombre Asignatura</th>
-      <th>Notas Parciales</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <tr>
-    <td></td>
-<td></td>
-  </tr>
-  </tbody>
-</table>
-</div>
-
-</div>
-<div class="panel-footer">
-
-</div>
+<div class="panel-footer"></div>
 </div>
