@@ -1,22 +1,43 @@
 <div class="page-header clearfix">
-  <h3><%= fa_icon 'leanpub' %>
-    <%= 'Notas' %>
+  <h3><%= fa_icon 'check' %>
+    Asistencia
+    <small>Para el alumno
+      <%= current_user.name %>
+      <%= current_user.last_name %></small>
   </h3>
 </div>
 
-<div class="panel panel-default" id="table_clientes">
-  <div class="panel-heading clearfix"></div>
-
-  <div class="panel-body" id="articles">
+<div class="panel panel-default" id="asistencias">
+  <div class="panel-heading clearfix"><br>
     <h2 id="month">
       <%= link_to "<", date: @date.prev_month %>
-      <%= @date.strftime("%B %Y") %>
+      <%= I18n.l(@date, format: '%B del %Y') %>
       <%= link_to ">", date: @date.next_month %>
     </h2>
-    <%= calendar @date do |date| %>
-    <%= date.day %>
-
-  <% end %>
   </div>
-<div class="panel-footer"></div>
+
+  <div class="panel-body">
+    <div class="table-responsive">
+      <div class="panel-heading clearfix">
+
+        <div class="panel-body">
+
+          <%= calendar @date do |date| %>
+          <%= date.day %>
+          <% if @asistencias[date] %>
+            <ul>
+
+                PRESENTE
+            
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="panel-footer">
+  <br>
+</div>
 </div>

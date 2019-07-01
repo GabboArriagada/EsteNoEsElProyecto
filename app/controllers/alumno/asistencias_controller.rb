@@ -6,18 +6,10 @@ class Alumno::AsistenciasController < ApplicationController
   # GET /alumno/notas
   # GET /alumno/notas.json
   def index
-    @notas = current_user.asignaturas.all
     @user = current_user
-    @presences = Presence.where(curso: params[:id]).text_search(params[:query])
+    @presences = Presence.where(user_id: current_user.id)
+    @asistencias = @presences.group_by(&:fecha)
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
-  end
-
-  # GET /alumno/notas/1
-  # GET /alumno/notas/1.json
-  def show
-    @asignatura = params[:asignatura]
-    @notas = current_user.notas.where(asignatura: @asignatura)
-    @user = current_user
   end
 
   private

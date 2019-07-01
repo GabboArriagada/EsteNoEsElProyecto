@@ -1131,49 +1131,53 @@ textarea{
 
 
 
-#articles .calendar {
+#asistencias .calendar {
   border-collapse: collapse;
   width: 100%;
-
+  table, th, td {
+    border: 1px solid black;
+  }
   td, th {
     font-family: "Lucida Grande", arial, helvetica, sans-serif;
     font-size: 10px;
     padding: 6px;
-    border: 1px solid #999;
   }
 
   th {
-    background: #DDD;
-    color: #666;
+    background: #2e3338;
+    color: #ffffff;
     text-align: center;
     width: 14.2857142857143%;
+    font-size: 18px;
   }
 
   td {
-    background: #FFF;
-    color: #777;
+    background: #2e3338;
+    color: #ffffff;
     height: 80px;
     vertical-align: top;
-    font-size: 16px;
+    font-size: 18px;
   }
 
-  .notmonth, .notmonth a { color: #CCC; }
-  .today { background-color: #D7F2FF; }
+  .notmonth, .notmonth a { color: #ffffff;
+    background-color: #494A4D;
+   }
+  .today { background-color: #434549; }
 }
 
-#articles #month {
+#asistencias #month {
   margin: 0;
   padding-bottom: 10px;
   text-align: center;
-  font-size: 22px;
+  font-size: 25px;
   a {
     text-decoration: none;
     padding: 0 10px;
-    color: #999;
+    color: #ffffff;
   }
 }
 
-#articles ul {
-  font-size: 11px;
+#asistencias ul {
+  font-size: 15px;
   padding-left: 20px;
 }
