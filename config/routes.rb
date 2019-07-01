@@ -29,6 +29,7 @@ namespace :alumno do
   resources :notas
   match 'notas/show_nota' => 'notas#show_nota', via: :get
   resources :asignaturas
+  resources :asistencias
 end
 
 #seccion profesor

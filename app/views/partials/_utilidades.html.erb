@@ -10,6 +10,14 @@
         <%= fa_icon 'calendar',class:"icon-fixed-width", text: 'Horario de clases' %>
       <% end %>
     </li>
-  </ul>
+    <% if current_user.has_role? :alumno %>
+      <li class="divider"></li>
+      <li>
+        <%= link_to alumno_asistencias_path do %>
+        <%= fa_icon 'check',class:"icon-fixed-width", text: 'Ver asistencia' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 </li>
 </ul>
