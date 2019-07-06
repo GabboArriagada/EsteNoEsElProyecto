@@ -13,19 +13,19 @@
   </div>
   <div id="navbar" class="collapse navbar-collapse">
 
-    <% if current_user.has_role? :profesor %>
+    <% if current_user.has_role?(:profesor) %>
       <%=render "partials/curso_profesores"%>
     <% end %>
 
-    <% if current_user.has_role? :alumno %>
+    <% if current_user.has_role?(:alumno) %>
       <%=render "partials/curso_alumnos"%>
     <% end %>
 
-    <% if current_user.has_role? :profesor or :alumno %>
+    <% if current_user.has_role?(:profesor) || current_user.has_role?(:alumno) %>
     <%=render "partials/utilidades"%>
     <% end %>
 
-    <% if current_user.has_role? :admin%>
+    <% if current_user.has_role?(:admin)%>
       <%=render "partials/configuraciones"%>
     <% end %>
 
