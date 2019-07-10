@@ -14,7 +14,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  before_save :quitar_apoderado
   validates :telefono, length: { is: 9 }, numericality: { only_integer: true}
   validates :direccion, length: { maximum: 100 }
   validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
@@ -35,7 +35,11 @@ def validar_rol
     errors.add(:es_apoderado, "No debe tener otro rol para ser apoderado, debe quitar el rol: "+self.roles.first.name)
   end
 end
-
+def quitar_apoderado
+  if !self.es_apoderado?
+      self.update_column(:alumno_id, nil)
+  end
+end
   def nota_final
     notaf = 0.0
     self.asignaturas.each do |asignatura|
