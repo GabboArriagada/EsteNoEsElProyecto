@@ -39,7 +39,7 @@
         </thead>
 
         <tbody>
-          <% @users.each do |user| %>
+          <% @users.where.not(es_apoderado: true).each do |user| %>
             <tr>
               <td><%= user.last_name %></td>
               <td><%= user.name %></td>

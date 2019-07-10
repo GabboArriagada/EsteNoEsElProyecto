@@ -22,6 +22,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
             message: "Solo se permite letras" }
 validates   :rut, uniqueness: true
+validate :validar_rol, on: [:update]
 
 scope :search, -> (search) { where('lower(name) LIKE ?', "%#{search.to_s.downcase}%")}
 scope :by_id, -> (id) { where(:id => id)}
@@ -29,7 +30,11 @@ scope :by_rut, -> (rut) { where("rut like ?", "%#{rut}%")}
 scope :by_nombre, -> (name) { where("name ilike ?", "%#{name}%")}
 scope :by_rol, -> (rol) { joins(:roles).where("roles.id = ?", rol)}
 
-
+def validar_rol
+  if self.roles.present? && (self.es_apoderado==true)
+    errors.add(:es_apoderado, "No debe tener otro rol para ser apoderado, debe quitar el rol: "+self.roles.first.name)
+  end
+end
 
   def nota_final
     notaf = 0.0
