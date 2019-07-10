@@ -9,12 +9,22 @@
       <%= f.input :name, placeholder: 'Nombre',label: 'Nombre' %>
       <%= f.input :last_name, placeholder: 'Apellido', label: 'Apellidos' %>
       <%= f.input :rut, placeholder: 'RUT' %>
+
       <%=f.input :email,placeholder: 'usuario@dominio.com', required: true%>
       <%= f.input :telefono, placeholder:'+56-', label: 'Teléfono' %>
       <%= f.input :fecha_nacimiento, as: :date_picker, placeholder:'' %>
       <%= f.input :direccion, placeholder:'Dirección', label: 'Dirección'%>
+
       <%= f.input :password, placeholder:'Contraseña' %>
       <%= f.input :password_confirmation, placeholder:'Confirmar Contraseña' %>
+
+
+
+        <div class="text-center">
+          <%= f.input :es_apoderado, as: :boolean, label: '¿Es apoderado?' %>
+        </div>
+
+      <%= f.input :alumno_id, label: 'Alumno', placeholder:'-Seleccione alumno', disabled: true, collection: User.with_role(:alumno).collect {|a| [a.name, a.id]}%>
     </div>
     <div class="panel-footer">
       <%= button_tag(type: 'submit',class: "btn btn-success") do %>
@@ -27,3 +37,15 @@
 </div>
 </div>
 <%end%>
+<script type="text/javascript">
+
+$(document).ready(function () {
+  $('#user_es_apoderado').click(function () {
+    if ($('#user_alumno_id').is(':disabled')) {
+      $('#user_alumno_id').removeAttr('disabled');
+    } else if ($('#user_alumno_id').is(':enabled')){
+      $('#user_alumno_id').attr('disabled', 'disabled');
+    }
+  });
+});
+</script>

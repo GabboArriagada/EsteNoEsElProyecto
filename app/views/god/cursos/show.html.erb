@@ -45,6 +45,16 @@
   <div class="panel-heading">
     <h4>Alumnos del curso
     </h4>
+    <div class="col-lg-6">
+      <%= form_tag('/god/cursos', method: :get) do %>
+      <div class="input-group">
+        <input id="search" name="search" value="<%= params[:search] %>" type="text" class="form-control" placeholder="Buscar Alumno">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit"><%= fa_icon 'search', text: '' %></button>
+        </span>
+      </div><!-- /input-group -->
+      <% end %>
+    </div><!-- /.col-lg-6 --><br><br>
   </div>
   <div class="panel panel-default">
     <div class="panel-body">
@@ -81,7 +91,16 @@
 
   <div class="panel-heading">
     <h4>Asignar Profesores
-    </h4>
+    </h4>    <div class="col-lg-6">
+          <%= form_tag('/god/cursos', method: :get) do %>
+          <div class="input-group">
+            <input id="search" name="search" value="<%= params[:search] %>" type="text" class="form-control" placeholder="Buscar Profesor">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit"><%= fa_icon 'search', text: '' %></button>
+            </span>
+          </div><!-- /input-group -->
+          <% end %>
+        </div><!-- /.col-lg-6 --><br><br>
   </div>
   <div class="panel panel-default">
     <div class="panel-body">
@@ -117,7 +136,16 @@
 
   <div class="panel-heading">
     <h4>Asignar alumnos
-    </h4>
+    </h4>    <div class="col-lg-6">
+          <%= form_tag('/god/cursos', method: :get) do %>
+          <div class="input-group">
+            <input id="search" name="search" value="<%= params[:search] %>" type="text" class="form-control" placeholder="Buscar Alumno">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit"><%= fa_icon 'search', text: '' %></button>
+            </span>
+          </div><!-- /input-group -->
+          <% end %>
+        </div><!-- /.col-lg-6 --><br><br>
   </div>
   <div class="panel panel-default">
     <div class="panel-body">

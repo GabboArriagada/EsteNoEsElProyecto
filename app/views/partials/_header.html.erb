@@ -29,6 +29,10 @@
       <%=render "partials/configuraciones"%>
     <% end %>
 
+    <% if current_user.es_apoderado?%>
+      <%=render "partials/apoderados"%>
+    <% end %>
+
     <div class="navbar-right">
       <ul class="nav navbar-nav">
         <li class="dropdown">

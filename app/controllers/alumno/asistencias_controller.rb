@@ -10,6 +10,10 @@ class Alumno::AsistenciasController < ApplicationController
     @presences = Presence.where(user_id: current_user.id)
     @asistencias = @presences.group_by(&:fecha)
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    if @user.es_apoderado?
+      @presences = Presence.where(user_id: current_user.alumno_id)
+      @asistencias = @presences.group_by(&:fecha)
+    end
   end
 
   private
@@ -23,7 +27,7 @@ class Alumno::AsistenciasController < ApplicationController
     end
 
     def authenticate_alumno
-      unless current_user.has_role? :alumno
+      unless (current_user.has_role?(:alumno) || current_user.es_apoderado?)
         flash[:alert] = "No tienes permisos necesarios para ver esta sección."
         redirect_to root_path
       end
