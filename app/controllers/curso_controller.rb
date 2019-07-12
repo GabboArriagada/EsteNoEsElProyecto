@@ -11,7 +11,9 @@ class CursoController < ApplicationController
       format.pdf {render template: 'curso/pdf', pdf: 'Horario'}
     end
   end
-
+def ponderaciones
+  @asignatura = Asignatura.find(params[:format])
+end
 
 def foro
   @asignatura = Asignatura.find(params[:asignatura])

@@ -24,7 +24,7 @@
       <tr>
         <td><%= asignatura.nombre.titleize %></td>
         <td>
-          <%= link_to profesor_asignatura_path(asignatura),class: 'btn btn-success btn-xs' do %>
+          <%= link_to curso_ponderaciones_path(asignatura), class: 'btn btn-success btn-xs' do %>
             <%= fa_icon 'search', text: 'Ver' %>
           <% end %>
         </td>
