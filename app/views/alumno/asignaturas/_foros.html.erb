@@ -1,17 +1,19 @@
 <div class="panel-heading clearfix">
   <div class="row">
     <div class="col-lg-6">
-<div class="input-group">
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda de temas" class="form-control">
-  <span class="input-group-btn">
-    <button class="btn btn-default" type="submit" disabled><%= fa_icon 'search', text: '' %></button>
-  </span>
-</div>
-</div><!-- /.col-lg-6 -->
+      <div class="input-group">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda de temas" class="form-control">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit" disabled="disabled"><%= fa_icon 'search', text: '' %></button>
+        </span>
+      </div>
+    </div>
+    <!-- /.col-lg-6 -->
 
-    <div class="col-lg-6">
-    </div><!-- /.col-lg-6 -->
-  </div><!-- /.row -->
+    <div class="col-lg-6"></div>
+    <!-- /.col-lg-6 -->
+  </div>
+  <!-- /.row -->
 
 </div>
 <br>
@@ -28,33 +30,8 @@
           <td>
             <%= link_to tema.titulo,tema_path(tema) %>
           </td>
-      </tr>
-    <%end%>
-  </tbody>
-</table>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
 </div>
-
-<script>
-function myFunction() {
-var input,
-  filter,
-  tabla,
-  tr,
-  td,
-  i;
-input = document.getElementById("myInput");
-filter = input.value.toUpperCase();
-table = document.getElementById("myTable");
-tr = table.getElementsByTagName("tr");
-for (i = 0; i < tr.length; i++) {
-  td = tr[i].getElementsByTagName("td")[0];
-  if (td) {
-    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-      tr[i].style.display = "";
-    } else {
-      tr[i].style.display = "none";
-    }
-  }
-}
-}
-</script>
