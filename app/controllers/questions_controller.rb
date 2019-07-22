@@ -60,7 +60,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Pregunta correctamente borrada.' }
+      format.html { redirect_to tema_path(@question.tema_id), notice: 'Pregunta correctamente borrada.' }
       format.json { head :no_content }
     end
   end

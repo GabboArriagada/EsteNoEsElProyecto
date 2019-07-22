@@ -8,13 +8,8 @@
         </span>
       </div>
     </div>
-    <!-- /.col-lg-6 -->
-
     <div class="col-lg-6"></div>
-    <!-- /.col-lg-6 -->
   </div>
-  <!-- /.row -->
-
 </div>
 <br>
 <div class="table-responsive">
@@ -25,11 +20,18 @@
       </tr>
     </thead>
     <tbody>
+      <% if @asignatura.temas.present?%>
       <%@asignatura.temas.each_with_index do |tema, numero|%>
         <tr>
           <td>
             <%= link_to tema.titulo,tema_path(tema) %>
           </td>
+        </tr>
+      <%end%>
+      <%else%>
+        <tr>
+          <td>Aún no hay temas para esta asignatura</td>
+
         </tr>
       <%end%>
     </tbody>

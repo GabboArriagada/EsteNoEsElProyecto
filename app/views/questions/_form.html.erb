@@ -1,23 +1,34 @@
 <%= simple_form_for(@question) do |f| %>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <br>
-    </div>
-    <div class="panel-body">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <br>
+  </div>
+  <div class="panel-body">
 
-      <%= f.text_area :content, cols: "150", rows: "2", :id => "message_area",required:true %>
-      <%= f.input :tema_id, as: :hidden, input_html: {value: params[:tema]}%>
+    <%= f.text_area :content, cols: "150", rows: "2", :id => "message_area",required:true %>
+    <%= f.input :tema_id, as: :hidden, input_html: {value: params[:tema]}%>
 
-      </div>
-      <div class="panel-footer">
-        <%= button_tag(type: 'submit',class: "btn btn-primary") do %>
-        <%= fa_icon 'plus-square', text: "Crear pregunta"%>
-      <% end %>
-        <%= link_to tema_path(params[:tema]), class: 'btn btn-success' do %>
-          <%= fa_icon 'arrow-circle-left', text: t(:Atrás)  %>
-        <% end %>
-      </div>
+  </div>
+  <div class="panel-footer">
+
+<%if @question.new_record?%>
+    <%= button_tag(type: 'submit',class: "btn btn-primary") do %>
+      <%= fa_icon 'plus-square', text: "Crear pregunta"%>
+    <% end %>
+    <%= link_to tema_path(params[:tema]), class: 'btn btn-success' do %>
+      <%= fa_icon 'arrow-circle-left', text: t(:Atrás) %>
+    <% end %>
+<% else %>
+    <%= button_tag(type: 'submit',class: "btn btn-primary") do %>
+      <%= fa_icon 'plus-square', text: "Actualizar pregunta"%>
+    <% end %>
+    <%= link_to tema_path(@question.tema_id), class: 'btn btn-success' do %>
+      <%= fa_icon 'arrow-circle-left', text: t(:Atrás) %>
+    <% end %>
+<% end %>
+
+</div>
 
 </div>
 <% end %>
