@@ -8,6 +8,7 @@ resources :cursos
 match 'curso/horario' => 'curso#horario', via: :get
 match 'curso/foro' => 'curso#foro', via: :get
 match 'curso/ponderaciones' => 'curso/ponderaciones', via: :get
+match 'curso/ingresar_notas' => 'curso/ingresar_notas', via: [:get, :post]
 resources :contacts, only: [:new, :create]
 
 resources :asignaturas do

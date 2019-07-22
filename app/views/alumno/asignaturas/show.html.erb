@@ -73,8 +73,8 @@
                     <%= post.description%>
                   </td>
                   <td>
-                    <%= link_to post.image.url, target: '_blank' do %>
-                    <%= fa_icon 'download', text: 'Descargar' %>
+                    <%= link_to post.image.url, class: 'btn btn-success btn-xs', target: '_blank' do %>
+                    <%= fa_icon 'download', text: 'Ver documento'%>
                   <% end %>
                 </td>
               </tr>

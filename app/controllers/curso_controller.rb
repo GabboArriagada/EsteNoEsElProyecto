@@ -14,7 +14,9 @@ class CursoController < ApplicationController
 def ponderaciones
   @asignatura = Asignatura.find(params[:format])
 end
-
+def ingresar_notas
+  @nota = Nota.new
+end
 def foro
   @asignatura = Asignatura.find(params[:asignatura])
 end

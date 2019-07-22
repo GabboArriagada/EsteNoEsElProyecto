@@ -1,0 +1,36 @@
+<div class="page-header clearfix">
+  <h3><%= fa_icon 'users' %>
+    <%= 'Notas' %>
+    <small><%= 'Ingresar notas' %></small>
+  </h3>
+</div>
+<%= simple_form_for(:nota,:url => curso_ingresar_notas_path, :method => :post) do |f| %>
+
+<div class="panel panel-default">
+
+  <div class="panel-body">
+
+
+
+    <tbody class="bloques" id="nested_bloques">
+      <%=f.simple_fields_for :notas do |f|%>
+      <%=render 'nota_fields', :f => f%>
+      <%end%>
+  </tbody>
+
+
+
+
+  </div>
+
+  <div class="panel-footer">
+    <%= f.button :submit, class: 'btn btn-success' do %>
+    <%= fa_icon 'save', text: t(:save) %>
+  <% end %>
+  <%= link_to god_asignaturas_path(@asignatura), class: 'btn btn-danger' do %>
+  <%= fa_icon 'remove', text: t(:cancel) %>
+<% end %>
+</div>
+<% end %>
+
+</div>
