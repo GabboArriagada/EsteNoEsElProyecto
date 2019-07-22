@@ -11,10 +11,10 @@
 
       </div>
       <div class="panel-footer">
-        <%= f.button :submit, class: 'btn btn-success' do %>
-            <%= fa_icon 'save', text: t(:save) %>
-        <% end %>
-        <%= link_to preguntas_path, class: 'btn btn-success' do %>
+        <%= button_tag(type: 'submit',class: "btn btn-primary") do %>
+        <%= fa_icon 'plus-square', text: "Crear pregunta"%>
+      <% end %>
+        <%= link_to tema_path(params[:tema]), class: 'btn btn-success' do %>
           <%= fa_icon 'arrow-circle-left', text: t(:Atrás)  %>
         <% end %>
       </div>

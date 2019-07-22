@@ -61,8 +61,14 @@
 </div>
 
 <div class="panel-footer">
+<% if current_user.has_role?(:alumno) %>
+<%= link_to alumno_asignatura_path(@tema.asignatura_id), class: 'btn btn-success' do %>
+<%= fa_icon 'arrow-circle-left', text: t(:Atrás) %>
+<% end %>
+<%else%>
 <%= link_to :back, class: 'btn btn-success' do %>
 <%= fa_icon 'arrow-circle-left', text: t(:Atrás) %>
 <% end %>
+<%end %>
 </div>
 </div>

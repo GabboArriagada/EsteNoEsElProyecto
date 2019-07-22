@@ -61,22 +61,29 @@
               </tr>
             </thead>
             <tbody>
-              <%@asignatura.posts.each_with_index do |post, numero|%>
-                <tr>
-                  <td>
-                    <%= numero+1%>
+              <% if @asignatura.posts.present?%>
+                <%@asignatura.posts.each_with_index do |post, numero|%>
+                  <tr>
+                    <td>
+                      <%= numero+1%>
+                    </td>
+                    <td>
+                      <%= post.title %>
+                    </td>
+                    <td>
+                      <%= post.description%>
+                    </td>
+                    <td>
+                      <%= link_to post.image.url, class: 'btn btn-success btn-xs', target: '_blank' do %>
+                      <%= fa_icon 'download', text: 'Ver documento'%>
+                    <% end %>
                   </td>
-                  <td>
-                    <%= post.title %>
-                  </td>
-                  <td>
-                    <%= post.description%>
-                  </td>
-                  <td>
-                    <%= link_to post.image.url, class: 'btn btn-success btn-xs', target: '_blank' do %>
-                    <%= fa_icon 'download', text: 'Ver documento'%>
-                  <% end %>
-                </td>
+                </tr>
+              <%end%>
+            <%else%>
+              <tr>
+                <td colspan="4">Aún no hay archivos para esta asignatura</td>
+
               </tr>
             <%end%>
           </tbody>
