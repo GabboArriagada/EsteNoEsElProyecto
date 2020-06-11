@@ -1,11 +1,11 @@
 class Asignatura < ApplicationRecord
   belongs_to :curso
   has_and_belongs_to_many :users
-  has_many :posts, :dependent => :destroy
-  has_many :notas
-  has_many :bloques, :dependent => :destroy
-  has_many :ponderacions, :dependent => :destroy
-  has_many :temas, :dependent => :destroy
+  has_many :posts, dependent: :delete_all
+  has_many :notas, dependent: :delete_all
+  has_many :bloques, dependent: :delete_all
+  has_many :ponderacions, dependent: :delete_all
+  has_many :temas, dependent: :delete_all
   accepts_nested_attributes_for :notas , reject_if: :all_blank , allow_destroy: true
   validates :nombre, presence: true, format: { with: /\A[a-zA-Z ]+\Z/,
     message: "Solo se permite letras" }
